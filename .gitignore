@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Java build
+/target/
+/build/
+/out/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Gradle
+.gradle/
+!gradle-wrapper.jar
+
+# Environment files
+.env
+/.idea/
