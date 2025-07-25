@@ -1,14 +1,23 @@
-# Use Java 21 base image
-FROM eclipse-temurin:21-jdk
+# Step 1: Use a build image
+FROM eclipse-temurin:21-jdk AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy your JAR file
-COPY build/libs/*.jar app.jar
+# Copy everything (source code)
+COPY . .
 
-# Expose port (optional for Render)
+# Build the JAR using Gradle wrapper
+RUN ./gradlew clean bootJar
+
+# Step 2: Use a lightweight image to run the app
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+# Copy the JAR from builder stage
+COPY --from=builder /app/build/libs/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the app
+# Run the Spring Boot app
 ENTRYPOINT ["java", "-jar", "app.jar"]
