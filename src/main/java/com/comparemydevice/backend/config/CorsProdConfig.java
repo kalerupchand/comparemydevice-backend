@@ -19,7 +19,7 @@ public class CorsProdConfig {
                         .allowedOriginPatterns("https://comparemydevice.com", "https://api.comparemydevice.com") // ✅ Fix
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .allowCredentials(false);
             }
         };
     }
