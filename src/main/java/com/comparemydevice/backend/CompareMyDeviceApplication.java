@@ -5,6 +5,7 @@ import com.comparemydevice.backend.entity.Device;
 import com.comparemydevice.backend.repository.DeviceRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,8 +25,9 @@ class CompareMyDeviceBackendApplication {
     public CommandLineRunner loadData(DeviceRepository deviceRepository) {
         return args -> {
             ObjectMapper mapper = new ObjectMapper();
-            TypeReference<List<Device>> typeReference = new TypeReference<>() {};
+            mapper.registerModule(new JavaTimeModule()); // Support for LocalDate
 
+            TypeReference<List<Device>> typeReference = new TypeReference<>() {};
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream("device-data.json");
 
             if (inputStream != null) {
