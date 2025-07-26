@@ -1,5 +1,6 @@
 package com.comparemydevice.backend;
 
+import com.comparemydevice.backend.entity.Device;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -22,7 +23,7 @@ public class DeviceController {
     public List<Device> compareDevices(@RequestParam List<String> names) {
         List<Device> result = new ArrayList<>();
         for (Device d : devices) {
-            if (names.contains(d.name())) {
+            if (names.contains(d.getName())) {
                 result.add(d);
             }
         }
