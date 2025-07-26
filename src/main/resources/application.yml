@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev # default active profile; can be overridden via ENV or CLI
+    active: prod
 
 server:
   port: 8080
