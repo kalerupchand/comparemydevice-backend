@@ -1,4 +1,3 @@
-// File: CorsProdConfig.java
 package com.comparemydevice.backend.config;
 
 import org.springframework.context.annotation.Bean;
@@ -17,10 +16,10 @@ public class CorsProdConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://comparemydevice.com")
+                        .allowedOrigins("https://comparemydevice.com", "https://api.comparemydevice.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true); // secure config for production
+                        .allowCredentials(true);
             }
         };
     }
