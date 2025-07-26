@@ -1,9 +1,17 @@
 package com.comparemydevice.backend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
 @Entity
+@Data // includes @Getter, @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Device {
 
     @Id
@@ -69,4 +77,5 @@ public class Device {
     public Device() {}
 
     // Getters and Setters omitted for brevity
+
 }
