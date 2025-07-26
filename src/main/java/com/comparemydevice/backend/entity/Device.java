@@ -1,6 +1,7 @@
 // File: com.comparemydevice.backend.entity.Device.java
 package com.comparemydevice.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class Device {
     private String ram;
     private String storageOptions;
     private String colorVariants;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     private String warrantyInfo;
     private String returnPolicy;
@@ -77,5 +79,6 @@ public class Device {
     private String imageUrl;
     private String availability;
     private String seller;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private String deliveryDate;
 }

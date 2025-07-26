@@ -25,17 +25,22 @@ class CompareMyDeviceBackendApplication {
     public CommandLineRunner loadData(DeviceRepository deviceRepository) {
         return args -> {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule()); // Support for LocalDate
+            mapper.registerModule(new JavaTimeModule());
 
             TypeReference<List<Device>> typeReference = new TypeReference<>() {};
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream("device-data.json");
 
-            if (inputStream != null) {
-                List<Device> devices = mapper.readValue(inputStream, typeReference);
-                deviceRepository.saveAll(devices);
-                System.out.println("✅ Loaded " + devices.size() + " devices into the database.");
-            } else {
-                System.err.println("❌ Could not find device-data.json in resources folder.");
+            try {
+                if (inputStream != null) {
+                    List<Device> devices = mapper.readValue(inputStream, typeReference);
+                    deviceRepository.saveAll(devices);
+                    System.out.println("✅ Loaded " + devices.size() + " devices into the database.");
+                } else {
+                    System.err.println("❌ Could not find device-data.json in resources folder.");
+                }
+            } catch (Exception e) {
+                System.err.println("❌ Failed to load devices:");
+                e.printStackTrace(); // <---- ADD THIS
             }
         };
     }

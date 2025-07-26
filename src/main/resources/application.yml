@@ -1,5 +1,6 @@
 spring:
-  application:
-    name: backend
   profiles:
-    active: prod
+    active: dev # default active profile; can be overridden via ENV or CLI
+
+server:
+  port: 8080
