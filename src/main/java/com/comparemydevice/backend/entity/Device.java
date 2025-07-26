@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Data // includes @Getter, @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Device {
@@ -73,9 +74,4 @@ public class Device {
     private String availability;
     private String seller;
     private String deliveryDate;
-
-    public Device() {}
-
-    // Getters and Setters omitted for brevity
-
 }
