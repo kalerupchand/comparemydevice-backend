@@ -16,7 +16,7 @@ public class CorsProdConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://comparemydevice.com", "https://api.comparemydevice.com")
+                        .allowedOriginPatterns("https://comparemydevice.com", "https://api.comparemydevice.com") // ✅ Fix
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
