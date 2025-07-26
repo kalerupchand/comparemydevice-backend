@@ -1,7 +1,9 @@
+// File: com.comparemydevice.backend.controller.DeviceController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.entity.Device;
-import com.comparemydevice.backend.repository.DeviceRepository;
+import com.comparemydevice.backend.service.DeviceService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,29 +11,29 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/devices")
-@CrossOrigin(origins = "*") // update origin in production
+@CrossOrigin(origins = "*") // Update origin for production
 public class DeviceController {
 
     @Autowired
-    private DeviceRepository deviceRepository;
+    private DeviceService deviceService;
 
     @GetMapping
     public List<Device> getAllDevices() {
-        return deviceRepository.findAll();
+        return deviceService.getAllDevices();
     }
 
     @PostMapping
-    public Device addDevice(@RequestBody Device device) {
-        return deviceRepository.save(device);
+    public Device addDevice(@Valid @RequestBody Device device) {
+        return deviceService.addDevice(device);
     }
 
     @GetMapping("/{id}")
     public Device getDeviceById(@PathVariable Long id) {
-        return deviceRepository.findById(id).orElse(null);
+        return deviceService.getDeviceById(id).orElseThrow();
     }
 
     @DeleteMapping("/{id}")
     public void deleteDevice(@PathVariable Long id) {
-        deviceRepository.deleteById(id);
+        deviceService.deleteDevice(id);
     }
 }

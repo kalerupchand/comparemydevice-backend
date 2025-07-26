@@ -1,6 +1,8 @@
+// File: com.comparemydevice.backend.entity.Device.java
 package com.comparemydevice.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +21,7 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
     private String brand;
     private String modelNumber;
@@ -66,6 +69,7 @@ public class Device {
     private boolean faceUnlock;
     private String sensorList;
 
+    @Min(1000)
     private Integer priceInINR;
     private Integer exchangeOfferPrice;
     private Float ratings;

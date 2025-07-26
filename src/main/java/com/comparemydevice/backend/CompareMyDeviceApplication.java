@@ -1,3 +1,4 @@
+// File: com.comparemydevice.backend.CompareMyDeviceBackendApplication.java
 package com.comparemydevice.backend;
 
 import com.comparemydevice.backend.entity.Device;
@@ -25,9 +26,7 @@ class CompareMyDeviceBackendApplication {
             ObjectMapper mapper = new ObjectMapper();
             TypeReference<List<Device>> typeReference = new TypeReference<>() {};
 
-            InputStream inputStream = getClass()
-                    .getClassLoader()
-                    .getResourceAsStream("device-data.json");
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("device-data.json");
 
             if (inputStream != null) {
                 List<Device> devices = mapper.readValue(inputStream, typeReference);
