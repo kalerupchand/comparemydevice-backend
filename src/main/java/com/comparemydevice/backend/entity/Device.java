@@ -1,42 +1,72 @@
 package com.comparemydevice.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Device {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private String brand;
+    private String modelNumber;
+    private String os;
     private String processor;
+    private String graphics;
     private String ram;
-    private String storage;
+    private String storageOptions;
+    private String colorVariants;
+    private LocalDate releaseDate;
+    private String warrantyInfo;
+    private String returnPolicy;
+
+    private String batteryCapacity;
+    private String chargingSpeed;
+    private String chargingType;
+    private boolean otgSupport;
+
+    private String cameraPrimary;
+    private String cameraUltraWide;
+    private String cameraMacro;
+    private String selfieCamera;
+    private String flashType;
+    private String zoomLevel;
+    private String videoRecording;
+
+    private String displaySize;
+    private String displayType;
+    private String resolution;
+    private String refreshRate;
+    private String brightnessNits;
+    private String aspectRatio;
+    private String screenToBodyRatio;
+    private String touchSamplingRate;
+    private String displayFeatures;
+
+    private String networkSupport;
+    private String simType;
+    private String wifi;
+    private String bluetooth;
+    private String usbType;
+    private boolean nfcSupport;
+
+    private String fingerprintSensor;
+    private boolean faceUnlock;
+    private String sensorList;
+
+    private Integer priceInINR;
+    private Integer exchangeOfferPrice;
+    private Float ratings;
+    private Integer reviewsCount;
+    private String imageUrl;
+    private String availability;
+    private String seller;
+    private String deliveryDate;
 
     public Device() {}
 
-    public Device(String name, String processor, String ram, String storage) {
-        this.name = name;
-        this.processor = processor;
-        this.ram = ram;
-        this.storage = storage;
-    }
-
-    // Getters and setters
-    public Long getId() { return id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getProcessor() { return processor; }
-    public void setProcessor(String processor) { this.processor = processor; }
-
-    public String getRam() { return ram; }
-    public void setRam(String ram) { this.ram = ram; }
-
-    public String getStorage() { return storage; }
-    public void setStorage(String storage) { this.storage = storage; }
+    // Getters and Setters omitted for brevity
 }
