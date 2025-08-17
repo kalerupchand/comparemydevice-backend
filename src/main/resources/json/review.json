@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "reviewerName": "User 1",
+    "content": "This is a review for device 2",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 2
+    }
+  },
+  {
+    "id": 2,
+    "reviewerName": "User 2",
+    "content": "This is a review for device 3",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 3
+    }
+  },
+  {
+    "id": 3,
+    "reviewerName": "User 3",
+    "content": "This is a review for device 4",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 4
+    }
+  },
+  {
+    "id": 4,
+    "reviewerName": "User 4",
+    "content": "This is a review for device 5",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 5
+    }
+  },
+  {
+    "id": 5,
+    "reviewerName": "User 5",
+    "content": "This is a review for device 6",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 6
+    }
+  },
+  {
+    "id": 6,
+    "reviewerName": "User 6",
+    "content": "This is a review for device 7",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 7
+    }
+  },
+  {
+    "id": 7,
+    "reviewerName": "User 7",
+    "content": "This is a review for device 8",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 8
+    }
+  },
+  {
+    "id": 8,
+    "reviewerName": "User 8",
+    "content": "This is a review for device 9",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 9
+    }
+  },
+  {
+    "id": 9,
+    "reviewerName": "User 9",
+    "content": "This is a review for device 10",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 10
+    }
+  },
+  {
+    "id": 10,
+    "reviewerName": "User 10",
+    "content": "This is a review for device 1",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 1
+    }
+  },
+  {
+    "id": 11,
+    "reviewerName": "User 11",
+    "content": "This is a review for device 2",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 2
+    }
+  },
+  {
+    "id": 12,
+    "reviewerName": "User 12",
+    "content": "This is a review for device 3",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 3
+    }
+  },
+  {
+    "id": 13,
+    "reviewerName": "User 13",
+    "content": "This is a review for device 4",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 4
+    }
+  },
+  {
+    "id": 14,
+    "reviewerName": "User 14",
+    "content": "This is a review for device 5",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 5
+    }
+  },
+  {
+    "id": 15,
+    "reviewerName": "User 15",
+    "content": "This is a review for device 6",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 6
+    }
+  },
+  {
+    "id": 16,
+    "reviewerName": "User 16",
+    "content": "This is a review for device 7",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 7
+    }
+  },
+  {
+    "id": 17,
+    "reviewerName": "User 17",
+    "content": "This is a review for device 8",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 8
+    }
+  },
+  {
+    "id": 18,
+    "reviewerName": "User 18",
+    "content": "This is a review for device 9",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 9
+    }
+  },
+  {
+    "id": 19,
+    "reviewerName": "User 19",
+    "content": "This is a review for device 10",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 10
+    }
+  },
+  {
+    "id": 20,
+    "reviewerName": "User 20",
+    "content": "This is a review for device 1",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 1
+    }
+  },
+  {
+    "id": 21,
+    "reviewerName": "User 21",
+    "content": "This is a review for device 2",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 2
+    }
+  },
+  {
+    "id": 22,
+    "reviewerName": "User 22",
+    "content": "This is a review for device 3",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 3
+    }
+  },
+  {
+    "id": 23,
+    "reviewerName": "User 23",
+    "content": "This is a review for device 4",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 4
+    }
+  },
+  {
+    "id": 24,
+    "reviewerName": "User 24",
+    "content": "This is a review for device 5",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 5
+    }
+  },
+  {
+    "id": 25,
+    "reviewerName": "User 25",
+    "content": "This is a review for device 6",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 6
+    }
+  },
+  {
+    "id": 26,
+    "reviewerName": "User 26",
+    "content": "This is a review for device 7",
+    "rating": 1.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 7
+    }
+  },
+  {
+    "id": 27,
+    "reviewerName": "User 27",
+    "content": "This is a review for device 8",
+    "rating": 2.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 8
+    }
+  },
+  {
+    "id": 28,
+    "reviewerName": "User 28",
+    "content": "This is a review for device 9",
+    "rating": 3.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 9
+    }
+  },
+  {
+    "id": 29,
+    "reviewerName": "User 29",
+    "content": "This is a review for device 10",
+    "rating": 4.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 10
+    }
+  },
+  {
+    "id": 30,
+    "reviewerName": "User 30",
+    "content": "This is a review for device 1",
+    "rating": 0.5,
+    "source": "TechBlog",
+    "createdAt": "2025-08-02T14:00:00",
+    "updatedAt": "2025-08-11T09:00:00",
+    "device": {
+      "id": 1
+    }
+  }
+]

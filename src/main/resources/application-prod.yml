@@ -4,19 +4,31 @@ spring:
     username: comparemydevice_db_user
     password: jpCrKdT2gxd71ZgUo042SHYIBcv1JsUd
     driver-class-name: org.postgresql.Driver
-
+  security:
+    user:
+      name: user
+      password: test123
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: false
-
   jackson:
     serialization:
       write-dates-as-timestamps: false
 
-server:
-  port: 8080
-
 logging:
   level:
     org.springframework: INFO
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+environment:
+  - SPRING_PROFILES_ACTIVE=prod

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Catch",
+    "iconUrl": "https://dummyimage.com/220x33",
+    "createdAt": "2024-01-21T14:34:20",
+    "updatedAt": "2025-02-09T12:57:34"
+  },
+  {
+    "id": 2,
+    "name": "Address",
+    "iconUrl": "https://placeimg.com/98/159/any",
+    "createdAt": "2023-09-19T01:15:33",
+    "updatedAt": "2025-06-29T16:03:58"
+  },
+  {
+    "id": 3,
+    "name": "People",
+    "iconUrl": "https://placeimg.com/624/24/any",
+    "createdAt": "2023-12-12T22:10:53",
+    "updatedAt": "2025-04-25T00:34:49"
+  },
+  {
+    "id": 4,
+    "name": "Kid",
+    "iconUrl": "https://placeimg.com/669/941/any",
+    "createdAt": "2024-06-18T22:09:23",
+    "updatedAt": "2024-12-30T14:09:14"
+  },
+  {
+    "id": 5,
+    "name": "It",
+    "iconUrl": "https://placeimg.com/300/397/any",
+    "createdAt": "2024-07-15T22:11:02",
+    "updatedAt": "2024-10-23T09:15:29"
+  },
+  {
+    "id": 6,
+    "name": "Administration",
+    "iconUrl": "https://placekitten.com/886/126",
+    "createdAt": "2024-07-16T15:41:34",
+    "updatedAt": "2025-05-15T11:23:18"
+  },
+  {
+    "id": 7,
+    "name": "Different",
+    "iconUrl": "https://placeimg.com/603/330/any",
+    "createdAt": "2023-09-03T17:06:14",
+    "updatedAt": "2024-09-09T13:02:17"
+  },
+  {
+    "id": 8,
+    "name": "Government",
+    "iconUrl": "https://www.lorempixel.com/734/318",
+    "createdAt": "2023-09-29T22:52:53",
+    "updatedAt": "2025-03-21T02:04:44"
+  },
+  {
+    "id": 9,
+    "name": "Create",
+    "iconUrl": "https://placekitten.com/234/311",
+    "createdAt": "2024-06-15T19:55:56",
+    "updatedAt": "2024-12-17T18:39:28"
+  },
+  {
+    "id": 10,
+    "name": "Analysis",
+    "iconUrl": "https://dummyimage.com/312x328",
+    "createdAt": "2023-11-04T06:08:39",
+    "updatedAt": "2024-09-11T01:30:33"
+  },
+  {
+    "id": 11,
+    "name": "True",
+    "iconUrl": "https://www.lorempixel.com/916/98",
+    "createdAt": "2024-07-16T19:22:05",
+    "updatedAt": "2025-02-03T16:15:53"
+  },
+  {
+    "id": 12,
+    "name": "Into",
+    "iconUrl": "https://placekitten.com/1009/287",
+    "createdAt": "2023-08-30T21:15:19",
+    "updatedAt": "2025-05-20T22:45:56"
+  },
+  {
+    "id": 13,
+    "name": "Large",
+    "iconUrl": "https://placekitten.com/215/669",
+    "createdAt": "2023-11-20T23:23:02",
+    "updatedAt": "2024-08-25T19:33:03"
+  },
+  {
+    "id": 14,
+    "name": "Research",
+    "iconUrl": "https://placeimg.com/922/682/any",
+    "createdAt": "2024-02-03T17:21:43",
+    "updatedAt": "2025-02-27T19:30:10"
+  },
+  {
+    "id": 15,
+    "name": "Only",
+    "iconUrl": "https://placeimg.com/234/944/any",
+    "createdAt": "2023-08-25T18:31:39",
+    "updatedAt": "2024-09-11T01:06:19"
+  },
+  {
+    "id": 16,
+    "name": "Street",
+    "iconUrl": "https://placeimg.com/516/346/any",
+    "createdAt": "2024-08-14T10:36:00",
+    "updatedAt": "2024-08-29T02:11:05"
+  },
+  {
+    "id": 17,
+    "name": "Ever",
+    "iconUrl": "https://placekitten.com/838/783",
+    "createdAt": "2023-12-28T08:09:58",
+    "updatedAt": "2024-12-12T08:10:10"
+  },
+  {
+    "id": 18,
+    "name": "Growth",
+    "iconUrl": "https://placekitten.com/205/574",
+    "createdAt": "2024-01-19T01:32:51",
+    "updatedAt": "2025-01-30T19:38:26"
+  },
+  {
+    "id": 19,
+    "name": "Hour",
+    "iconUrl": "https://www.lorempixel.com/190/357",
+    "createdAt": "2023-11-08T22:08:08",
+    "updatedAt": "2025-03-28T13:30:00"
+  },
+  {
+    "id": 20,
+    "name": "Author",
+    "iconUrl": "https://dummyimage.com/822x776",
+    "createdAt": "2024-04-09T02:27:50",
+    "updatedAt": "2025-06-12T11:39:54"
+  }
+]

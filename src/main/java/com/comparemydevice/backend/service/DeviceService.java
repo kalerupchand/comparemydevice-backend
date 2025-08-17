@@ -1,34 +1,51 @@
-
-// File: com.comparemydevice.backend.service.DeviceService.java
 package com.comparemydevice.backend.service;
 
-import com.comparemydevice.backend.entity.Device;
-import com.comparemydevice.backend.repository.DeviceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.comparemydevice.backend.dto.DeviceDTO;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
-@Service
-public class DeviceService {
-    @Autowired
-    private DeviceRepository deviceRepository;
+/**
+ * Service interface for managing Device entities.
+ * Provides operations to create, retrieve, update, and delete devices.
+ */
+public interface DeviceService {
 
-    public List<Device> getAllDevices() {
-        return deviceRepository.findAll();
-    }
+    /**
+     * Creates a new device entry in the system.
+     *
+     * @param deviceDTO the device details to create
+     * @return the created DeviceDTO with generated ID and timestamps
+     */
+    DeviceDTO createDevice(DeviceDTO deviceDTO);
 
-    public Device addDevice(Device device) {
-        return deviceRepository.save(device);
-    }
+    /**
+     * Retrieves a list of all devices in the system.
+     *
+     * @return a list of DeviceDTOs
+     */
+    List<DeviceDTO> getAllDevices();
 
-    public Optional<Device> getDeviceById(Long id) {
-        return deviceRepository.findById(id);
-    }
+    /**
+     * Retrieves a device by its unique ID.
+     *
+     * @param id the ID of the device to retrieve
+     * @return the corresponding DeviceDTO
+     */
+    DeviceDTO getDeviceById(Long id);
 
-    public void deleteDevice(Long id) {
-        deviceRepository.deleteById(id);
-    }
+    /**
+     * Updates an existing device's details.
+     *
+     * @param id the ID of the device to update
+     * @param deviceDTO the updated device data
+     * @return the updated DeviceDTO
+     */
+    DeviceDTO updateDevice(Long id, DeviceDTO deviceDTO);
+
+    /**
+     * Deletes a device by its ID.
+     *
+     * @param id the ID of the device to delete
+     */
+    void deleteDevice(Long id);
 }

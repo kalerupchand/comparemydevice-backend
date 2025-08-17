@@ -1,39 +1,61 @@
-// File: com.comparemydevice.backend.controller.DeviceController.java
 package com.comparemydevice.backend.controller;
 
-import com.comparemydevice.backend.entity.Device;
+import com.comparemydevice.backend.dto.DeviceDTO;
 import com.comparemydevice.backend.service.DeviceService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller for managing devices.
+ */
 @RestController
 @RequestMapping("/api/devices")
-@CrossOrigin(origins = "*") // Update origin for production
+@RequiredArgsConstructor
 public class DeviceController {
 
-    @Autowired
-    private DeviceService deviceService;
+    private final DeviceService deviceService;
 
-    @GetMapping
-    public List<Device> getAllDevices() {
-        return deviceService.getAllDevices();
-    }
-
+    /**
+     * Create a new device.
+     */
     @PostMapping
-    public Device addDevice(@Valid @RequestBody Device device) {
-        return deviceService.addDevice(device);
+    public ResponseEntity<DeviceDTO> createDevice(@RequestBody DeviceDTO deviceDTO) {
+        return ResponseEntity.ok(deviceService.createDevice(deviceDTO));
     }
 
+    /**
+     * Get all devices.
+     */
+    @GetMapping
+    public ResponseEntity<List<DeviceDTO>> getAllDevices() {
+        return ResponseEntity.ok(deviceService.getAllDevices());
+    }
+
+    /**
+     * Get device by ID.
+     */
     @GetMapping("/{id}")
-    public Device getDeviceById(@PathVariable Long id) {
-        return deviceService.getDeviceById(id).orElseThrow();
+    public ResponseEntity<DeviceDTO> getDeviceById(@PathVariable Long id) {
+        return ResponseEntity.ok(deviceService.getDeviceById(id));
     }
 
+    /**
+     * Update a device by ID.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<DeviceDTO> updateDevice(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO) {
+        return ResponseEntity.ok(deviceService.updateDevice(id, deviceDTO));
+    }
+
+    /**
+     * Delete device by ID.
+     */
     @DeleteMapping("/{id}")
-    public void deleteDevice(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteDevice(@PathVariable Long id) {
         deviceService.deleteDevice(id);
+        return ResponseEntity.noContent().build();
     }
 }

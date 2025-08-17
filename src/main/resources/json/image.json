@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "url": "https://cdn.example.com/image1.jpg",
+    "altText": "Image 1 of device 2",
+    "isPrimary": false,
+    "device": {
+      "id": 2
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 2,
+    "url": "https://cdn.example.com/image2.jpg",
+    "altText": "Image 2 of device 3",
+    "isPrimary": true,
+    "device": {
+      "id": 3
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 3,
+    "url": "https://cdn.example.com/image3.jpg",
+    "altText": "Image 3 of device 4",
+    "isPrimary": false,
+    "device": {
+      "id": 4
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 4,
+    "url": "https://cdn.example.com/image4.jpg",
+    "altText": "Image 4 of device 5",
+    "isPrimary": true,
+    "device": {
+      "id": 5
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 5,
+    "url": "https://cdn.example.com/image5.jpg",
+    "altText": "Image 5 of device 6",
+    "isPrimary": false,
+    "device": {
+      "id": 6
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 6,
+    "url": "https://cdn.example.com/image6.jpg",
+    "altText": "Image 6 of device 7",
+    "isPrimary": true,
+    "device": {
+      "id": 7
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 7,
+    "url": "https://cdn.example.com/image7.jpg",
+    "altText": "Image 7 of device 8",
+    "isPrimary": false,
+    "device": {
+      "id": 8
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 8,
+    "url": "https://cdn.example.com/image8.jpg",
+    "altText": "Image 8 of device 9",
+    "isPrimary": true,
+    "device": {
+      "id": 9
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 9,
+    "url": "https://cdn.example.com/image9.jpg",
+    "altText": "Image 9 of device 10",
+    "isPrimary": false,
+    "device": {
+      "id": 10
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 10,
+    "url": "https://cdn.example.com/image10.jpg",
+    "altText": "Image 10 of device 1",
+    "isPrimary": true,
+    "device": {
+      "id": 1
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 11,
+    "url": "https://cdn.example.com/image11.jpg",
+    "altText": "Image 11 of device 2",
+    "isPrimary": false,
+    "device": {
+      "id": 2
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 12,
+    "url": "https://cdn.example.com/image12.jpg",
+    "altText": "Image 12 of device 3",
+    "isPrimary": true,
+    "device": {
+      "id": 3
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 13,
+    "url": "https://cdn.example.com/image13.jpg",
+    "altText": "Image 13 of device 4",
+    "isPrimary": false,
+    "device": {
+      "id": 4
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 14,
+    "url": "https://cdn.example.com/image14.jpg",
+    "altText": "Image 14 of device 5",
+    "isPrimary": true,
+    "device": {
+      "id": 5
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 15,
+    "url": "https://cdn.example.com/image15.jpg",
+    "altText": "Image 15 of device 6",
+    "isPrimary": false,
+    "device": {
+      "id": 6
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 16,
+    "url": "https://cdn.example.com/image16.jpg",
+    "altText": "Image 16 of device 7",
+    "isPrimary": true,
+    "device": {
+      "id": 7
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 17,
+    "url": "https://cdn.example.com/image17.jpg",
+    "altText": "Image 17 of device 8",
+    "isPrimary": false,
+    "device": {
+      "id": 8
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 18,
+    "url": "https://cdn.example.com/image18.jpg",
+    "altText": "Image 18 of device 9",
+    "isPrimary": true,
+    "device": {
+      "id": 9
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 19,
+    "url": "https://cdn.example.com/image19.jpg",
+    "altText": "Image 19 of device 10",
+    "isPrimary": false,
+    "device": {
+      "id": 10
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 20,
+    "url": "https://cdn.example.com/image20.jpg",
+    "altText": "Image 20 of device 1",
+    "isPrimary": true,
+    "device": {
+      "id": 1
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 21,
+    "url": "https://cdn.example.com/image21.jpg",
+    "altText": "Image 21 of device 2",
+    "isPrimary": false,
+    "device": {
+      "id": 2
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 22,
+    "url": "https://cdn.example.com/image22.jpg",
+    "altText": "Image 22 of device 3",
+    "isPrimary": true,
+    "device": {
+      "id": 3
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 23,
+    "url": "https://cdn.example.com/image23.jpg",
+    "altText": "Image 23 of device 4",
+    "isPrimary": false,
+    "device": {
+      "id": 4
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 24,
+    "url": "https://cdn.example.com/image24.jpg",
+    "altText": "Image 24 of device 5",
+    "isPrimary": true,
+    "device": {
+      "id": 5
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 25,
+    "url": "https://cdn.example.com/image25.jpg",
+    "altText": "Image 25 of device 6",
+    "isPrimary": false,
+    "device": {
+      "id": 6
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 26,
+    "url": "https://cdn.example.com/image26.jpg",
+    "altText": "Image 26 of device 7",
+    "isPrimary": true,
+    "device": {
+      "id": 7
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 27,
+    "url": "https://cdn.example.com/image27.jpg",
+    "altText": "Image 27 of device 8",
+    "isPrimary": false,
+    "device": {
+      "id": 8
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 28,
+    "url": "https://cdn.example.com/image28.jpg",
+    "altText": "Image 28 of device 9",
+    "isPrimary": true,
+    "device": {
+      "id": 9
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 29,
+    "url": "https://cdn.example.com/image29.jpg",
+    "altText": "Image 29 of device 10",
+    "isPrimary": false,
+    "device": {
+      "id": 10
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  },
+  {
+    "id": 30,
+    "url": "https://cdn.example.com/image30.jpg",
+    "altText": "Image 30 of device 1",
+    "isPrimary": true,
+    "device": {
+      "id": 1
+    },
+    "createdAt": "2025-08-01T10:00:00",
+    "updatedAt": "2025-08-10T12:00:00"
+  }
+]

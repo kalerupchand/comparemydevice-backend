@@ -1,84 +1,76 @@
-// File: com.comparemydevice.backend.entity.Device.java
 package com.comparemydevice.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.SqlTypes;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Data
+@Table(name = "device")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Device {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @Column(nullable = false)
     private String name;
-    private String brand;
-    private String modelNumber;
-    private String os;
+
     private String processor;
-    private String graphics;
     private String ram;
-    private String storageOptions;
-    private String colorVariants;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String storage;
+
+    @Column(name = "price_ininr", precision = 10, scale = 2)
+    private BigDecimal priceInINR;
+
+    @Column(name = "release_date")
     private LocalDate releaseDate;
-    private String warrantyInfo;
-    private String returnPolicy;
 
-    private String batteryCapacity;
-    private String chargingSpeed;
-    private String chargingType;
-    private boolean otgSupport;
+    private String slug;
 
-    private String cameraPrimary;
-    private String cameraUltraWide;
-    private String cameraMacro;
-    private String selfieCamera;
-    private String flashType;
-    private String zoomLevel;
-    private String videoRecording;
+    // Postgres text[] support (Hibernate 6)
+    @JdbcTypeCode(SqlTypes.ARRAY)
+    @Column(name = "tags", columnDefinition = "text[]")
+    private String[] tags;
 
-    private String displaySize;
-    private String displayType;
-    private String resolution;
-    private String refreshRate;
-    private String brightnessNits;
-    private String aspectRatio;
-    private String screenToBodyRatio;
-    private String touchSamplingRate;
-    private String displayFeatures;
+    @Column(name = "is_deleted", nullable = false)
+    private Boolean isDeleted;
 
-    private String networkSupport;
-    private String simType;
-    private String wifi;
-    private String bluetooth;
-    private String usbType;
-    private boolean nfcSupport;
+    // ✅ Map to existing DB columns "brand" and "category"
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand", referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "fk_device_brand"))
+    private Brand brand;
 
-    private String fingerprintSensor;
-    private boolean faceUnlock;
-    private String sensorList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category", referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "fk_device_category"))
+    private Category category;
 
-    @Min(1000)
-    private Integer priceInINR;
-    private Integer exchangeOfferPrice;
-    private Float ratings;
-    private Integer reviewsCount;
-    private String imageUrl;
-    private String availability;
-    private String seller;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private String deliveryDate;
+    // Back-references so you can load with EntityGraphs like "images/specifications/reviews"
+    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images;
+
+    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Specification> specifications;
+
+    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }
