@@ -1,26 +1,19 @@
-# DO NOT put 'spring.profiles' here.
-# If you really want to guard it, you can use:
-# spring:
-#   config:
-#     activate:
-#       on-profile: prod
+# application-prod.yml
+
+server:
+  port: ${PORT:10000}
 
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:${RENDER_EXTERNAL_HOSTNAME}}:${DB_PORT:5432}/${DB_NAME}?sslmode=require
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST:${PGHOST}}:${DB_PORT:${PGPORT:5432}}/${DB_NAME:${PGDATABASE}}
+    username: ${DB_USERNAME:${PGUSER}}
+    password: ${DB_PASSWORD:${PGPASSWORD}}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
       idle-timeout: 30000
       connection-timeout: 30000
-
-  security:
-    user:
-      name: user
-      password: test123
 
   jpa:
     open-in-view: false
@@ -29,24 +22,26 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        # Dialect is auto-detected; leaving it out avoids the deprecation warning.
         format_sql: true
         jdbc:
           lob:
             non_contextual_creation: true
+        # Let Hibernate auto-pick the dialect for Postgres 16
+        # dialect: org.hibernate.dialect.PostgreSQLDialect  # <-- remove this warning source
 
   flyway:
     enabled: true
-    schemas: public
     locations: classpath:db/migration-postgres
     baseline-on-migrate: true
-    validate-on-migrate: false
+    validate-on-migrate: true
+    schemas: public
+    create-schemas: false
     placeholder-replacement: true
-    clean-disabled: true
     placeholders:
-      RESET_SCHEMA: true
+      RESET_SCHEMA: "false"   # flip to "true" for a single deploy only
 
 logging:
   level:
     org.flywaydb: INFO
     org.springframework: INFO
+    org.hibernate.SQL: WARN
