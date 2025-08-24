@@ -31,7 +31,7 @@ public class CompareMyDeviceBackendApplication {
     }
 
     @Bean
-    @Profile("dev")
+//    @Profile("dev")
     public CommandLineRunner seedDevData(
             Flyway flyway,
             BrandRepository brandRepo,
