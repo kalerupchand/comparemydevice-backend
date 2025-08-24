@@ -1,1202 +1,369 @@
 [
   {
     "id": 1,
-    "name": "Loss Model-930",
-    "processor": "Who 4651X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 59589.42,
-    "releaseDate": "2025-05-17",
-    "slug": "successful-need",
-    "tags": [
-      "battery",
-      "camera",
-      "5G"
-    ],
+    "name": "iPhone 15 Pro",
+    "processor": "A17 Pro",
+    "ram": "8GB",
+    "storage": "128GB",
+    "priceAmount": 129900.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-09-22",
+    "slug": "apple-iphone-15-pro",
     "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 13
-    },
-    "createdAt": "2024-05-08T09:48:44",
-    "updatedAt": "2024-10-31T13:57:26"
+    "brandId": 1,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      3
+    ]
   },
   {
     "id": 2,
-    "name": "Much Model-796",
-    "processor": "Weight 1516X",
+    "name": "iPhone 15",
+    "processor": "A16 Bionic",
     "ram": "6GB",
-    "storage": "64GB",
-    "priceInINR": 102971.9,
-    "releaseDate": "2022-11-01",
-    "slug": "trouble-should-a",
-    "tags": [
-      "budget",
-      "battery",
-      "compact"
-    ],
+    "storage": "128GB",
+    "priceAmount": 79900.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-09-22",
+    "slug": "apple-iphone-15",
     "isDeleted": false,
-    "brand": {
-      "id": 2
-    },
-    "category": {
-      "id": 18
-    },
-    "createdAt": "2023-12-13T03:00:41",
-    "updatedAt": "2025-01-19T22:05:33"
+    "brandId": 1,
+    "categoryId": 1,
+    "tagIds": [
+      1
+    ]
   },
   {
     "id": 3,
-    "name": "Writer Model-643",
-    "processor": "Thought 5659X",
-    "ram": "4GB",
-    "storage": "512GB",
-    "priceInINR": 118628.07,
-    "releaseDate": "2024-05-17",
-    "slug": "activity-impact-him",
-    "tags": [
-      "compact",
-      "budget",
-      "camera"
-    ],
+    "name": "Galaxy S24 Ultra",
+    "processor": "Snapdragon 8 Gen 3",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 129999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-24",
+    "slug": "samsung-galaxy-s24-ultra",
     "isDeleted": false,
-    "brand": {
-      "id": 1
-    },
-    "category": {
-      "id": 6
-    },
-    "createdAt": "2024-02-22T06:43:18",
-    "updatedAt": "2025-05-09T09:50:08"
+    "brandId": 2,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 4,
-    "name": "Such Model-927",
-    "processor": "Life 0266X",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceInINR": 114630.54,
-    "releaseDate": "2024-02-25",
-    "slug": "do-raise-himself-my",
-    "tags": [
-      "5G",
-      "gaming",
-      "battery"
-    ],
+    "name": "Galaxy S24",
+    "processor": "Exynos 2400 / SD 8 Gen 3",
+    "ram": "8GB",
+    "storage": "128GB",
+    "priceAmount": 79999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-24",
+    "slug": "samsung-galaxy-s24",
     "isDeleted": false,
-    "brand": {
-      "id": 14
-    },
-    "category": {
-      "id": 2
-    },
-    "createdAt": "2023-11-25T11:37:39",
-    "updatedAt": "2024-09-11T00:10:17"
+    "brandId": 2,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2
+    ]
   },
   {
     "id": 5,
-    "name": "Per Model-674",
-    "processor": "Spend 5417X",
+    "name": "Pixel 8 Pro",
+    "processor": "Tensor G3",
     "ram": "12GB",
-    "storage": "256GB",
-    "priceInINR": 19414.05,
-    "releaseDate": "2024-10-24",
-    "slug": "today-prepare",
-    "tags": [
-      "compact",
-      "camera",
-      "budget"
-    ],
+    "storage": "128GB",
+    "priceAmount": 106999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-10-12",
+    "slug": "google-pixel-8-pro",
     "isDeleted": false,
-    "brand": {
-      "id": 3
-    },
-    "category": {
-      "id": 4
-    },
-    "createdAt": "2024-06-29T16:07:32",
-    "updatedAt": "2025-05-21T01:27:45"
+    "brandId": 3,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      3
+    ]
   },
   {
     "id": 6,
-    "name": "Home Model-659",
-    "processor": "Account 9712X",
-    "ram": "6GB",
-    "storage": "64GB",
-    "priceInINR": 46603.07,
-    "releaseDate": "2023-12-09",
-    "slug": "job-write-budget",
-    "tags": [
-      "budget",
-      "compact",
-      "battery"
-    ],
+    "name": "Pixel 8",
+    "processor": "Tensor G3",
+    "ram": "8GB",
+    "storage": "128GB",
+    "priceAmount": 75999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-10-12",
+    "slug": "google-pixel-8",
     "isDeleted": false,
-    "brand": {
-      "id": 2
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2024-06-19T11:14:26",
-    "updatedAt": "2024-12-15T14:23:48"
+    "brandId": 3,
+    "categoryId": 1,
+    "tagIds": [
+      1
+    ]
   },
   {
     "id": 7,
-    "name": "Single Model-977",
-    "processor": "Change 9743X",
-    "ram": "6GB",
-    "storage": "64GB",
-    "priceInINR": 84685.6,
-    "releaseDate": "2024-05-01",
-    "slug": "job-some-loss",
-    "tags": [
-      "compact",
-      "camera",
-      "gaming"
-    ],
+    "name": "OnePlus 12",
+    "processor": "Snapdragon 8 Gen 3",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 69999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-30",
+    "slug": "oneplus-oneplus-12",
     "isDeleted": false,
-    "brand": {
-      "id": 3
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2023-09-21T19:17:18",
-    "updatedAt": "2024-09-08T20:15:45"
+    "brandId": 4,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 8,
-    "name": "Get Model-670",
-    "processor": "Whom 7386X",
-    "ram": "12GB",
-    "storage": "512GB",
-    "priceInINR": 65844.71,
-    "releaseDate": "2025-06-03",
-    "slug": "always-collection",
-    "tags": [
-      "battery",
-      "flagship",
-      "gaming"
-    ],
+    "name": "OnePlus 12R",
+    "processor": "Snapdragon 8 Gen 2",
+    "ram": "8GB",
+    "storage": "128GB",
+    "priceAmount": 39999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-30",
+    "slug": "oneplus-oneplus-12r",
     "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2024-04-21T03:44:27",
-    "updatedAt": "2025-07-13T15:19:06"
+    "brandId": 4,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      4
+    ]
   },
   {
     "id": 9,
-    "name": "Push Model-582",
-    "processor": "Easy 6586X",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceInINR": 60232.18,
-    "releaseDate": "2022-11-22",
-    "slug": "such-best-him",
-    "tags": [
-      "compact",
-      "battery",
-      "camera"
-    ],
+    "name": "Xiaomi 14",
+    "processor": "Snapdragon 8 Gen 3",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 69999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-03-07",
+    "slug": "xiaomi-xiaomi-14",
     "isDeleted": false,
-    "brand": {
-      "id": 8
-    },
-    "category": {
-      "id": 18
-    },
-    "createdAt": "2024-06-16T14:02:55",
-    "updatedAt": "2024-12-11T11:08:15"
+    "brandId": 5,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 10,
-    "name": "Shake Model-215",
-    "processor": "Drop 8899X",
-    "ram": "6GB",
-    "storage": "64GB",
-    "priceInINR": 109905.96,
-    "releaseDate": "2024-08-25",
-    "slug": "shake-study-office",
-    "tags": [
-      "camera",
-      "5G",
-      "flagship"
-    ],
+    "name": "Xiaomi 14 Ultra",
+    "processor": "Snapdragon 8 Gen 3",
+    "ram": "16GB",
+    "storage": "512GB",
+    "priceAmount": 99999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-03-07",
+    "slug": "xiaomi-xiaomi-14-ultra",
     "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 20
-    },
-    "createdAt": "2024-06-25T17:02:05",
-    "updatedAt": "2025-06-27T03:48:40"
+    "brandId": 5,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 11,
-    "name": "Various Model-003",
-    "processor": "Anything 7509X",
-    "ram": "8GB",
-    "storage": "512GB",
-    "priceInINR": 85904.42,
-    "releaseDate": "2022-11-30",
-    "slug": "tend-sea-before",
-    "tags": [
-      "gaming",
-      "flagship",
-      "battery"
-    ],
+    "name": "Nothing Phone (2)",
+    "processor": "Snapdragon 8+ Gen 1",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 49999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-07-21",
+    "slug": "nothing-nothing-phone-2",
     "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2024-04-29T23:34:22",
-    "updatedAt": "2025-02-08T09:44:19"
+    "brandId": 6,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2
+    ]
   },
   {
     "id": 12,
-    "name": "Image Model-903",
-    "processor": "Ever 1372X",
-    "ram": "4GB",
-    "storage": "256GB",
-    "priceInINR": 112098.16,
-    "releaseDate": "2024-12-24",
-    "slug": "civil-sometimes",
-    "tags": [
-      "gaming",
-      "5G",
-      "budget"
-    ],
+    "name": "Nothing Phone (2a)",
+    "processor": "Dimensity 7200 Pro",
+    "ram": "8GB",
+    "storage": "128GB",
+    "priceAmount": 25999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-03-12",
+    "slug": "nothing-nothing-phone-2a",
     "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2024-08-16T04:06:05",
-    "updatedAt": "2025-01-21T02:43:27"
+    "brandId": 6,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      4
+    ]
   },
   {
     "id": 13,
-    "name": "Imagine Model-621",
-    "processor": "Manager 1143X",
-    "ram": "4GB",
-    "storage": "64GB",
-    "priceInINR": 16072.18,
-    "releaseDate": "2023-11-01",
-    "slug": "answer-throughout",
-    "tags": [
-      "5G",
-      "flagship",
-      "compact"
-    ],
+    "name": "Galaxy Z Fold5",
+    "processor": "Snapdragon 8 Gen 2",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 154999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-08-18",
+    "slug": "samsung-galaxy-z-fold5",
     "isDeleted": false,
-    "brand": {
-      "id": 19
-    },
-    "category": {
-      "id": 14
-    },
-    "createdAt": "2024-02-20T14:03:40",
-    "updatedAt": "2025-01-24T00:59:58"
+    "brandId": 2,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      5,
+      3
+    ]
   },
   {
     "id": 14,
-    "name": "Purpose Model-133",
-    "processor": "Little 7173X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 18301.86,
-    "releaseDate": "2024-06-29",
-    "slug": "subject-occur",
-    "tags": [
-      "5G",
-      "battery",
-      "camera"
-    ],
+    "name": "Galaxy Z Flip5",
+    "processor": "Snapdragon 8 Gen 2",
+    "ram": "8GB",
+    "storage": "256GB",
+    "priceAmount": 94999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-08-18",
+    "slug": "samsung-galaxy-z-flip5",
     "isDeleted": false,
-    "brand": {
-      "id": 2
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2024-05-04T21:02:50",
-    "updatedAt": "2025-06-09T21:21:38"
+    "brandId": 2,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      5
+    ]
   },
   {
     "id": 15,
-    "name": "First Model-706",
-    "processor": "Inside 0124X",
+    "name": "ROG Phone 8",
+    "processor": "Snapdragon 8 Gen 3",
     "ram": "16GB",
     "storage": "256GB",
-    "priceInINR": 119923.75,
-    "releaseDate": "2022-12-04",
-    "slug": "sit-receive-oil",
-    "tags": [
-      "camera",
-      "compact",
-      "budget"
-    ],
+    "priceAmount": 89999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-09",
+    "slug": "asus-rog-phone-8",
     "isDeleted": false,
-    "brand": {
-      "id": 19
-    },
-    "category": {
-      "id": 2
-    },
-    "createdAt": "2023-11-18T11:48:13",
-    "updatedAt": "2025-03-22T05:56:09"
+    "brandId": 7,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      6,
+      2
+    ]
   },
   {
     "id": 16,
-    "name": "Rate Model-601",
-    "processor": "Box 0987X",
-    "ram": "4GB",
-    "storage": "512GB",
-    "priceInINR": 100472.06,
-    "releaseDate": "2024-04-26",
-    "slug": "along-election",
-    "tags": [
-      "5G",
-      "flagship",
-      "battery"
-    ],
+    "name": "Realme GT 6",
+    "processor": "Snapdragon 8s Gen 3",
+    "ram": "12GB",
+    "storage": "256GB",
+    "priceAmount": 42999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-06-20",
+    "slug": "realme-realme-gt-6",
     "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 6
-    },
-    "createdAt": "2023-12-26T12:33:03",
-    "updatedAt": "2024-12-15T03:25:22"
+    "brandId": 8,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2
+    ]
   },
   {
     "id": 17,
-    "name": "Indicate Model-176",
-    "processor": "Three 9305X",
-    "ram": "6GB",
-    "storage": "512GB",
-    "priceInINR": 108873.02,
-    "releaseDate": "2023-06-18",
-    "slug": "hotel-hard-again-up",
-    "tags": [
-      "compact",
-      "5G",
-      "camera"
-    ],
+    "name": "Motorola Edge 50 Pro",
+    "processor": "Snapdragon 7 Gen 3",
+    "ram": "8GB",
+    "storage": "256GB",
+    "priceAmount": 31999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-04-03",
+    "slug": "motorola-motorola-edge-50-pro",
     "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2024-01-29T05:24:51",
-    "updatedAt": "2025-07-30T12:35:46"
+    "brandId": 9,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2
+    ]
   },
   {
     "id": 18,
-    "name": "Share Model-254",
-    "processor": "Tree 2954X",
+    "name": "Vivo X100 Pro",
+    "processor": "Dimensity 9300",
     "ram": "16GB",
     "storage": "512GB",
-    "priceInINR": 114633.69,
-    "releaseDate": "2024-01-23",
-    "slug": "especially-drive",
-    "tags": [
-      "budget",
-      "compact",
-      "flagship"
-    ],
+    "priceAmount": 89999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2023-12-14",
+    "slug": "vivo-vivo-x100-pro",
     "isDeleted": false,
-    "brand": {
-      "id": 14
-    },
-    "category": {
-      "id": 2
-    },
-    "createdAt": "2024-06-05T19:41:08",
-    "updatedAt": "2025-01-08T06:20:03"
+    "brandId": 10,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 19,
-    "name": "People Model-580",
-    "processor": "Grow 9197X",
+    "name": "Oppo Find X7 Ultra",
+    "processor": "Snapdragon 8 Gen 3",
     "ram": "16GB",
-    "storage": "128GB",
-    "priceInINR": 82851.3,
-    "releaseDate": "2022-10-27",
-    "slug": "bag-child-maybe",
-    "tags": [
-      "compact",
-      "budget",
-      "flagship"
-    ],
+    "storage": "512GB",
+    "priceAmount": 104999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-01-08",
+    "slug": "oppo-oppo-find-x7-ultra",
     "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2024-02-13T03:23:06",
-    "updatedAt": "2024-11-12T13:32:25"
+    "brandId": 11,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 20,
-    "name": "Affect Model-168",
-    "processor": "Forward 0553X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 46356.06,
-    "releaseDate": "2023-10-22",
-    "slug": "imagine-level-join",
-    "tags": [
-      "compact",
-      "flagship",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 10
-    },
-    "category": {
-      "id": 7
-    },
-    "createdAt": "2024-06-23T00:49:00",
-    "updatedAt": "2025-04-06T02:05:41"
-  },
-  {
-    "id": 21,
-    "name": "Benefit Model-816",
-    "processor": "Individual 5665X",
-    "ram": "8GB",
-    "storage": "256GB",
-    "priceInINR": 81465.31,
-    "releaseDate": "2023-05-01",
-    "slug": "prevent-suffer",
-    "tags": [
-      "compact",
-      "5G",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 1
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2024-03-19T11:28:51",
-    "updatedAt": "2025-04-03T06:27:36"
-  },
-  {
-    "id": 22,
-    "name": "Who Model-110",
-    "processor": "Financial 4827X",
+    "name": "Sony Xperia 1 VI",
+    "processor": "Snapdragon 8 Gen 3",
     "ram": "12GB",
     "storage": "256GB",
-    "priceInINR": 31060.42,
-    "releaseDate": "2023-11-25",
-    "slug": "receive-staff-blue",
-    "tags": [
-      "flagship",
-      "gaming",
-      "5G"
-    ],
+    "priceAmount": 119999.0,
+    "priceCurrency": "INR",
+    "releaseDate": "2024-05-15",
+    "slug": "sony-sony-xperia-1-vi",
     "isDeleted": false,
-    "brand": {
-      "id": 9
-    },
-    "category": {
-      "id": 17
-    },
-    "createdAt": "2024-01-27T11:10:26",
-    "updatedAt": "2025-04-22T10:53:48"
-  },
-  {
-    "id": 23,
-    "name": "Easy Model-356",
-    "processor": "Entire 7330X",
-    "ram": "16GB",
-    "storage": "128GB",
-    "priceInINR": 26198.72,
-    "releaseDate": "2023-12-16",
-    "slug": "record-do-degree",
-    "tags": [
-      "5G",
-      "compact",
-      "gaming"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 7
-    },
-    "category": {
-      "id": 6
-    },
-    "createdAt": "2024-02-13T02:41:22",
-    "updatedAt": "2024-11-01T03:46:23"
-  },
-  {
-    "id": 24,
-    "name": "Concern Model-648",
-    "processor": "Then 1460X",
-    "ram": "6GB",
-    "storage": "128GB",
-    "priceInINR": 63489.08,
-    "releaseDate": "2024-03-25",
-    "slug": "brother-feeling-nor",
-    "tags": [
-      "battery",
-      "compact",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 14
-    },
-    "category": {
-      "id": 19
-    },
-    "createdAt": "2024-01-14T23:55:30",
-    "updatedAt": "2025-06-03T19:45:06"
-  },
-  {
-    "id": 25,
-    "name": "Safe Model-068",
-    "processor": "Pull 1113X",
-    "ram": "8GB",
-    "storage": "64GB",
-    "priceInINR": 105597.8,
-    "releaseDate": "2024-03-03",
-    "slug": "beautiful-deal",
-    "tags": [
-      "5G",
-      "battery",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 16
-    },
-    "category": {
-      "id": 7
-    },
-    "createdAt": "2023-11-24T15:49:05",
-    "updatedAt": "2025-03-19T13:27:48"
-  },
-  {
-    "id": 26,
-    "name": "Ability Model-431",
-    "processor": "Ready 1956X",
-    "ram": "8GB",
-    "storage": "64GB",
-    "priceInINR": 118026.69,
-    "releaseDate": "2023-06-18",
-    "slug": "certain-office-star",
-    "tags": [
-      "flagship",
-      "gaming",
-      "battery"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 19
-    },
-    "createdAt": "2023-09-12T20:07:56",
-    "updatedAt": "2025-02-27T00:48:25"
-  },
-  {
-    "id": 27,
-    "name": "Bring Model-649",
-    "processor": "Light 2547X",
-    "ram": "12GB",
-    "storage": "128GB",
-    "priceInINR": 55497.22,
-    "releaseDate": "2022-09-23",
-    "slug": "write-church",
-    "tags": [
-      "gaming",
-      "flagship",
-      "compact"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 1
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2024-06-06T21:02:21",
-    "updatedAt": "2024-11-19T04:21:57"
-  },
-  {
-    "id": 28,
-    "name": "Street Model-011",
-    "processor": "What 7475X",
-    "ram": "8GB",
-    "storage": "512GB",
-    "priceInINR": 34508.21,
-    "releaseDate": "2022-09-06",
-    "slug": "the-true-yes",
-    "tags": [
-      "5G",
-      "budget",
-      "battery"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 2
-    },
-    "category": {
-      "id": 17
-    },
-    "createdAt": "2024-07-04T02:12:08",
-    "updatedAt": "2025-08-13T00:42:55"
-  },
-  {
-    "id": 29,
-    "name": "Sure Model-962",
-    "processor": "Example 1114X",
-    "ram": "12GB",
-    "storage": "512GB",
-    "priceInINR": 105123.63,
-    "releaseDate": "2023-11-07",
-    "slug": "board-mission",
-    "tags": [
-      "gaming",
-      "camera",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 16
-    },
-    "category": {
-      "id": 5
-    },
-    "createdAt": "2023-09-27T03:36:15",
-    "updatedAt": "2024-11-15T23:03:58"
-  },
-  {
-    "id": 30,
-    "name": "Sound Model-734",
-    "processor": "Machine 0459X",
-    "ram": "4GB",
-    "storage": "256GB",
-    "priceInINR": 35893.7,
-    "releaseDate": "2023-03-11",
-    "slug": "rock-forward-gun",
-    "tags": [
-      "flagship",
-      "compact",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 3
-    },
-    "category": {
-      "id": 10
-    },
-    "createdAt": "2023-09-13T04:36:31",
-    "updatedAt": "2024-10-27T05:11:46"
-  },
-  {
-    "id": 31,
-    "name": "Cut Model-875",
-    "processor": "Someone 3068X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 36952.45,
-    "releaseDate": "2025-06-28",
-    "slug": "type-wrong-design",
-    "tags": [
-      "camera",
-      "compact",
-      "gaming"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 16
-    },
-    "createdAt": "2023-12-23T07:29:02",
-    "updatedAt": "2025-07-27T19:13:50"
-  },
-  {
-    "id": 32,
-    "name": "Pattern Model-115",
-    "processor": "College 5798X",
-    "ram": "12GB",
-    "storage": "512GB",
-    "priceInINR": 96004.71,
-    "releaseDate": "2025-04-10",
-    "slug": "bar-partner-center",
-    "tags": [
-      "5G",
-      "gaming",
-      "battery"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 10
-    },
-    "category": {
-      "id": 13
-    },
-    "createdAt": "2024-07-11T09:18:35",
-    "updatedAt": "2025-05-07T14:39:08"
-  },
-  {
-    "id": 33,
-    "name": "Vote Model-362",
-    "processor": "Consider 5880X",
-    "ram": "6GB",
-    "storage": "64GB",
-    "priceInINR": 79190.19,
-    "releaseDate": "2025-03-31",
-    "slug": "weight-wish-need",
-    "tags": [
-      "battery",
-      "5G",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 9
-    },
-    "createdAt": "2024-01-19T03:22:31",
-    "updatedAt": "2024-12-25T04:15:41"
-  },
-  {
-    "id": 34,
-    "name": "Though Model-979",
-    "processor": "Half 9790X",
-    "ram": "8GB",
-    "storage": "256GB",
-    "priceInINR": 43037.91,
-    "releaseDate": "2023-04-03",
-    "slug": "field-during-reason",
-    "tags": [
-      "budget",
-      "5G",
-      "battery"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 16
-    },
-    "category": {
-      "id": 5
-    },
-    "createdAt": "2023-12-25T10:31:28",
-    "updatedAt": "2025-01-14T06:58:42"
-  },
-  {
-    "id": 35,
-    "name": "Perhaps Model-508",
-    "processor": "Long 2459X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 28903.81,
-    "releaseDate": "2023-12-09",
-    "slug": "with-certain",
-    "tags": [
-      "gaming",
-      "budget",
-      "battery"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 11
-    },
-    "createdAt": "2023-09-11T21:10:16",
-    "updatedAt": "2024-12-28T22:34:38"
-  },
-  {
-    "id": 36,
-    "name": "Attention Model-291",
-    "processor": "Make 4228X",
-    "ram": "12GB",
-    "storage": "512GB",
-    "priceInINR": 118946.46,
-    "releaseDate": "2024-04-11",
-    "slug": "wall-environment",
-    "tags": [
-      "budget",
-      "flagship",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 4
-    },
-    "category": {
-      "id": 18
-    },
-    "createdAt": "2024-01-05T00:16:17",
-    "updatedAt": "2024-10-11T00:08:44"
-  },
-  {
-    "id": 37,
-    "name": "Religious Model-528",
-    "processor": "Mother 6085X",
-    "ram": "16GB",
-    "storage": "128GB",
-    "priceInINR": 17622.38,
-    "releaseDate": "2023-04-19",
-    "slug": "partner-sense",
-    "tags": [
-      "5G",
-      "camera",
-      "compact"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 8
-    },
-    "category": {
-      "id": 19
-    },
-    "createdAt": "2024-02-04T18:51:07",
-    "updatedAt": "2025-01-02T17:23:11"
-  },
-  {
-    "id": 38,
-    "name": "Tv Model-555",
-    "processor": "Million 3689X",
-    "ram": "8GB",
-    "storage": "256GB",
-    "priceInINR": 35176.47,
-    "releaseDate": "2024-08-28",
-    "slug": "near-black-mission",
-    "tags": [
-      "battery",
-      "budget",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 1
-    },
-    "category": {
-      "id": 12
-    },
-    "createdAt": "2024-01-20T20:51:08",
-    "updatedAt": "2024-11-13T07:08:24"
-  },
-  {
-    "id": 39,
-    "name": "Most Model-892",
-    "processor": "Important 4878X",
-    "ram": "4GB",
-    "storage": "512GB",
-    "priceInINR": 66812.48,
-    "releaseDate": "2023-11-02",
-    "slug": "many-should-several",
-    "tags": [
-      "battery",
-      "flagship",
-      "5G"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 5
-    },
-    "category": {
-      "id": 12
-    },
-    "createdAt": "2024-05-02T23:40:50",
-    "updatedAt": "2024-08-26T17:34:03"
-  },
-  {
-    "id": 40,
-    "name": "Effort Model-058",
-    "processor": "Water 1026X",
-    "ram": "4GB",
-    "storage": "128GB",
-    "priceInINR": 13277.01,
-    "releaseDate": "2023-12-08",
-    "slug": "sometimes-effect",
-    "tags": [
-      "battery",
-      "camera",
-      "gaming"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 13
-    },
-    "category": {
-      "id": 17
-    },
-    "createdAt": "2024-01-26T15:00:26",
-    "updatedAt": "2024-10-17T02:36:06"
-  },
-  {
-    "id": 41,
-    "name": "Stop Model-592",
-    "processor": "Early 0601X",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceInINR": 72633.74,
-    "releaseDate": "2024-06-24",
-    "slug": "peace-develop-with",
-    "tags": [
-      "battery",
-      "gaming",
-      "compact"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 11
-    },
-    "category": {
-      "id": 2
-    },
-    "createdAt": "2024-03-29T00:03:30",
-    "updatedAt": "2025-03-16T17:14:03"
-  },
-  {
-    "id": 42,
-    "name": "Save Model-015",
-    "processor": "Himself 9731X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 67495.52,
-    "releaseDate": "2024-01-08",
-    "slug": "organization-poor",
-    "tags": [
-      "gaming",
-      "battery",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 6
-    },
-    "category": {
-      "id": 13
-    },
-    "createdAt": "2024-06-02T22:00:17",
-    "updatedAt": "2025-04-24T08:11:57"
-  },
-  {
-    "id": 43,
-    "name": "How Model-651",
-    "processor": "Expert 1784X",
-    "ram": "12GB",
-    "storage": "64GB",
-    "priceInINR": 101663.77,
-    "releaseDate": "2024-12-03",
-    "slug": "court-food-do",
-    "tags": [
-      "compact",
-      "5G",
-      "flagship"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 1
-    },
-    "category": {
-      "id": 15
-    },
-    "createdAt": "2024-03-04T16:45:22",
-    "updatedAt": "2025-07-06T11:02:01"
-  },
-  {
-    "id": 44,
-    "name": "Work Model-004",
-    "processor": "Really 2076X",
-    "ram": "6GB",
-    "storage": "512GB",
-    "priceInINR": 94847.21,
-    "releaseDate": "2024-09-15",
-    "slug": "develop-personal",
-    "tags": [
-      "flagship",
-      "battery",
-      "gaming"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 9
-    },
-    "category": {
-      "id": 1
-    },
-    "createdAt": "2023-08-23T20:11:19",
-    "updatedAt": "2025-05-04T17:04:17"
-  },
-  {
-    "id": 45,
-    "name": "Exist Model-542",
-    "processor": "Chance 7284X",
-    "ram": "8GB",
-    "storage": "64GB",
-    "priceInINR": 110022.39,
-    "releaseDate": "2022-09-03",
-    "slug": "open-history",
-    "tags": [
-      "battery",
-      "camera",
-      "flagship"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 10
-    },
-    "category": {
-      "id": 15
-    },
-    "createdAt": "2024-02-21T04:27:21",
-    "updatedAt": "2025-05-24T21:48:54"
-  },
-  {
-    "id": 46,
-    "name": "Language Model-964",
-    "processor": "Pretty 2610X",
-    "ram": "6GB",
-    "storage": "512GB",
-    "priceInINR": 57171.71,
-    "releaseDate": "2023-07-03",
-    "slug": "good-plant-that",
-    "tags": [
-      "5G",
-      "gaming",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 2
-    },
-    "category": {
-      "id": 17
-    },
-    "createdAt": "2024-07-07T22:43:39",
-    "updatedAt": "2024-08-28T12:39:08"
-  },
-  {
-    "id": 47,
-    "name": "Trouble Model-149",
-    "processor": "President 4742X",
-    "ram": "4GB",
-    "storage": "128GB",
-    "priceInINR": 42221.36,
-    "releaseDate": "2023-12-22",
-    "slug": "forward-catch-mrs",
-    "tags": [
-      "gaming",
-      "battery",
-      "5G"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 10
-    },
-    "category": {
-      "id": 20
-    },
-    "createdAt": "2024-03-17T20:32:39",
-    "updatedAt": "2025-04-08T13:41:18"
-  },
-  {
-    "id": 48,
-    "name": "Lose Model-818",
-    "processor": "Much 7652X",
-    "ram": "12GB",
-    "storage": "512GB",
-    "priceInINR": 87322.22,
-    "releaseDate": "2024-02-05",
-    "slug": "appear-plan-wind",
-    "tags": [
-      "compact",
-      "battery",
-      "budget"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 20
-    },
-    "category": {
-      "id": 9
-    },
-    "createdAt": "2024-04-03T12:01:00",
-    "updatedAt": "2024-11-01T12:24:58"
-  },
-  {
-    "id": 49,
-    "name": "Defense Model-258",
-    "processor": "Address 4947X",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceInINR": 60864.95,
-    "releaseDate": "2022-09-16",
-    "slug": "base-green-standard",
-    "tags": [
-      "budget",
-      "compact",
-      "5G"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 4
-    },
-    "category": {
-      "id": 9
-    },
-    "createdAt": "2024-03-19T16:38:02",
-    "updatedAt": "2024-10-18T22:38:11"
-  },
-  {
-    "id": 50,
-    "name": "Chance Model-505",
-    "processor": "Everyone 9516X",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceInINR": 88709.34,
-    "releaseDate": "2023-04-01",
-    "slug": "certain-wife-catch",
-    "tags": [
-      "compact",
-      "flagship",
-      "camera"
-    ],
-    "isDeleted": false,
-    "brand": {
-      "id": 12
-    },
-    "category": {
-      "id": 12
-    },
-    "createdAt": "2023-09-04T17:27:06",
-    "updatedAt": "2025-01-22T11:41:28"
+    "brandId": 12,
+    "categoryId": 1,
+    "tagIds": [
+      1,
+      2,
+      3
+    ]
   }
 ]

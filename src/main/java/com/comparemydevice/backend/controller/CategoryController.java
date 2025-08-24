@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/controller/CategoryController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.CategoryDTO;
@@ -6,56 +7,29 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
-/**
- * REST controller for managing device categories.
- */
-@RestController
-@RequestMapping("/api/categories")
+@RestController @RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
+    private final CategoryService service;
 
-    private final CategoryService categoryService;
-
-    /**
-     * Create a new category.
-     */
     @PostMapping
-    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
-        return ResponseEntity.ok(categoryService.createCategory(categoryDTO));
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto) {
+        CategoryDTO created = service.create(dto);
+        return ResponseEntity.created(URI.create("/api/categories/" + created.getId())).body(created);
     }
 
-    /**
-     * Get all categories.
-     */
-    @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
-        return ResponseEntity.ok(categoryService.getAllCategories());
-    }
-
-    /**
-     * Get a category by ID.
-     */
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
-        return ResponseEntity.ok(categoryService.getCategoryById(id));
-    }
+    public CategoryDTO get(@PathVariable Long id) { return service.get(id); }
 
-    /**
-     * Update a category by ID.
-     */
+    @GetMapping
+    public List<CategoryDTO> getAll() { return service.getAll(); }
+
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO) {
-        return ResponseEntity.ok(categoryService.updateCategory(id, categoryDTO));
-    }
+    public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO dto) { return service.update(id, dto); }
 
-    /**
-     * Delete a category by ID.
-     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
-        categoryService.deleteCategory(id);
-        return ResponseEntity.noContent().build();
-    }
+    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
 }

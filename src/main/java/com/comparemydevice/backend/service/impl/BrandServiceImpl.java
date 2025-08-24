@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/service/impl/BrandServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.BrandDTO;
@@ -5,62 +6,58 @@ import com.comparemydevice.backend.entity.Brand;
 import com.comparemydevice.backend.exception.ResourceNotFoundException;
 import com.comparemydevice.backend.repository.BrandRepository;
 import com.comparemydevice.backend.service.BrandService;
+import com.comparemydevice.backend.service.support.SlugService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
+@Service @RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService {
+    private final BrandRepository repo;
+    private final ModelMapper mapper;
+    private final SlugService slugService = new SlugService();
 
-    private final BrandRepository brandRepository;
-    private final ModelMapper modelMapper;
-
-    @Override
-    public BrandDTO createBrand(BrandDTO brandDTO) {
-        Brand brand = modelMapper.map(brandDTO, Brand.class);
-        brand.setCreatedAt(LocalDateTime.now());
-        brand.setUpdatedAt(LocalDateTime.now());
-        Brand savedBrand = brandRepository.save(brand);
-        return modelMapper.map(savedBrand, BrandDTO.class);
+    @Override @Transactional
+    public BrandDTO create(BrandDTO dto) {
+        Brand b = mapper.map(dto, Brand.class);
+        b.setId(null);
+        if (b.getSlug() == null || b.getSlug().isBlank()) {
+            b.setSlug(slugService.ensureUnique(b.getName(), repo::existsBySlug));
+        } else {
+            b.setSlug(slugService.ensureUnique(b.getSlug(), repo::existsBySlug));
+        }
+        return toDTO(repo.save(b));
     }
 
     @Override
-    public List<BrandDTO> getAllBrands() {
-        List<Brand> brands = brandRepository.findAll();
-        return brands.stream()
-                .map(brand -> modelMapper.map(brand, BrandDTO.class))
-                .collect(Collectors.toList());
+    public BrandDTO get(Long id) { return toDTO(find(id)); }
+
+    @Override @Transactional
+    public BrandDTO update(Long id, BrandDTO dto) {
+        Brand b = find(id);
+        b.setName(dto.getName());
+        b.setLogoUrl(dto.getLogoUrl());
+        if (dto.getSlug() != null && !dto.getSlug().isBlank() && !dto.getSlug().equals(b.getSlug())) {
+            b.setSlug(slugService.ensureUnique(dto.getSlug(), repo::existsBySlug));
+        }
+        return toDTO(repo.save(b));
     }
+
+    @Override @Transactional
+    public void delete(Long id) { repo.delete(find(id)); }
 
     @Override
-    public BrandDTO getBrandById(Long id) {
-        Brand brand = brandRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + id));
-        return modelMapper.map(brand, BrandDTO.class);
+    public List<BrandDTO> getAll() {
+        return repo.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public BrandDTO updateBrand(Long id, BrandDTO brandDTO) {
-        Brand brand = brandRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + id));
-
-        brand.setName(brandDTO.getName());
-        brand.setLogoUrl(brandDTO.getLogoUrl());
-        brand.setUpdatedAt(LocalDateTime.now());
-
-        Brand updatedBrand = brandRepository.save(brand);
-        return modelMapper.map(updatedBrand, BrandDTO.class);
+    private Brand find(Long id) {
+        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Brand not found: " + id));
     }
 
-    @Override
-    public void deleteBrand(Long id) {
-        Brand brand = brandRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Brand not found with id: " + id));
-        brandRepository.delete(brand);
-    }
+    private BrandDTO toDTO(Brand b) { return mapper.map(b, BrandDTO.class); }
 }

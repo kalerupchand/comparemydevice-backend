@@ -17,33 +17,40 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	flywayVersion = '10.10.0'
+}
+
 dependencies {
-	// --- Core Spring Boot Starters ---
+	// Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	// --- Database ---
-	runtimeOnly 'org.postgresql:postgresql'
-
-	// --- ModelMapper ---
 	implementation 'org.modelmapper:modelmapper:3.1.1'
 
-	// --- Jackson for date/time support ---
+	// Flyway
+	implementation "org.flywaydb:flyway-core:${flywayVersion}"
+	runtimeOnly  "org.flywaydb:flyway-database-postgresql:${flywayVersion}" // no H2 module needed
+
+	// Databases
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'com.h2database:h2' // Boot manages version
+
+	// Utilities
+	implementation 'org.modelmapper:modelmapper:3.1.1'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-
-	// --- Swagger / OpenAPI (Springdoc) ---
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
-
-	// --- File Upload Utility ---
 	implementation 'commons-io:commons-io:2.15.1'
 
-	// --- Lombok ---
+	// Lombok
 	compileOnly 'org.projectlombok:lombok:1.18.30'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	testCompileOnly 'org.projectlombok:lombok:1.18.30'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
-	// --- Testing ---
+	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'

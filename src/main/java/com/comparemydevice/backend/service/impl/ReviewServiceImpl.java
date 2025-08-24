@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/service/impl/ReviewServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.ReviewDTO;
@@ -10,59 +11,64 @@ import com.comparemydevice.backend.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
+@Service @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
 
-    private final ReviewRepository reviewRepository;
-    private final DeviceRepository deviceRepository;
-    private final ModelMapper modelMapper;
+    private final ReviewRepository repo;
+    private final DeviceRepository deviceRepo;
+    private final ModelMapper mapper;
 
-    @Override
-    public ReviewDTO createReview(Long deviceId, ReviewDTO reviewDTO) {
-        Device device = deviceRepository.findById(deviceId)
-                .orElseThrow(() -> new ResourceNotFoundException("Device not found with id: " + deviceId));
+    @Override @Transactional
+    public ReviewDTO create(ReviewDTO dto) {
+        validateRating(dto.getRating());
+        Device device = deviceRepo.findById(dto.getDeviceId())
+                .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + dto.getDeviceId()));
 
-        Review review = modelMapper.map(reviewDTO, Review.class);
-        review.setDevice(device);
-        review.setCreatedAt(LocalDateTime.now());
-        review.setUpdatedAt(LocalDateTime.now());
-
-        return modelMapper.map(reviewRepository.save(review), ReviewDTO.class);
+        Review r = mapper.map(dto, Review.class);
+        r.setId(null);
+        r.setDevice(device);
+        return toDTO(repo.save(r));
     }
 
     @Override
-    public List<ReviewDTO> getReviewsByDeviceId(Long deviceId) {
-        List<Review> reviews = reviewRepository.findByDeviceId(deviceId);
-        return reviews.stream()
-                .map(review -> modelMapper.map(review, ReviewDTO.class))
-                .collect(Collectors.toList());
-    }
+    public ReviewDTO get(Long id) { return toDTO(find(id)); }
 
     @Override
-    public ReviewDTO updateReview(Long reviewId, ReviewDTO reviewDTO) {
-        Review review = reviewRepository.findById(reviewId)
-                .orElseThrow(() -> new ResourceNotFoundException("Review not found with id: " + reviewId));
-
-        review.setReviewerName(reviewDTO.getReviewerName());
-        review.setContent(reviewDTO.getContent());
-        review.setRating(reviewDTO.getRating());
-        review.setSource(reviewDTO.getSource());
-        review.setUpdatedAt(LocalDateTime.now());
-
-        return modelMapper.map(reviewRepository.save(review), ReviewDTO.class);
+    public List<ReviewDTO> getAll() {
+        return repo.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public void deleteReview(Long reviewId) {
-        if (!reviewRepository.existsById(reviewId)) {
-            throw new ResourceNotFoundException("Review not found with id: " + reviewId);
+    @Override @Transactional
+    public ReviewDTO update(Long id, ReviewDTO dto) {
+        Review r = find(id);
+        if (dto.getReviewerName() != null) r.setReviewerName(dto.getReviewerName());
+        if (dto.getContent() != null) r.setContent(dto.getContent());
+        if (dto.getSourceUrl() != null) r.setSourceUrl(dto.getSourceUrl());
+        if (dto.getRating() != null) {
+            validateRating(dto.getRating());
+            r.setRating(dto.getRating());
         }
-        reviewRepository.deleteById(reviewId);
+        return toDTO(repo.save(r));
     }
+
+    @Override @Transactional
+    public void delete(Long id) { repo.delete(find(id)); }
+
+    private void validateRating(BigDecimal rating) {
+        if (rating == null) return;
+        if (rating.compareTo(BigDecimal.ZERO) < 0 || rating.compareTo(BigDecimal.valueOf(5)) > 0) {
+            throw new IllegalArgumentException("Rating must be in [0..5]");
+        }
+    }
+
+    private Review find(Long id) {
+        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Review not found: " + id));
+    }
+    private ReviewDTO toDTO(Review r) { return mapper.map(r, ReviewDTO.class); }
 }

@@ -1,12 +1,12 @@
+// src/main/java/com/comparemydevice/backend/repository/ImageRepository.java
 package com.comparemydevice.backend.repository;
 
 import com.comparemydevice.backend.entity.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ImageRepository extends JpaRepository<Image, Long> {
-    List<Image> findByDeviceId(Long deviceId);
+    List<Image> findByDevice_Id(Long deviceId);
+    boolean existsByDevice_IdAndIsPrimaryTrue(Long deviceId);
 }

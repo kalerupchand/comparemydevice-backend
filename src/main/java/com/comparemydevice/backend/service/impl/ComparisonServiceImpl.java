@@ -1,44 +1,36 @@
+// src/main/java/com/comparemydevice/backend/service/impl/ComparisonServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
-import com.comparemydevice.backend.dto.*;
-import com.comparemydevice.backend.entity.*;
+import com.comparemydevice.backend.dto.DeviceDTO;
+import com.comparemydevice.backend.entity.Device;
 import com.comparemydevice.backend.exception.ResourceNotFoundException;
 import com.comparemydevice.backend.repository.DeviceRepository;
-import com.comparemydevice.backend.service.*;
+import com.comparemydevice.backend.service.ComparisonService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Implementation of the ComparisonService interface for comparing devices.
- */
-@Service
-@RequiredArgsConstructor
+@Service @RequiredArgsConstructor
 public class ComparisonServiceImpl implements ComparisonService {
+    private final DeviceRepository deviceRepo;
+    private final ModelMapper mapper;
 
-    private final DeviceRepository deviceRepository;
-    private final ModelMapper modelMapper;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public List<DeviceDTO> compareDevices(Long deviceId1, Long deviceId2) {
-        return compareMultipleDevices(List.of(deviceId1, deviceId2));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<DeviceDTO> compareMultipleDevices(List<Long> deviceIds) {
-        return deviceIds.stream()
-                .map(id -> deviceRepository.findById(id)
-                        .map(device -> modelMapper.map(device, DeviceDTO.class))
-                        .orElseThrow(() -> new ResourceNotFoundException("Device not found with ID: " + id)))
-                .collect(Collectors.toList());
+    public List<DeviceDTO> compareByIds(List<Long> deviceIds) {
+        if (deviceIds == null || deviceIds.isEmpty()) {
+            throw new IllegalArgumentException("deviceIds must not be empty");
+        }
+        Set<Long> wanted = deviceIds.stream().collect(Collectors.toSet());
+        List<Device> found = deviceRepo.findAllById(wanted);
+        if (found.size() != wanted.size()) {
+            Set<Long> have = found.stream().map(Device::getId).collect(Collectors.toSet());
+            wanted.removeAll(have);
+            throw new ResourceNotFoundException("Device(s) not found: " + wanted);
+        }
+        return found.stream().map(d -> mapper.map(d, DeviceDTO.class)).collect(Collectors.toList());
     }
 }

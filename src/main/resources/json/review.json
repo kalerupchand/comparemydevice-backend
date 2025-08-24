@@ -1,362 +1,162 @@
 [
   {
     "id": 1,
-    "reviewerName": "User 1",
-    "content": "This is a review for device 2",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 2
-    }
+    "deviceId": 1,
+    "reviewerName": "Tech Reviewer",
+    "content": "iPhone 15 Pro offers excellent performance and battery life.",
+    "rating": 4.2,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 2,
-    "reviewerName": "User 2",
-    "content": "This is a review for device 3",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 3
-    }
+    "deviceId": 2,
+    "reviewerName": "Tech Reviewer",
+    "content": "iPhone 15 offers excellent performance and battery life.",
+    "rating": 4.4,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 3,
-    "reviewerName": "User 3",
-    "content": "This is a review for device 4",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 4
-    }
+    "deviceId": 3,
+    "reviewerName": "Tech Reviewer",
+    "content": "Galaxy S24 Ultra offers excellent performance and battery life.",
+    "rating": 4.6,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 4,
-    "reviewerName": "User 4",
-    "content": "This is a review for device 5",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 5
-    }
+    "deviceId": 4,
+    "reviewerName": "Tech Reviewer",
+    "content": "Galaxy S24 offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 5,
-    "reviewerName": "User 5",
-    "content": "This is a review for device 6",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 6
-    }
+    "deviceId": 5,
+    "reviewerName": "Tech Reviewer",
+    "content": "Pixel 8 Pro offers excellent performance and battery life.",
+    "rating": 5.0,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 6,
-    "reviewerName": "User 6",
-    "content": "This is a review for device 7",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 7
-    }
+    "deviceId": 6,
+    "reviewerName": "Tech Reviewer",
+    "content": "Pixel 8 offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 7,
-    "reviewerName": "User 7",
-    "content": "This is a review for device 8",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 8
-    }
+    "deviceId": 7,
+    "reviewerName": "Tech Reviewer",
+    "content": "OnePlus 12 offers excellent performance and battery life.",
+    "rating": 4.0,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 8,
-    "reviewerName": "User 8",
-    "content": "This is a review for device 9",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 9
-    }
+    "deviceId": 8,
+    "reviewerName": "Tech Reviewer",
+    "content": "OnePlus 12R offers excellent performance and battery life.",
+    "rating": 4.2,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 9,
-    "reviewerName": "User 9",
-    "content": "This is a review for device 10",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 10
-    }
+    "deviceId": 9,
+    "reviewerName": "Tech Reviewer",
+    "content": "Xiaomi 14 offers excellent performance and battery life.",
+    "rating": 4.4,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 10,
-    "reviewerName": "User 10",
-    "content": "This is a review for device 1",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 1
-    }
+    "deviceId": 10,
+    "reviewerName": "Tech Reviewer",
+    "content": "Xiaomi 14 Ultra offers excellent performance and battery life.",
+    "rating": 4.6,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 11,
-    "reviewerName": "User 11",
-    "content": "This is a review for device 2",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 2
-    }
+    "deviceId": 11,
+    "reviewerName": "Tech Reviewer",
+    "content": "Nothing Phone (2) offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 12,
-    "reviewerName": "User 12",
-    "content": "This is a review for device 3",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 3
-    }
+    "deviceId": 12,
+    "reviewerName": "Tech Reviewer",
+    "content": "Nothing Phone (2a) offers excellent performance and battery life.",
+    "rating": 5.0,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 13,
-    "reviewerName": "User 13",
-    "content": "This is a review for device 4",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 4
-    }
+    "deviceId": 13,
+    "reviewerName": "Tech Reviewer",
+    "content": "Galaxy Z Fold5 offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 14,
-    "reviewerName": "User 14",
-    "content": "This is a review for device 5",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 5
-    }
+    "deviceId": 14,
+    "reviewerName": "Tech Reviewer",
+    "content": "Galaxy Z Flip5 offers excellent performance and battery life.",
+    "rating": 4.0,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 15,
-    "reviewerName": "User 15",
-    "content": "This is a review for device 6",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 6
-    }
+    "deviceId": 15,
+    "reviewerName": "Tech Reviewer",
+    "content": "ROG Phone 8 offers excellent performance and battery life.",
+    "rating": 4.2,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 16,
-    "reviewerName": "User 16",
-    "content": "This is a review for device 7",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 7
-    }
+    "deviceId": 16,
+    "reviewerName": "Tech Reviewer",
+    "content": "Realme GT 6 offers excellent performance and battery life.",
+    "rating": 4.4,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 17,
-    "reviewerName": "User 17",
-    "content": "This is a review for device 8",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 8
-    }
+    "deviceId": 17,
+    "reviewerName": "Tech Reviewer",
+    "content": "Motorola Edge 50 Pro offers excellent performance and battery life.",
+    "rating": 4.6,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 18,
-    "reviewerName": "User 18",
-    "content": "This is a review for device 9",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 9
-    }
+    "deviceId": 18,
+    "reviewerName": "Tech Reviewer",
+    "content": "Vivo X100 Pro offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 19,
-    "reviewerName": "User 19",
-    "content": "This is a review for device 10",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 10
-    }
+    "deviceId": 19,
+    "reviewerName": "Tech Reviewer",
+    "content": "Oppo Find X7 Ultra offers excellent performance and battery life.",
+    "rating": 5.0,
+    "sourceUrl": "https://www.techradar.com/"
   },
   {
     "id": 20,
-    "reviewerName": "User 20",
-    "content": "This is a review for device 1",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 1
-    }
-  },
-  {
-    "id": 21,
-    "reviewerName": "User 21",
-    "content": "This is a review for device 2",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 2
-    }
-  },
-  {
-    "id": 22,
-    "reviewerName": "User 22",
-    "content": "This is a review for device 3",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 3
-    }
-  },
-  {
-    "id": 23,
-    "reviewerName": "User 23",
-    "content": "This is a review for device 4",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 4
-    }
-  },
-  {
-    "id": 24,
-    "reviewerName": "User 24",
-    "content": "This is a review for device 5",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 5
-    }
-  },
-  {
-    "id": 25,
-    "reviewerName": "User 25",
-    "content": "This is a review for device 6",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 6
-    }
-  },
-  {
-    "id": 26,
-    "reviewerName": "User 26",
-    "content": "This is a review for device 7",
-    "rating": 1.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 7
-    }
-  },
-  {
-    "id": 27,
-    "reviewerName": "User 27",
-    "content": "This is a review for device 8",
-    "rating": 2.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 8
-    }
-  },
-  {
-    "id": 28,
-    "reviewerName": "User 28",
-    "content": "This is a review for device 9",
-    "rating": 3.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 9
-    }
-  },
-  {
-    "id": 29,
-    "reviewerName": "User 29",
-    "content": "This is a review for device 10",
-    "rating": 4.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 10
-    }
-  },
-  {
-    "id": 30,
-    "reviewerName": "User 30",
-    "content": "This is a review for device 1",
-    "rating": 0.5,
-    "source": "TechBlog",
-    "createdAt": "2025-08-02T14:00:00",
-    "updatedAt": "2025-08-11T09:00:00",
-    "device": {
-      "id": 1
-    }
+    "deviceId": 20,
+    "reviewerName": "Tech Reviewer",
+    "content": "Sony Xperia 1 VI offers excellent performance and battery life.",
+    "rating": 4.8,
+    "sourceUrl": "https://www.techradar.com/"
   }
 ]

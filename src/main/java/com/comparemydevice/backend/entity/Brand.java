@@ -6,22 +6,23 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
-@Table(name = "brand")
+@Table(name = "brand",
+        indexes = {
+                @Index(name = "idx_brand_slug", columnList = "slug")
+        })
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Brand {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 255)
     private String name;
+
+    @Column(nullable = false, unique = true, length = 150)
+    private String slug;
 
     @Column(name = "logo_url")
     private String logoUrl;
@@ -32,7 +33,7 @@ public class Brand {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    // Optional back-reference (not required for your error, but useful)
+    // Optional back-ref
     @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
-    private List<Device> devices;
+    private Set<Device> devices;
 }

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Display Size",
+    "specType": "display"
+  },
+  {
+    "id": 2,
+    "name": "Display Type",
+    "specType": "display"
+  },
+  {
+    "id": 3,
+    "name": "Battery",
+    "specType": "battery"
+  },
+  {
+    "id": 4,
+    "name": "Charging",
+    "specType": "battery"
+  },
+  {
+    "id": 5,
+    "name": "Main Camera",
+    "specType": "camera"
+  },
+  {
+    "id": 6,
+    "name": "Selfie Camera",
+    "specType": "camera"
+  },
+  {
+    "id": 7,
+    "name": "Chipset",
+    "specType": "performance"
+  },
+  {
+    "id": 8,
+    "name": "RAM",
+    "specType": "memory"
+  },
+  {
+    "id": 9,
+    "name": "Storage",
+    "specType": "memory"
+  },
+  {
+    "id": 10,
+    "name": "OS",
+    "specType": "software"
+  },
+  {
+    "id": 11,
+    "name": "Weight",
+    "specType": "dimensions"
+  }
+]

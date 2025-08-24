@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/service/impl/ImageServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.ImageDTO;
@@ -10,71 +11,60 @@ import com.comparemydevice.backend.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
+@Service @RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
 
-    private final ImageRepository imageRepository;
-    private final DeviceRepository deviceRepository;
-    private final ModelMapper modelMapper;
+    private final ImageRepository repo;
+    private final DeviceRepository deviceRepo;
+    private final ModelMapper mapper;
 
-    @Override
-    public ImageDTO uploadImage(Long deviceId, MultipartFile file, String altText) throws IOException {
-        Device device = deviceRepository.findById(deviceId)
-                .orElseThrow(() -> new ResourceNotFoundException("Device not found with id: " + deviceId));
-
-        // For now, we're using original filename as dummy "URL" (replace with actual file storage logic)
-        String imageUrl = "/images/" + file.getOriginalFilename();
-
-        Image image = Image.builder()
-                .device(device)
-                .url(imageUrl)
-                .altText(altText)
-                .isPrimary(false)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
-
-        return modelMapper.map(imageRepository.save(image), ImageDTO.class);
-    }
-
-    @Override
-    public ImageDTO addImageFromUrl(Long deviceId, String url, String altText, boolean isPrimary) {
-        Device device = deviceRepository.findById(deviceId)
-                .orElseThrow(() -> new ResourceNotFoundException("Device not found with id: " + deviceId));
-
-        Image image = Image.builder()
-                .device(device)
-                .url(url)
-                .altText(altText)
-                .isPrimary(isPrimary)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .build();
-
-        return modelMapper.map(imageRepository.save(image), ImageDTO.class);
-    }
-
-    @Override
-    public List<ImageDTO> getImagesByDeviceId(Long deviceId) {
-        List<Image> images = imageRepository.findByDeviceId(deviceId);
-        return images.stream()
-                .map(image -> modelMapper.map(image, ImageDTO.class))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public void deleteImage(Long imageId) {
-        if (!imageRepository.existsById(imageId)) {
-            throw new ResourceNotFoundException("Image not found with id: " + imageId);
+    @Override @Transactional
+    public ImageDTO create(ImageDTO dto) {
+        Device device = deviceRepo.findById(dto.getDeviceId())
+                .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + dto.getDeviceId()));
+        Image img = mapper.map(dto, Image.class);
+        img.setId(null);
+        img.setDevice(device);
+        // if H2 (dev) cannot enforce single primary image, prevent here (optional):
+        if (Boolean.TRUE.equals(img.getIsPrimary()) && repo.existsByDevice_IdAndIsPrimaryTrue(device.getId())) {
+            throw new IllegalArgumentException("Device already has a primary image");
         }
-        imageRepository.deleteById(imageId);
+        return toDTO(repo.save(img));
     }
+
+    @Override
+    public ImageDTO get(Long id) { return toDTO(find(id)); }
+
+    @Override
+    public List<ImageDTO> getAll() {
+        return repo.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+    }
+
+    @Override @Transactional
+    public ImageDTO update(Long id, ImageDTO dto) {
+        Image img = find(id);
+        if (dto.getUrl() != null) img.setUrl(dto.getUrl());
+        if (dto.getAltText() != null) img.setAltText(dto.getAltText());
+        if (dto.getSortOrder() != null) img.setSortOrder(dto.getSortOrder());
+        if (dto.getIsPrimary() != null && dto.getIsPrimary() && !Boolean.TRUE.equals(img.getIsPrimary())) {
+            if (repo.existsByDevice_IdAndIsPrimaryTrue(img.getDevice().getId())) {
+                throw new IllegalArgumentException("Device already has a primary image");
+            }
+        }
+        if (dto.getIsPrimary() != null) img.setIsPrimary(dto.getIsPrimary());
+        return toDTO(repo.save(img));
+    }
+
+    @Override @Transactional
+    public void delete(Long id) { repo.delete(find(id)); }
+
+    private Image find(Long id) {
+        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Image not found: " + id));
+    }
+    private ImageDTO toDTO(Image i) { return mapper.map(i, ImageDTO.class); }
 }

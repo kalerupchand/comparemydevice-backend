@@ -1,23 +1,18 @@
+// src/main/java/com/comparemydevice/backend/dto/ImageDTO.java
 package com.comparemydevice.backend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.time.LocalDateTime;
 
-
-// --- ImageDTO ---
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data @Builder
+@NoArgsConstructor @AllArgsConstructor
 public class ImageDTO {
     private Long id;
+    private Long deviceId;
     private String url;
     private String altText;
     private Boolean isPrimary;
+    private Integer sortOrder;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

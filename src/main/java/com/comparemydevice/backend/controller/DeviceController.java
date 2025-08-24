@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/controller/DeviceController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.DeviceDTO;
@@ -6,56 +7,38 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
-/**
- * REST controller for managing devices.
- */
-@RestController
-@RequestMapping("/api/devices")
+@RestController @RequestMapping("/api/devices")
 @RequiredArgsConstructor
 public class DeviceController {
+    private final DeviceService service;
 
-    private final DeviceService deviceService;
-
-    /**
-     * Create a new device.
-     */
     @PostMapping
-    public ResponseEntity<DeviceDTO> createDevice(@RequestBody DeviceDTO deviceDTO) {
-        return ResponseEntity.ok(deviceService.createDevice(deviceDTO));
+    public ResponseEntity<DeviceDTO> create(@RequestBody DeviceDTO dto) {
+        DeviceDTO created = service.create(dto);
+        return ResponseEntity.created(URI.create("/api/devices/" + created.getId())).body(created);
     }
 
-    /**
-     * Get all devices.
-     */
-    @GetMapping
-    public ResponseEntity<List<DeviceDTO>> getAllDevices() {
-        return ResponseEntity.ok(deviceService.getAllDevices());
-    }
-
-    /**
-     * Get device by ID.
-     */
     @GetMapping("/{id}")
-    public ResponseEntity<DeviceDTO> getDeviceById(@PathVariable Long id) {
-        return ResponseEntity.ok(deviceService.getDeviceById(id));
-    }
+    public DeviceDTO get(@PathVariable Long id) { return service.get(id); }
 
-    /**
-     * Update a device by ID.
-     */
+    @GetMapping
+    public List<DeviceDTO> getAll() { return service.getAll(); }
+
     @PutMapping("/{id}")
-    public ResponseEntity<DeviceDTO> updateDevice(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO) {
-        return ResponseEntity.ok(deviceService.updateDevice(id, deviceDTO));
-    }
+    public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) { return service.update(id, dto); }
 
-    /**
-     * Delete device by ID.
-     */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDevice(@PathVariable Long id) {
-        deviceService.deleteDevice(id);
-        return ResponseEntity.noContent().build();
-    }
+    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
+
+    @GetMapping("/by-brand/{brandId}")
+    public List<DeviceDTO> byBrand(@PathVariable Long brandId) { return service.findByBrand(brandId); }
+
+    @GetMapping("/by-category/{categoryId}")
+    public List<DeviceDTO> byCategory(@PathVariable Long categoryId) { return service.findByCategory(categoryId); }
+
+    @GetMapping("/by-tag/{tagId}")
+    public List<DeviceDTO> byTag(@PathVariable Long tagId) { return service.findByTag(tagId); }
 }

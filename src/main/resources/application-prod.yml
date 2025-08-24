@@ -1,17 +1,28 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a:5432/comparemydevice_db
+    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db
     username: comparemydevice_db_user
     password: jpCrKdT2gxd71ZgUo042SHYIBcv1JsUd
     driver-class-name: org.postgresql.Driver
+
   security:
     user:
       name: user
       password: test123
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true            # keep if not set in base
+    baseline-on-migrate: true # keep if not set in base
+    locations: classpath:db/migration-postgresql
+
   jackson:
     serialization:
       write-dates-as-timestamps: false
@@ -25,10 +36,9 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+
 management:
   endpoints:
     web:
       exposure:
         include: health,info
-environment:
-  - SPRING_PROFILES_ACTIVE=prod

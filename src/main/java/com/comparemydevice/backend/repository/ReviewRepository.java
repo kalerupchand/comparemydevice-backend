@@ -1,12 +1,11 @@
+// src/main/java/com/comparemydevice/backend/repository/ReviewRepository.java
 package com.comparemydevice.backend.repository;
 
 import com.comparemydevice.backend.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-    List<Review> findByDeviceId(Long deviceId);
+    List<Review> findByDevice_Id(Long deviceId);
 }

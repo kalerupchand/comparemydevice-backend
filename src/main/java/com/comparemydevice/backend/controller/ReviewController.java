@@ -1,3 +1,4 @@
+// src/main/java/com/comparemydevice/backend/controller/ReviewController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.ReviewDTO;
@@ -6,48 +7,29 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
-/**
- * REST controller for managing reviews for devices.
- */
-@RestController
-@RequestMapping("/api/reviews")
+@RestController @RequestMapping("/api/reviews")
 @RequiredArgsConstructor
 public class ReviewController {
+    private final ReviewService service;
 
-    private final ReviewService reviewService;
-
-    /**
-     * Create a new review for a device.
-     */
-    @PostMapping("/{deviceId}")
-    public ResponseEntity<ReviewDTO> createReview(@PathVariable Long deviceId, @RequestBody ReviewDTO reviewDTO) {
-        return ResponseEntity.ok(reviewService.createReview(deviceId, reviewDTO));
+    @PostMapping
+    public ResponseEntity<ReviewDTO> create(@RequestBody ReviewDTO dto) {
+        ReviewDTO created = service.create(dto);
+        return ResponseEntity.created(URI.create("/api/reviews/" + created.getId())).body(created);
     }
 
-    /**
-     * Get all reviews for a device.
-     */
-    @GetMapping("/device/{deviceId}")
-    public ResponseEntity<List<ReviewDTO>> getReviewsByDeviceId(@PathVariable Long deviceId) {
-        return ResponseEntity.ok(reviewService.getReviewsByDeviceId(deviceId));
-    }
+    @GetMapping("/{id}")
+    public ReviewDTO get(@PathVariable Long id) { return service.get(id); }
 
-    /**
-     * Update a review by ID.
-     */
-    @PutMapping("/{reviewId}")
-    public ResponseEntity<ReviewDTO> updateReview(@PathVariable Long reviewId, @RequestBody ReviewDTO reviewDTO) {
-        return ResponseEntity.ok(reviewService.updateReview(reviewId, reviewDTO));
-    }
+    @GetMapping
+    public List<ReviewDTO> getAll() { return service.getAll(); }
 
-    /**
-     * Delete a review by ID.
-     */
-    @DeleteMapping("/{reviewId}")
-    public ResponseEntity<Void> deleteReview(@PathVariable Long reviewId) {
-        reviewService.deleteReview(reviewId);
-        return ResponseEntity.noContent().build();
-    }
+    @PutMapping("/{id}")
+    public ReviewDTO update(@PathVariable Long id, @RequestBody ReviewDTO dto) { return service.update(id, dto); }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
 }

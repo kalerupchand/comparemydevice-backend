@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "5G",
+    "slug": "5g"
+  },
+  {
+    "id": 2,
+    "name": "AMOLED",
+    "slug": "amoled"
+  },
+  {
+    "id": 3,
+    "name": "Flagship",
+    "slug": "flagship"
+  },
+  {
+    "id": 4,
+    "name": "Budget",
+    "slug": "budget"
+  },
+  {
+    "id": 5,
+    "name": "Foldable",
+    "slug": "foldable"
+  },
+  {
+    "id": 6,
+    "name": "Gaming",
+    "slug": "gaming"
+  }
+]
