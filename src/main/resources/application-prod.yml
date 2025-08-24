@@ -1,6 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+#    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db?sslmode=require&applicationName=CompareMyDevice
+#    username: comparemydevice_db_user
+#    password: jpCrKdT2gxd71ZgUo042SHYIBcv1JsUd
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require&applicationName=CompareMyDevice
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -17,22 +20,24 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        # Dialect will auto-detect; removing the explicit setting quiets the warning
+        # Dialect auto-detects for PostgreSQL in Hibernate 6; leaving it unset avoids warnings
         jdbc:
           lob:
             non_contextual_creation: true
         format_sql: true
-
   flyway:
     enabled: true
     schemas: public
     locations: classpath:db/migration-postgres
     baseline-on-migrate: true
-    validate-on-migrate: false
-    ignore-missing-migrations: true
-    # --- TEMPORARY (ONE BOOT) if you removed V3 or changed migrations:
+    validate-on-migrate: true
+    lock-retry-count: 60   # helps during rolling/parallel starts
+
+    # If you temporarily removed/renamed a migration and get validation errors,
+    # UNCOMMENT the next 3 lines for ONE successful boot, then re-enable validation:
     # validate-on-migrate: false
     # ignore-missing-migrations: true
+    # repair-on-migrate: true
 
 logging:
   level:
