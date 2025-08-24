@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db?sslmode=require
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -9,13 +9,14 @@ spring:
       minimum-idle: 2
       idle-timeout: 30000
       connection-timeout: 30000
-
-  security:
-    user:
-      name: user
-      password: test123
-
+      max-lifetime: 1800000
+      keepalive-time: 300000
+    security:
+      user:
+        name: user
+        password: test123
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: none
     show-sql: false
@@ -26,18 +27,19 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+
   flyway:
     enabled: true
     baseline-on-migrate: true
-    # make sure your SQL files are under src/main/resources/db/migration-postgres
-    locations: classpath:db/migration-postgres
+    locations: classpath:db/migration-postgresql
+
   jackson:
     serialization:
       write-dates-as-timestamps: false
+
   sql:
     init:
       mode: never
-
 
 logging:
   level:
