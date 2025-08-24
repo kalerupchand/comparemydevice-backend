@@ -1,3 +1,4 @@
+-- db/migration-postgres/V1__baseline.sql
 -- H2 baseline matching current entities
 
 CREATE TABLE brand (
