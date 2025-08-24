@@ -36,6 +36,8 @@ spring:
       RESET_SCHEMA: "true"   # ← ONE DEPLOY to drop+recreate via V1; then change to "false" or remove
     clean-disabled: true      # safer: disallow flyway clean in prod
 
+server:
+  port: ${PORT:8080}
 logging:
   level:
     org.flywaydb: DEBUG
