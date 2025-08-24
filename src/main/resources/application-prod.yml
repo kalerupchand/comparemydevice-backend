@@ -22,8 +22,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-        # optional: enforce schema (not required if default is public)
-        # default_schema: public
+        # default_schema: public  # optional
 
   flyway:
     enabled: true
@@ -33,16 +32,16 @@ spring:
     validate-on-migrate: true
     placeholder-replacement: true
     placeholders:
-      RESET_SCHEMA: "true"   # ← ONE DEPLOY to drop+recreate via V1; then change to "false" or remove
-    clean-disabled: true      # safer: disallow flyway clean in prod
+      RESET_SCHEMA: "false"     # set "true" for ONE deploy if you want V2 to drop+recreate, then back to false
+    clean-disabled: true        # safer: disallow flyway clean in prod
+
   jackson:
     serialization:
       write-dates-as-timestamps: false
-server:
-  port: 8080
+
 logging:
   level:
-    org.flywaydb: DEBUG
+    org.flywaydb: INFO
     root: INFO
     org.hibernate.SQL: WARN
     org.springframework: INFO
@@ -52,3 +51,7 @@ management:
     web:
       exposure:
         include: health,info
+
+# IMPORTANT for Render: bind to their assigned port
+server:
+  port: ${PORT:8080}
