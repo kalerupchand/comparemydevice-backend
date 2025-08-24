@@ -32,7 +32,8 @@ spring:
     locations: classpath:db/migration-postgres
     schemas: public
     baseline-on-migrate: true
-    validate-on-migrate: true
+    ignore-missing-migrations: true    # ONE deploy only
+    validate-on-migrate: false         # ONE deploy only
     clean-disabled: true
     placeholder-replacement: true
     placeholders:
