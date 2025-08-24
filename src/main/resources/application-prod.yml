@@ -10,20 +10,60 @@ spring:
       idle-timeout: 30000
       connection-timeout: 30000
 
+  security:
+    user:
+      name: user
+      password: test123
+
   jpa:
     hibernate:
-      ddl-auto: none         # keep Hibernate from creating/updating tables
+      ddl-auto: none
     show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
         default_schema: public
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
 
   flyway:
     enabled: true
-    # REMOVE this once you have a clean, Flyway-managed db.
-    # baseline-on-migrate: false
-    locations: classpath:db/migration-postgres
-    default-schema: public
+    # Creates flyway_schema_history automatically if DB isn't empty
+    baseline-on-migrate: true
+    # Always migrate the public schema using your Postgres SQLs
     schemas: public
+    locations: classpath:db/migration-postgres
+    # Never allow blanket cleans by default in prod
+    clean-disabled: true
+    # (Optional) Placeholder to control one-time destructive reset inside your V1 script
+    placeholder-replacement: true
+    placeholders:
+      RESET_SCHEMA: "true"   # set to "true" ONLY for a single deploy if you intend to drop+recreate
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+  sql:
+    init:
+      mode: never
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: WARN
+    org.springframework: INFO
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

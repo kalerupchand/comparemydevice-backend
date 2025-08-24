@@ -1,22 +1,38 @@
--- PostgreSQL baseline matching current entities
-DO $$ DECLARE
-    r RECORD;
-BEGIN
-    -- Dynamically drop all tables in the current schema
-    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
-        EXECUTE 'DROP TABLE IF EXISTS "' || r.tablename || '" CASCADE';
-    END LOOP;
-END $$;
+-- V1__baseline_and_extras.sql
+-- PostgreSQL baseline matching current entities (Brand, Category, Device, Image, Review, Tag, SpecKey, DeviceSpec)
+-- Safe by default. Optional destructive reset is gated by a Flyway placeholder:
+--   spring.flyway.placeholders.RESET_SCHEMA=true
+-- Remove or set to false afterwards!
 
-DROP TABLE IF EXISTS device_spec CASCADE;
-DROP TABLE IF EXISTS spec_key CASCADE;
-DROP TABLE IF EXISTS device_tag CASCADE;
-DROP TABLE IF EXISTS tag CASCADE;
-DROP TABLE IF EXISTS review CASCADE;
-DROP TABLE IF EXISTS image CASCADE;
-DROP TABLE IF EXISTS device CASCADE;
-DROP TABLE IF EXISTS category CASCADE;
-DROP TABLE IF EXISTS brand CASCADE;
+-- ===== 0) Optional: reset public schema (guarded) =====
+DO $drop$
+BEGIN
+  IF '${RESET_SCHEMA}' = 'true' THEN
+    -- Drop views (incl. materialized)
+    PERFORM format('DROP MATERIALIZED VIEW IF EXISTS public.%I CASCADE', m.matviewname)
+      FROM pg_matviews m WHERE m.schemaname='public';
+
+    PERFORM format('DROP VIEW IF EXISTS public.%I CASCADE', v.table_name)
+      FROM information_schema.views v WHERE v.table_schema='public';
+
+    -- Drop tables
+    PERFORM format('DROP TABLE IF EXISTS public.%I CASCADE', t.tablename)
+      FROM pg_tables t WHERE t.schemaname='public';
+
+    -- Drop sequences left behind (defensive)
+    PERFORM format('DROP SEQUENCE IF EXISTS public.%I CASCADE', s.sequence_name)
+      FROM information_schema.sequences s WHERE s.sequence_schema='public';
+
+    -- (Functions and types created later are minimal; nothing else to drop)
+  END IF;
+END
+$drop$;
+
+-- Ensure schema exists and search_path sane
+CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION CURRENT_USER;
+SET search_path TO public;
+
+-- ===== 1) Core reference tables =====
 
 CREATE TABLE IF NOT EXISTS brand (
   id           BIGSERIAL PRIMARY KEY,
@@ -37,6 +53,8 @@ CREATE TABLE IF NOT EXISTS category (
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_category_slug ON category(slug);
+
+-- ===== 2) Device and relations =====
 
 CREATE TABLE IF NOT EXISTS device (
   id             BIGSERIAL PRIMARY KEY,
@@ -77,7 +95,7 @@ CREATE TABLE IF NOT EXISTS image (
 );
 CREATE INDEX IF NOT EXISTS idx_image_device_id ON image(device_id);
 
--- Optional: allow only one primary image per device
+-- One primary image per device (partial unique index)
 CREATE UNIQUE INDEX IF NOT EXISTS uq_image_primary_per_device
   ON image(device_id) WHERE is_primary;
 
@@ -108,6 +126,8 @@ CREATE TABLE IF NOT EXISTS device_tag (
   PRIMARY KEY (device_id, tag_id)
 );
 
+-- ===== 3) Specs =====
+
 CREATE TABLE IF NOT EXISTS spec_key (
   id        BIGSERIAL PRIMARY KEY,
   name      VARCHAR(100) NOT NULL UNIQUE,
@@ -126,7 +146,8 @@ CREATE TABLE IF NOT EXISTS device_spec (
 CREATE INDEX IF NOT EXISTS idx_device_spec_device ON device_spec(device_id);
 CREATE INDEX IF NOT EXISTS idx_device_spec_key    ON device_spec(spec_key_id);
 
--- Auto-update updated_at on UPDATE
+-- ===== 4) updated_at triggers =====
+
 CREATE OR REPLACE FUNCTION set_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -135,7 +156,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DO $$ BEGIN
+DO $trg$
+BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_brand_updated_at') THEN
     CREATE TRIGGER trg_brand_updated_at        BEFORE UPDATE ON brand        FOR EACH ROW EXECUTE FUNCTION set_updated_at();
     CREATE TRIGGER trg_category_updated_at     BEFORE UPDATE ON category     FOR EACH ROW EXECUTE FUNCTION set_updated_at();
@@ -144,4 +166,5 @@ DO $$ BEGIN
     CREATE TRIGGER trg_review_updated_at       BEFORE UPDATE ON review       FOR EACH ROW EXECUTE FUNCTION set_updated_at();
     CREATE TRIGGER trg_device_spec_updated_at  BEFORE UPDATE ON device_spec  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
   END IF;
-END $$;
+END
+$trg$;
