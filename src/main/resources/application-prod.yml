@@ -17,6 +17,11 @@ spring:
       idle-timeout: 30000
       connection-timeout: 30000
 
+  security:
+    user:
+      name: user
+      password: test123
+
   jpa:
     open-in-view: false
     hibernate:
@@ -38,9 +43,8 @@ spring:
     validate-on-migrate: false
     placeholder-replacement: true
     clean-disabled: true
-    # If you still need the one-time conditional reset V2 script:
-    # placeholders:
-    #   RESET_SCHEMA: "false"
+    placeholders:
+      RESET_SCHEMA: true
 
 logging:
   level:
