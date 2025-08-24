@@ -1,9 +1,13 @@
--- Recreate all tables without touching the schema or Flyway history
--- Safe for reruns: drops user tables (except flyway_schema_history) if present, then (re)creates
+-- V3__recreate_objects.sql
+-- Recreate application tables in schema public, preserving flyway_schema_history.
+-- Idempotent & safe for reruns.
 
--- 1) Drop all user tables in public, but keep flyway_schema_history
+SET search_path TO public;
+
+-- 1) Drop user tables (keep flyway_schema_history)
 DO $block$
-DECLARE r RECORD;
+DECLARE
+  r RECORD;
 BEGIN
   FOR r IN
     SELECT tablename
@@ -16,7 +20,7 @@ BEGIN
 END
 $block$;
 
--- 2) Recreate tables, indexes, and triggers
+-- 2) Recreate tables
 
 CREATE TABLE IF NOT EXISTS brand (
   id           BIGSERIAL PRIMARY KEY,
@@ -77,9 +81,9 @@ CREATE TABLE IF NOT EXISTS image (
 );
 CREATE INDEX IF NOT EXISTS idx_image_device_id ON image(device_id);
 
--- allow only one primary image per device
+-- one primary image per device (partial unique index)
 CREATE UNIQUE INDEX IF NOT EXISTS uq_image_primary_per_device
-  ON image(device_id) WHERE is_primary;
+  ON image(device_id) WHERE is_primary IS TRUE;
 
 CREATE TABLE IF NOT EXISTS review (
   id             BIGSERIAL PRIMARY KEY,
@@ -126,7 +130,7 @@ CREATE TABLE IF NOT EXISTS device_spec (
 CREATE INDEX IF NOT EXISTS idx_device_spec_device ON device_spec(device_id);
 CREATE INDEX IF NOT EXISTS idx_device_spec_key    ON device_spec(spec_key_id);
 
--- updated_at trigger function
+-- 3) updated_at trigger function (idempotent)
 CREATE OR REPLACE FUNCTION set_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -135,15 +139,30 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- create triggers if missing
+-- 4) Create triggers if missing (idempotent)
 DO $trg$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_brand_updated_at') THEN
     CREATE TRIGGER trg_brand_updated_at        BEFORE UPDATE ON brand        FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_category_updated_at') THEN
     CREATE TRIGGER trg_category_updated_at     BEFORE UPDATE ON category     FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_device_updated_at') THEN
     CREATE TRIGGER trg_device_updated_at       BEFORE UPDATE ON device       FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_image_updated_at') THEN
     CREATE TRIGGER trg_image_updated_at        BEFORE UPDATE ON image        FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_review_updated_at') THEN
     CREATE TRIGGER trg_review_updated_at       BEFORE UPDATE ON review       FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'trg_device_spec_updated_at') THEN
     CREATE TRIGGER trg_device_spec_updated_at  BEFORE UPDATE ON device_spec  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
   END IF;
 END
