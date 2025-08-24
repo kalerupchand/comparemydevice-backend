@@ -1,18 +1,9 @@
 server:
-  error:
-    include-message: always
-    include-binding-errors: always
-    include-exception: true
+  port: ${PORT:8080}          # Render sets PORT (usually 10000)
 
 spring:
   application:
     name: compare-my-device
-  security:
-    user:
-      name: user
-      password: test123
-
-  # Let Flyway manage the schema in all profiles
   jpa:
     open-in-view: false
     hibernate:
@@ -21,16 +12,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
   flyway:
     enabled: true
     baseline-on-migrate: true
-
-  servlet:
-    multipart:
-      max-file-size: 5MB
-      max-request-size: 10MB
-
   jackson:
     serialization:
       write-dates-as-timestamps: false
@@ -44,13 +28,4 @@ management:
 logging:
   level:
     org.springframework: INFO
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: INFO
-
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    operationsSorter: method
-    tagsSorter: alpha
+    org.hibernate.SQL: WARN

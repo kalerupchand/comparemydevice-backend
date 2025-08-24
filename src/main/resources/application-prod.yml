@@ -1,6 +1,13 @@
+# DO NOT put 'spring.profiles' here.
+# If you really want to guard it, you can use:
+# spring:
+#   config:
+#     activate:
+#       on-profile: prod
+
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require
+    url: jdbc:postgresql://${DB_HOST:${RENDER_EXTERNAL_HOSTNAME}}:${DB_PORT:5432}/${DB_NAME}?sslmode=require
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -17,11 +24,11 @@ spring:
     show-sql: false
     properties:
       hibernate:
+        # Dialect is auto-detected; leaving it out avoids the deprecation warning.
         format_sql: true
         jdbc:
           lob:
             non_contextual_creation: true
-        # default_schema: public  # optional
 
   flyway:
     enabled: true
@@ -30,28 +37,12 @@ spring:
     baseline-on-migrate: true
     validate-on-migrate: false
     placeholder-replacement: true
-    placeholders:
-      RESET_SCHEMA: "false"     # set "true" for ONE deploy if you want V2 to drop+recreate, then back to false
-    clean-disabled: true        # safer: disallow flyway clean in prod
-
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-  profiles: prod
+    clean-disabled: true
+    # If you still need the one-time conditional reset V2 script:
+    # placeholders:
+    #   RESET_SCHEMA: "false"
 
 logging:
   level:
     org.flywaydb: INFO
-    root: INFO
-    org.hibernate.SQL: WARN
     org.springframework: INFO
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-
-# IMPORTANT for Render: bind to their assigned port
-server:
-  port: ${PORT:8080}
