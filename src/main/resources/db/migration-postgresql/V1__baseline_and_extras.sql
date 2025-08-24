@@ -1,4 +1,22 @@
 -- PostgreSQL baseline matching current entities
+DO $$ DECLARE
+    r RECORD;
+BEGIN
+    -- Dynamically drop all tables in the current schema
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS "' || r.tablename || '" CASCADE';
+    END LOOP;
+END $$;
+
+--DROP TABLE IF EXISTS device_spec CASCADE;
+--DROP TABLE IF EXISTS spec_key CASCADE;
+--DROP TABLE IF EXISTS device_tag CASCADE;
+--DROP TABLE IF EXISTS tag CASCADE;
+--DROP TABLE IF EXISTS review CASCADE;
+--DROP TABLE IF EXISTS image CASCADE;
+--DROP TABLE IF EXISTS device CASCADE;
+--DROP TABLE IF EXISTS category CASCADE;
+--DROP TABLE IF EXISTS brand CASCADE;
 
 CREATE TABLE IF NOT EXISTS brand (
   id           BIGSERIAL PRIMARY KEY,

@@ -1,9 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db
-    username: comparemydevice_db_user
-    password: jpCrKdT2gxd71ZgUo042SHYIBcv1JsUd
+    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db?sslmode=require
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      connection-timeout: 30000
 
   security:
     user:
@@ -16,19 +21,28 @@ spring:
     show-sql: false
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-
+        jdbc:
+          lob:
+            non_contextual_creation: true
   flyway:
-    enabled: true            # keep if not set in base
-    baseline-on-migrate: true # keep if not set in base
-    locations: classpath:db/migration-postgresql
-
+    enabled: true
+    baseline-on-migrate: true
+    # make sure your SQL files are under src/main/resources/db/migration-postgres
+    locations: classpath:db/migration-postgres
   jackson:
     serialization:
       write-dates-as-timestamps: false
+  sql:
+    init:
+      mode: never
+
 
 logging:
   level:
+    root: INFO
+    org.hibernate.SQL: WARN
     org.springframework: INFO
 
 springdoc:
