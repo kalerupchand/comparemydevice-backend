@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8080}          # Render sets PORT (usually 10000)
+  port: ${PORT:10000}
 
 spring:
   application:
@@ -15,17 +15,9 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info,flyway
-
-logging:
-  level:
-    org.springframework: INFO
-    org.hibernate.SQL: WARN
