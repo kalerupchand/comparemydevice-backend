@@ -29,20 +29,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.modelmapper:modelmapper:3.1.1'
-
-	// Flyway
-	implementation "org.flywaydb:flyway-core:${flywayVersion}"
-	runtimeOnly  "org.flywaydb:flyway-database-postgresql:${flywayVersion}" // no H2 module needed
-
-	// Databases
-	runtimeOnly 'org.postgresql:postgresql'
-	runtimeOnly 'com.h2database:h2' // Boot manages version
-
-	// Utilities
-	implementation 'org.modelmapper:modelmapper:3.1.1'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 	implementation 'commons-io:commons-io:2.15.1'
+
+	// Flyway (core + DB-specific modules you might use)
+	implementation "org.flywaydb:flyway-core:${flywayVersion}"
+	runtimeOnly  "org.flywaydb:flyway-database-postgresql:${flywayVersion}" // only if you still use Postgres anywhere
+	runtimeOnly  "org.flywaydb:flyway-mysql:${flywayVersion}"               // ✅ correct artifact for MySQL
+
+	// JDBC drivers (runtime only; Spring picks the right one via URL)
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
+	runtimeOnly 'com.h2database:h2'  // only used by your dev/test profile
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok:1.18.30'

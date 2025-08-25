@@ -1,10 +1,10 @@
 spring:
   datasource:
     # If app runs on the same Hostinger server, you can use 127.0.0.1 instead of the MySQL host name.
-    url: jdbc:mysql://${DB_HOST:mysql-xxxx.hostinger.com}:3306/u229745468_comparemydevic?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=UTC&useSSL=true&allowPublicKeyRetrieval=true
-    username: ${DB_USERNAME:u229745468_comparemydevic}
-    password: ${DB_PASSWORD:H@YGX3*w}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:${DB_HOST}}:${MYSQL_PORT:3306}/${MYSQL_DB}?useSSL=true&requireSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&characterEncoding=utf8&useUnicode=true
+    username: ${MYSQL_USER:${DB_USERNAME}}
+    password: ${MYSQL_PASS:${DB_PASSWORD}}
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
