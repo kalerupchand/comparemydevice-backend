@@ -1,9 +1,9 @@
 server:
-  port: 8080   # Easier locally; overrides base
+  port: ${PORT:8080}
 
 spring:
   datasource:
-    url: jdbc:h2:mem:cmd;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    url: jdbc:h2:mem:cmd;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
     username: sa
     password:
     driver-class-name: org.h2.Driver

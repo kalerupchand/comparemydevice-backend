@@ -1,12 +1,10 @@
 spring:
   datasource:
-#    url: jdbc:postgresql://dpg-d21r7s2dbo4c73eho1k0-a.oregon-postgres.render.com:5432/comparemydevice_db?sslmode=require&applicationName=CompareMyDevice
-#    username: comparemydevice_db_user
-#    password: jpCrKdT2gxd71ZgUo042SHYIBcv1JsUd
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require&applicationName=CompareMyDevice
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
+    # If app runs on the same Hostinger server, you can use 127.0.0.1 instead of the MySQL host name.
+    url: jdbc:mysql://${DB_HOST:mysql-xxxx.hostinger.com}:3306/u229745468_comparemydevic?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=UTC&useSSL=true&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:u229745468_comparemydevic}
+    password: ${DB_PASSWORD:H@YGX3*w}
+    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
@@ -20,24 +18,18 @@ spring:
     show-sql: false
     properties:
       hibernate:
-        # Dialect auto-detects for PostgreSQL in Hibernate 6; leaving it unset avoids warnings
-        jdbc:
-          lob:
-            non_contextual_creation: true
         format_sql: true
+        # On Hibernate 6+, MySQL dialect auto-detects; no need to set explicitly.
+
   flyway:
     enabled: true
-    schemas: public
-    locations: classpath:db/migration-postgres
+    # No 'schemas' for MySQL; just point to your MySQL migrations folder.
+    locations: classpath:db/migration-mysql
     baseline-on-migrate: true
     validate-on-migrate: true
-    lock-retry-count: 60   # helps during rolling/parallel starts
 
-    # If you temporarily removed/renamed a migration and get validation errors,
-    # UNCOMMENT the next 3 lines for ONE successful boot, then re-enable validation:
-    # validate-on-migrate: false
-    # ignore-missing-migrations: true
-    # repair-on-migrate: true
+server:
+  port: ${PORT:10000}
 
 logging:
   level:

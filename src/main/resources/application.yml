@@ -1,14 +1,13 @@
 server:
-  port: ${PORT:10000}   # Render sets PORT (usually 10000). Local default 10000.
+  port: ${PORT:10000}   # Render/containers set PORT; fallback for local
 
 spring:
   application:
     name: compare-my-device
-
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: none         # Flyway owns the schema
     show-sql: false
     properties:
       hibernate:
@@ -16,7 +15,7 @@ spring:
 
   flyway:
     enabled: true
-    baseline-on-migrate: true
+    baseline-on-migrate: true   # first time: creates flyway_schema_history at V1
 
 management:
   endpoints:
@@ -28,3 +27,4 @@ logging:
   level:
     org.springframework: INFO
     org.hibernate.SQL: WARN
+    org.flywaydb: INFO
