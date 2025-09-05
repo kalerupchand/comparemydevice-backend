@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.text.Normalizer;
 import java.util.*;
@@ -97,7 +98,6 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     @Transactional(readOnly = true)
     public List<DeviceDTO> findByBrand(Long brandId) {
-        // Optional: validate the brand exists to return 404 vs empty
         requireBrand(brandId);
         return deviceRepo.findByBrand_Id(brandId).stream()
                 .map(this::toDeviceDTO)
@@ -122,17 +122,28 @@ public class DeviceServiceImpl implements DeviceService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Unified filter that powers GET /api/devices (no pagination).
+     */
+    @Transactional(readOnly = true)
+    public List<DeviceDTO> filter(String q, Long brandId, Long categoryId, Long tagId) {
+        String qNorm = (StringUtils.hasText(q) ? q.trim() : null);
+        List<Device> list = deviceRepo.filter(qNorm, brandId, categoryId, tagId);
+        return list.stream().map(this::toDeviceDTO).toList();
+    }
+
+    /**
+     * Paginated search that powers GET /api/devices/search.
+     */
     @Override
     @Transactional(readOnly = true)
     public Page<DeviceDTO> search(String q, Pageable pageable) {
-        final String qq = (q == null) ? "" : q.trim();
-
-        // If you want "empty query" to return everything, use findAll; otherwise always call search
-        Page<Device> page = qq.isEmpty()
-                ? deviceRepo.findAll(pageable)
-                : deviceRepo.search(qq, pageable);
-
-        return page.map(d -> mapper.map(d, DeviceDTO.class));
+        String qNorm = (StringUtils.hasText(q) ? q.trim() : null);
+        // When you want to support brand/category/tag filters in /search as well,
+        // expose them in controller & pass through. For now pass nulls:
+        var page = deviceRepo.search(qNorm, null, null, null, pageable);
+        // FIX: avoid mapper::toDto (doesn't exist) -> use your local mapper
+        return page.map(this::toDeviceDTO);
     }
 
     // -------------------- helpers: load / validate --------------------

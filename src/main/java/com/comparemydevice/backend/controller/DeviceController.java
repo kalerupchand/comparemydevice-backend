@@ -4,13 +4,16 @@ package com.comparemydevice.backend.controller;
 import com.comparemydevice.backend.dto.DeviceDTO;
 import com.comparemydevice.backend.service.DeviceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
 
-@RestController @RequestMapping("/api/devices")
+@RestController
+@RequestMapping("/api/devices")
 @RequiredArgsConstructor
 public class DeviceController {
     private final DeviceService service;
@@ -24,8 +27,20 @@ public class DeviceController {
     @GetMapping("/{id}")
     public DeviceDTO get(@PathVariable Long id) { return service.get(id); }
 
+    /**
+     * List devices with optional filters (no pagination).
+     * Matches your frontend `listDevices({ q, brandId, categoryId, tagId })`.
+     */
     @GetMapping
-    public List<DeviceDTO> getAll() { return service.getAll(); }
+    public List<DeviceDTO> getAllFiltered(
+            @RequestParam(value = "q", required = false) String q,
+            @RequestParam(value = "brandId", required = false) Long brandId,
+            @RequestParam(value = "categoryId", required = false) Long categoryId,
+            @RequestParam(value = "tagId", required = false) Long tagId
+    ) {
+        return ((com.comparemydevice.backend.service.impl.DeviceServiceImpl) service)
+                .filter(q, brandId, categoryId, tagId);
+    }
 
     @PutMapping("/{id}")
     public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) { return service.update(id, dto); }
@@ -42,12 +57,14 @@ public class DeviceController {
     @GetMapping("/by-tag/{tagId}")
     public List<DeviceDTO> byTag(@PathVariable Long tagId) { return service.findByTag(tagId); }
 
-    // src/main/java/com/comparemydevice/backend/controller/DeviceController.java
-
+    /**
+     * Optional: paginated search endpoint (kept separate so your existing
+     * frontend that expects a JSON array from /api/devices doesn’t break).
+     */
     @GetMapping("/search")
-    public org.springframework.data.domain.Page<DeviceDTO> search(
+    public Page<DeviceDTO> search(
             @RequestParam("q") String q,
-            @org.springframework.data.web.PageableDefault(size = 20, sort = "name") org.springframework.data.domain.Pageable pageable
+            @PageableDefault(size = 20, sort = "name") org.springframework.data.domain.Pageable pageable
     ) {
         return service.search(q, pageable);
     }
