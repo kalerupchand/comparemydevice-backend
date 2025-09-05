@@ -1,0 +1,42 @@
+spring:
+  config:
+    activate:
+      on-profile: mysql
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:srv1670.hstgr.io}:3306/${DB_NAME:u229745468_comparemydevic}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USER:u229745468_comparemydevic}
+    password: ${DB_PASS:H@YGX3*w}   # <- set via env/secret, not in git
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      connection-timeout: 30000
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        # On Hibernate 6+, MySQL dialect auto-detects; no need to set explicitly.
+
+  flyway:
+    enabled: true
+    # No 'schemas' for MySQL; just point to your MySQL migrations folder.
+    locations: classpath:db/migration-mysql
+    baseline-on-migrate: true
+    validate-on-migrate: false
+    repair-on-migrate: true
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate.SQL: WARN
+    org.flywaydb: INFO
