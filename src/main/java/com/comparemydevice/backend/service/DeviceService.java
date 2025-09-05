@@ -2,6 +2,8 @@
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.DeviceDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ public interface DeviceService {
     DeviceDTO update(Long id, DeviceDTO dto);
     void delete(Long id);
     List<DeviceDTO> getAll();
+    Page<DeviceDTO> search(String q, Pageable pageable);
+
 
     List<DeviceDTO> findByBrand(Long brandId);
     List<DeviceDTO> findByCategory(Long categoryId);

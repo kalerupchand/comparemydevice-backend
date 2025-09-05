@@ -15,6 +15,8 @@ import com.comparemydevice.backend.repository.TagRepository;
 import com.comparemydevice.backend.service.DeviceService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -118,6 +120,19 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRepo.findByTags_Id(tagId).stream()
                 .map(this::toDeviceDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<DeviceDTO> search(String q, Pageable pageable) {
+        final String qq = (q == null) ? "" : q.trim();
+
+        // If you want "empty query" to return everything, use findAll; otherwise always call search
+        Page<Device> page = qq.isEmpty()
+                ? deviceRepo.findAll(pageable)
+                : deviceRepo.search(qq, pageable);
+
+        return page.map(d -> mapper.map(d, DeviceDTO.class));
     }
 
     // -------------------- helpers: load / validate --------------------

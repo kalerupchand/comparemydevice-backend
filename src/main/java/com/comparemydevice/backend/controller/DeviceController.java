@@ -41,4 +41,14 @@ public class DeviceController {
 
     @GetMapping("/by-tag/{tagId}")
     public List<DeviceDTO> byTag(@PathVariable Long tagId) { return service.findByTag(tagId); }
+
+    // src/main/java/com/comparemydevice/backend/controller/DeviceController.java
+
+    @GetMapping("/search")
+    public org.springframework.data.domain.Page<DeviceDTO> search(
+            @RequestParam("q") String q,
+            @org.springframework.data.web.PageableDefault(size = 20, sort = "name") org.springframework.data.domain.Pageable pageable
+    ) {
+        return service.search(q, pageable);
+    }
 }
