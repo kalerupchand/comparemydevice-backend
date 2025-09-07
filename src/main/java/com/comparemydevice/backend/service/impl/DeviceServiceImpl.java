@@ -17,9 +17,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.text.Normalizer;
 import java.util.*;
@@ -41,7 +41,7 @@ public class DeviceServiceImpl implements DeviceService {
     @Transactional
     public DeviceDTO create(DeviceDTO dto) {
         Device device = new Device();
-        device.setIsDeleted(Boolean.FALSE); // default
+        device.setIsDeleted(Boolean.FALSE);
 
         applyBasics(dto, device);
         applyRelations(dto, device);
@@ -62,7 +62,7 @@ public class DeviceServiceImpl implements DeviceService {
     public List<DeviceDTO> getAll() {
         return deviceRepo.findAll().stream()
                 .map(this::toDeviceDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -73,7 +73,6 @@ public class DeviceServiceImpl implements DeviceService {
         applyBasics(dto, device);
         applyRelations(dto, device);
 
-        // Handle slug update / (re)generation
         if (dto.getSlug() != null && !dto.getSlug().isBlank() && !dto.getSlug().equals(device.getSlug())) {
             device.setSlug(generateUniqueSlug(dto.getSlug()));
         } else if (device.getSlug() == null || device.getSlug().isBlank()) {
@@ -88,7 +87,6 @@ public class DeviceServiceImpl implements DeviceService {
     @Transactional
     public void delete(Long id) {
         Device device = getDeviceOrThrow(id);
-        // soft delete
         device.setIsDeleted(Boolean.TRUE);
         deviceRepo.save(device);
     }
@@ -100,8 +98,9 @@ public class DeviceServiceImpl implements DeviceService {
     public List<DeviceDTO> findByBrand(Long brandId) {
         requireBrand(brandId);
         return deviceRepo.findByBrand_Id(brandId).stream()
+                .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
                 .map(this::toDeviceDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -109,8 +108,9 @@ public class DeviceServiceImpl implements DeviceService {
     public List<DeviceDTO> findByCategory(Long categoryId) {
         requireCategory(categoryId);
         return deviceRepo.findByCategory_Id(categoryId).stream()
+                .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
                 .map(this::toDeviceDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -118,32 +118,43 @@ public class DeviceServiceImpl implements DeviceService {
     public List<DeviceDTO> findByTag(Long tagId) {
         requireTag(tagId);
         return deviceRepo.findByTags_Id(tagId).stream()
+                .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
                 .map(this::toDeviceDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    /**
-     * Unified filter that powers GET /api/devices (no pagination).
-     */
-    @Transactional(readOnly = true)
-    public List<DeviceDTO> filter(String q, Long brandId, Long categoryId, Long tagId) {
-        String qNorm = (StringUtils.hasText(q) ? q.trim() : null);
-        List<Device> list = deviceRepo.filter(qNorm, brandId, categoryId, tagId);
-        return list.stream().map(this::toDeviceDTO).toList();
-    }
-
-    /**
-     * Paginated search that powers GET /api/devices/search.
-     */
+    /** Non-paged list for /api/devices to match the frontend. */
     @Override
     @Transactional(readOnly = true)
-    public Page<DeviceDTO> search(String q, Pageable pageable) {
-        String qNorm = (StringUtils.hasText(q) ? q.trim() : null);
-        // When you want to support brand/category/tag filters in /search as well,
-        // expose them in controller & pass through. For now pass nulls:
-        var page = deviceRepo.search(qNorm, null, null, null, pageable);
-        // FIX: avoid mapper::toDto (doesn't exist) -> use your local mapper
-        return page.map(this::toDeviceDTO);
+    public List<DeviceDTO> listFiltered(String q, Long brandId, Long categoryId, Long tagId) {
+        Page<Device> page = deviceRepo.searchAll(safe(q), brandId, categoryId, tagId, Pageable.unpaged());
+        return page.getContent().stream().map(this::toDeviceDTO).toList();
+    }
+
+    /** Paged search for /api/devices/search (if you later need paging). */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<DeviceDTO> search(String q, Long brandId, Long categoryId, Long tagId, Pageable pageable) {
+        Page<Device> page = deviceRepo.searchAll(safe(q), brandId, categoryId, tagId, pageable);
+        // Explicit lambda to avoid method-ref type inference issues in some JDKs
+        List<DeviceDTO> content = page.getContent().stream()
+                .map(d -> toDeviceDTO(d))
+                .toList();
+        return new PageImpl<>(content, page.getPageable(), page.getTotalElements());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<DeviceDTO> findByIds(List<Long> ids) {
+        if (ids == null || ids.isEmpty()) return List.of();
+        return deviceRepo.findAllById(ids).stream()
+                .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
+                .map(this::toDeviceDTO)
+                .toList();
+    }
+
+    private static String safe(String q) {
+        return (q == null || q.isBlank()) ? null : q.trim();
     }
 
     // -------------------- helpers: load / validate --------------------
@@ -191,7 +202,6 @@ public class DeviceServiceImpl implements DeviceService {
         device.setRam(dto.getRam());
         device.setStorage(dto.getStorage());
 
-        // price fields in entity: priceAmount / priceCurrency
         device.setPriceAmount(dto.getPriceAmount());
         if (dto.getPriceCurrency() != null && !dto.getPriceCurrency().isBlank()) {
             device.setPriceCurrency(dto.getPriceCurrency());
@@ -208,7 +218,6 @@ public class DeviceServiceImpl implements DeviceService {
         device.setBrand(requireBrand(dto.getBrandId()));
         device.setCategory(requireCategory(dto.getCategoryId()));
         device.setTags(resolveTags(dto.getTagIds()));
-        // Images/Specs/Reviews are managed by their own services/controllers.
     }
 
     // -------------------- helpers: slug --------------------
@@ -235,7 +244,7 @@ public class DeviceServiceImpl implements DeviceService {
     private static String toSlug(String in) {
         if (in == null) return "item";
         String n = Normalizer.normalize(in, Normalizer.Form.NFD)
-                .replaceAll("\\p{M}", ""); // strip diacritics
+                .replaceAll("\\p{M}", "");
         n = n.toLowerCase(Locale.ROOT)
                 .replaceAll("[^a-z0-9]+", "-")
                 .replaceAll("^-+|-+$", "");
@@ -245,21 +254,14 @@ public class DeviceServiceImpl implements DeviceService {
     // -------------------- mappers: entity → DTO --------------------
 
     private DeviceDTO toDeviceDTO(Device d) {
-        // Uses ModelMapper for direct fields, then fills the rest
         DeviceDTO dto = mapper.map(d, DeviceDTO.class);
-
         dto.setBrandId(d.getBrand() != null ? d.getBrand().getId() : null);
         dto.setCategoryId(d.getCategory() != null ? d.getCategory().getId() : null);
 
         if (d.getTags() != null && !d.getTags().isEmpty()) {
             dto.setTagIds(d.getTags().stream().map(Tag::getId).toList());
-            dto.setTags(d.getTags().stream()
-                    .map(this::toTagDTO)
-                    .toList());
+            dto.setTags(d.getTags().stream().map(this::toTagDTO).toList());
         }
-
-        // We intentionally do NOT populate images/reviews/specs here because
-        // Device entity has no back-references. Those are served by their own services.
         return dto;
     }
 
@@ -267,7 +269,7 @@ public class DeviceServiceImpl implements DeviceService {
         TagDTO dto = new TagDTO();
         dto.setId(t.getId());
         dto.setName(t.getName());
-        dto.setSlug(t.getSlug()); // keep if Tag has slug
+        dto.setSlug(t.getSlug());
         return dto;
     }
 }

@@ -5,11 +5,13 @@ import com.comparemydevice.backend.dto.DeviceDTO;
 import com.comparemydevice.backend.service.DeviceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -25,29 +27,51 @@ public class DeviceController {
     }
 
     @GetMapping("/{id}")
-    public DeviceDTO get(@PathVariable Long id) { return service.get(id); }
-
-    /**
-     * List devices with optional filters (no pagination).
-     * Matches your frontend `listDevices({ q, brandId, categoryId, tagId })`.
-     */
-    @GetMapping
-    public List<DeviceDTO> getAllFiltered(
-            @RequestParam(value = "q", required = false) String q,
-            @RequestParam(value = "brandId", required = false) Long brandId,
-            @RequestParam(value = "categoryId", required = false) Long categoryId,
-            @RequestParam(value = "tagId", required = false) Long tagId
-    ) {
-        return ((com.comparemydevice.backend.service.impl.DeviceServiceImpl) service)
-                .filter(q, brandId, categoryId, tagId);
+    public DeviceDTO get(@PathVariable Long id) {
+        return service.get(id);
     }
 
-    @PutMapping("/{id}")
-    public DeviceDTO update(@PathVariable Long id, @RequestBody DeviceDTO dto) { return service.update(id, dto); }
+    /**
+     * Unified list with optional filters. Returns a plain list (no paging),
+     * which matches your frontend’s listDevices().
+     */
+    @GetMapping
+    public List<DeviceDTO> list(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) Long brandId,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) Long tagId
+    ) {
+        return service.listFiltered(q, brandId, categoryId, tagId);
+    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
+    /**
+     * Paged variant if you need pagination in the future (e.g., infinite scroll).
+     * GET /api/devices/search?q=&brandId=&categoryId=&tagId=&page=&size=
+     */
+    @GetMapping("/search")
+    public Page<DeviceDTO> search(
+            @RequestParam(required = false) String q,
+            @RequestParam(required = false) Long brandId,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) Long tagId,
+            @PageableDefault(size = 20, sort = "name") Pageable pageable
+    ) {
+        return service.search(q, brandId, categoryId, tagId, pageable);
+    }
 
+    /** Compare: /api/devices/compare?ids=1,2,3 */
+    @GetMapping("/compare")
+    public List<DeviceDTO> compare(@RequestParam("ids") String idsCsv) {
+        List<Long> ids = Arrays.stream(idsCsv.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isBlank())
+                .map(Long::valueOf)
+                .toList();
+        return service.findByIds(ids);
+    }
+
+    // legacy filters (still available)
     @GetMapping("/by-brand/{brandId}")
     public List<DeviceDTO> byBrand(@PathVariable Long brandId) { return service.findByBrand(brandId); }
 
@@ -56,16 +80,4 @@ public class DeviceController {
 
     @GetMapping("/by-tag/{tagId}")
     public List<DeviceDTO> byTag(@PathVariable Long tagId) { return service.findByTag(tagId); }
-
-    /**
-     * Optional: paginated search endpoint (kept separate so your existing
-     * frontend that expects a JSON array from /api/devices doesn’t break).
-     */
-    @GetMapping("/search")
-    public Page<DeviceDTO> search(
-            @RequestParam("q") String q,
-            @PageableDefault(size = 20, sort = "name") org.springframework.data.domain.Pageable pageable
-    ) {
-        return service.search(q, pageable);
-    }
 }
