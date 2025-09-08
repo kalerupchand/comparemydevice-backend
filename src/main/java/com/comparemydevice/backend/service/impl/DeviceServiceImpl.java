@@ -157,6 +157,12 @@ public class DeviceServiceImpl implements DeviceService {
         return (q == null || q.isBlank()) ? null : q.trim();
     }
 
+    @Override
+    public List<String> getSearchSuggestions(String query) {
+        if (query == null || query.isBlank()) return List.of();
+        return deviceRepo.findSuggestionsByName(query.trim());
+    }
+
     // -------------------- helpers: load / validate --------------------
 
     private Device getDeviceOrThrow(Long id) {

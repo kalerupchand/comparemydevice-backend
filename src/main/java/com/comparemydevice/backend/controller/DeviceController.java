@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/devices")
@@ -80,4 +81,10 @@ public class DeviceController {
 
     @GetMapping("/by-tag/{tagId}")
     public List<DeviceDTO> byTag(@PathVariable Long tagId) { return service.findByTag(tagId); }
+
+    @GetMapping("/search/suggestions")
+    public ResponseEntity<Map<String, List<String>>> getSuggestions(@RequestParam("q") String query) {
+        List<String> suggestions = service.getSearchSuggestions(query);
+        return ResponseEntity.ok(Map.of("suggestions", suggestions));
+    }
 }

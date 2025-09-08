@@ -45,4 +45,6 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
                            @Param("categoryId") Long categoryId,
                            @Param("tagId") Long tagId,
                            Pageable pageable);
+    @Query("SELECT d.name FROM Device d WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :query, '%')) ORDER BY d.name ASC")
+    List<String> findSuggestionsByName(@Param("query") String query);
 }

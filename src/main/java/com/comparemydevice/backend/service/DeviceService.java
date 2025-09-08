@@ -28,4 +28,5 @@ public interface DeviceService {
 
     // compare
     List<DeviceDTO> findByIds(List<Long> ids);
+    List<String> getSearchSuggestions(String query);
 }
