@@ -4,9 +4,9 @@ spring:
       on-profile: mysql
 
   datasource:
-    url: jdbc:mysql://${DB_HOST:srv1670.hstgr.io}:3306/${DB_NAME:u229745468_comparemydevic}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: ${DB_USER:u229745468_comparemydevic}
-    password: ${DB_PASS:H@YGX3*w}   # <- set via env/secret, not in git
+    url: jdbc:mysql://srv1670.hstgr.io:3306/u229745468_comparemydevic?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8
+    username: u229745468_comparemydevic
+    password: H@YGX3*w
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10
@@ -17,23 +17,26 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: none   # Hibernate won’t touch schema; Flyway will
     show-sql: false
     properties:
       hibernate:
         format_sql: true
-        # On Hibernate 6+, MySQL dialect auto-detects; no need to set explicitly.
+    database-platform: org.hibernate.dialect.MariaDBDialect   # use MySQL8Dialect if your DB is MySQL 8
 
   flyway:
     enabled: true
-    # No 'schemas' for MySQL; just point to your MySQL migrations folder.
     locations: classpath:db/migration-mysql
     baseline-on-migrate: true
     validate-on-migrate: false
     repair-on-migrate: true
+    clean-disabled: false
+    clean-on-validation-error: true
+    # For one-time reset in dev ONLY (dangerous in prod):
+    # clean-disabled: false
 
 server:
-  port: ${PORT:8080}
+  port: 8080
 
 logging:
   level:

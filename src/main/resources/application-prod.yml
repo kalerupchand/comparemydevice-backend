@@ -18,15 +18,18 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        # On Hibernate 6+, MySQL dialect auto-detects; no need to set explicitly.
+    database-platform: org.hibernate.dialect.MariaDBDialect   # use MySQL8Dialect if your DB is MySQL 8
 
   flyway:
     enabled: true
-    # No 'schemas' for MySQL; just point to your MySQL migrations folder.
     locations: classpath:db/migration-mysql
     baseline-on-migrate: true
     validate-on-migrate: false
     repair-on-migrate: true
+    clean-disabled: false
+    clean-on-validation-error: true
+    # For one-time reset in dev ONLY (dangerous in prod):
+    # clean-disabled: false
 
 server:
   port: ${PORT:10000}

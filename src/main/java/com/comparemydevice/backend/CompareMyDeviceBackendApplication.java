@@ -44,6 +44,7 @@ public class CompareMyDeviceBackendApplication {
             DeviceSpecRepository deviceSpecRepo
     ) {
         return args -> {
+            flyway.clean();
             flyway.migrate();
 
             if (brandRepo.count() > 0) {
