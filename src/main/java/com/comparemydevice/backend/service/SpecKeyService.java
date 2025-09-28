@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/SpecKeyService.java
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.SpecKeyDTO;
@@ -11,4 +10,8 @@ public interface SpecKeyService {
     SpecKeyDTO update(Long id, SpecKeyDTO dto);
     void delete(Long id);
     List<SpecKeyDTO> getAll();
+
+    // Lookups / filters
+    SpecKeyDTO findByName(String name);
+    List<SpecKeyDTO> listByType(String specType);
 }

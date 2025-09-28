@@ -8,29 +8,26 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(
         name = "device",
-        uniqueConstraints = @UniqueConstraint(
-                name = "uq_device_brand_name_release",
-                columnNames = {"brand_id","name","release_date"}
-        ),
         indexes = {
                 @Index(name = "idx_device_brand_id", columnList = "brand_id"),
                 @Index(name = "idx_device_category_id", columnList = "category_id"),
                 @Index(name = "idx_device_release_date", columnList = "release_date"),
                 @Index(name = "idx_device_price", columnList = "price_amount"),
-                @Index(name = "idx_device_is_deleted", columnList = "is_deleted"),
-                @Index(name = "idx_device_slug", columnList = "slug")
+                @Index(name = "idx_device_is_deleted", columnList = "is_deleted")
+        },
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uk_device_slug", columnNames = "slug"),
+                @UniqueConstraint(name = "uq_device_brand_name_release", columnNames = {"brand_id", "name", "release_date"})
         }
 )
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Device {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -41,64 +38,72 @@ public class Device {
     private String ram;
     private String storage;
 
-    // matches Flyway: price_amount NUMERIC(12,2), price_currency CHAR(3)
     @Column(name = "price_amount", precision = 12, scale = 2)
     private BigDecimal priceAmount;
 
-    @Column(name = "price_currency", length = 3)
     @Builder.Default
+    @Column(name = "price_currency", length = 3)
     private String priceCurrency = "INR";
 
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, length = 255)
     private String slug;
 
-    @Column(name = "is_deleted", nullable = false)
     @Builder.Default
+    @Column(name = "is_deleted", nullable = false)
     private Boolean isDeleted = Boolean.FALSE;
 
-    // --- parents ---
+    // ---- Relations ----
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "brand_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_device_brand_id"))
+            foreignKey = @ForeignKey(name = "fk_device_brand"))
     private Brand brand;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_device_category_id"))
+            foreignKey = @ForeignKey(name = "fk_device_category"))
     private Category category;
 
-    // --- tags (join table device_tag) ---
-    @ManyToMany
+    /** Use Set to avoid bag issues; order is not enforced at DB level for ManyToMany */
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "device_tag",
-            joinColumns = @JoinColumn(name = "device_id",
-                    foreignKey = @ForeignKey(name = "fk_device_tag_device")),
-            inverseJoinColumns = @JoinColumn(name = "tag_id",
-                    foreignKey = @ForeignKey(name = "fk_device_tag_tag"))
+            joinColumns = @JoinColumn(name = "device_id", foreignKey = @ForeignKey(name = "fk_device_tag_device")),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", foreignKey = @ForeignKey(name = "fk_device_tag_tag"))
     )
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     @Builder.Default
     private Set<Tag> tags = new LinkedHashSet<>();
 
-    // --- child collections (match other entities' mappedBy="device") ---
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
+    /** Keep exactly one bag(List) to avoid MultipleBagFetchException */
+    @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("isPrimary DESC, sortOrder ASC, id ASC")
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     @Builder.Default
     private List<Image> images = new ArrayList<>();
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderBy("id ASC")
+    /** Use Set to avoid multiple bags */
+    @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("id DESC")
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     @Builder.Default
-    private List<Review> reviews = new ArrayList<>();
+    private Set<Review> reviews = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, orphanRemoval = true)
+    /** Use Set to avoid multiple bags; order only by local field */
+    @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("id ASC")
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     @Builder.Default
     private Set<DeviceSpec> deviceSpecs = new LinkedHashSet<>();
 
-    // timestamps (DB default/trigger or JPA @Creation/@Update)
+    // ---- Timestamps ----
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

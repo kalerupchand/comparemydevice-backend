@@ -1,19 +1,19 @@
-// src/main/java/com/comparemydevice/backend/dto/ReviewDTO.java
 package com.comparemydevice.backend.dto;
 
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ReviewDTO {
     private Long id;
-    private Long deviceId;
     private String reviewerName;
     private String content;
-    private BigDecimal rating;    // 0..5 (validated in service)
+    private BigDecimal rating;   // DECIMAL(2,1) -> BigDecimal
     private String sourceUrl;
+
+    private Long deviceId;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -1,11 +1,12 @@
-// src/main/java/com/comparemydevice/backend/service/DeviceService.java
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.DeviceDTO;
+import com.comparemydevice.backend.dto.DeviceSpecDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DeviceService {
     DeviceDTO create(DeviceDTO dto);
@@ -20,13 +21,20 @@ public interface DeviceService {
     List<DeviceDTO> findByCategory(Long categoryId);
     List<DeviceDTO> findByTag(Long tagId);
 
-    // new: unified filters for list endpoint
+    // unified filters for list endpoint
     List<DeviceDTO> listFiltered(String q, Long brandId, Long categoryId, Long tagId);
 
-    // new: paged search (for /api/devices/search)
+    // paged search
     Page<DeviceDTO> search(String q, Long brandId, Long categoryId, Long tagId, Pageable pageable);
 
     // compare
     List<DeviceDTO> findByIds(List<Long> ids);
+
+    // search suggestions
     List<String> getSearchSuggestions(String query);
+
+    // 🔹 New optional features for spec-level comparisons
+    List<DeviceSpecDTO> getSpecsForDevice(Long deviceId);
+
+    Map<String, Map<Long, String>> compareSpecs(List<Long> deviceIds);
 }

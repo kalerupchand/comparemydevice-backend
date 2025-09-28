@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/impl/ReviewServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.ReviewDTO;
@@ -15,51 +14,84 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Service @RequiredArgsConstructor
+@Service
+@RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository repo;
     private final DeviceRepository deviceRepo;
     private final ModelMapper mapper;
 
-    @Override @Transactional
+    // -------------------- Create --------------------
+    @Override
+    @Transactional
     public ReviewDTO create(ReviewDTO dto) {
         validateRating(dto.getRating());
-        Device device = deviceRepo.findById(dto.getDeviceId())
-                .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + dto.getDeviceId()));
+
+        Long deviceId = dto.getDeviceId();
+        Device device = deviceRepo.findById(deviceId)
+                .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + deviceId));
 
         Review r = mapper.map(dto, Review.class);
         r.setId(null);
         r.setDevice(device);
+        r.setReviewerName(clean(dto.getReviewerName()));
+        r.setContent(clean(dto.getContent()));
+        r.setSourceUrl(clean(dto.getSourceUrl()));
+
         return toDTO(repo.save(r));
     }
 
+    // -------------------- Read --------------------
     @Override
-    public ReviewDTO get(Long id) { return toDTO(find(id)); }
-
-    @Override
-    public List<ReviewDTO> getAll() {
-        return repo.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public ReviewDTO get(Long id) {
+        return toDTO(find(id));
     }
 
-    @Override @Transactional
+    @Override
+    @Transactional(readOnly = true)
+    public List<ReviewDTO> getAll() {
+        return repo.findAll().stream().map(this::toDTO).toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ReviewDTO> listByDevice(Long deviceId) {
+        // If you want to validate the device exists, uncomment next line:
+        // deviceRepo.findById(deviceId).orElseThrow(() -> new ResourceNotFoundException("Device not found: " + deviceId));
+        return repo.findByDevice_IdOrderByCreatedAtDesc(deviceId)
+                .stream().map(this::toDTO).toList();
+    }
+
+    // -------------------- Update --------------------
+    @Override
+    @Transactional
     public ReviewDTO update(Long id, ReviewDTO dto) {
         Review r = find(id);
-        if (dto.getReviewerName() != null) r.setReviewerName(dto.getReviewerName());
-        if (dto.getContent() != null) r.setContent(dto.getContent());
-        if (dto.getSourceUrl() != null) r.setSourceUrl(dto.getSourceUrl());
+
+        if (dto.getReviewerName() != null) r.setReviewerName(clean(dto.getReviewerName()));
+        if (dto.getContent() != null)       r.setContent(clean(dto.getContent()));
+        if (dto.getSourceUrl() != null)     r.setSourceUrl(clean(dto.getSourceUrl()));
+
         if (dto.getRating() != null) {
             validateRating(dto.getRating());
             r.setRating(dto.getRating());
         }
+
+        // Note: deviceId is not mutable here.
         return toDTO(repo.save(r));
     }
 
-    @Override @Transactional
-    public void delete(Long id) { repo.delete(find(id)); }
+    // -------------------- Delete --------------------
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        repo.delete(find(id));
+    }
 
+    // -------------------- Helpers --------------------
     private void validateRating(BigDecimal rating) {
         if (rating == null) return;
         if (rating.compareTo(BigDecimal.ZERO) < 0 || rating.compareTo(BigDecimal.valueOf(5)) > 0) {
@@ -68,7 +100,19 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     private Review find(Long id) {
-        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Review not found: " + id));
+        return repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Review not found: " + id));
     }
-    private ReviewDTO toDTO(Review r) { return mapper.map(r, ReviewDTO.class); }
+
+    private String clean(String s) {
+        if (s == null) return null;
+        String t = s.trim();
+        return t.isEmpty() ? null : t;
+    }
+
+    private ReviewDTO toDTO(Review r) {
+        ReviewDTO dto = mapper.map(r, ReviewDTO.class);
+        dto.setDeviceId(r.getDevice() != null ? r.getDevice().getId() : null);
+        return dto;
+    }
 }

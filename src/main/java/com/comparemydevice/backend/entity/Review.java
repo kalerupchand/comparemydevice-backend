@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -14,21 +15,20 @@ public class Review {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "reviewer_name")
+    @Column(name = "reviewer_name", columnDefinition = "text")
     private String reviewerName;
 
-    @Lob
+    @Column(columnDefinition = "text")
     private String content;
 
     @Column(precision = 2, scale = 1)
     private BigDecimal rating;
 
-    @Column(name = "source_url")
+    @Column(name = "source_url", columnDefinition = "text")
     private String sourceUrl;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "device_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_review_device"))
+    @JoinColumn(name = "device_id", nullable = false, foreignKey = @ForeignKey(name = "fk_review_device"))
     private Device device;
 
     @CreationTimestamp @Column(name = "created_at", updatable = false)

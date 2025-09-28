@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/SpecificationService.java
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.DeviceSpecDTO;
@@ -11,4 +10,7 @@ public interface DeviceSpecService {
     DeviceSpecDTO update(Long id, DeviceSpecDTO dto);
     void delete(Long id);
     List<DeviceSpecDTO> getAll();
+
+    // Fetch all specs for a given device (useful for device detail page)
+    List<DeviceSpecDTO> listByDevice(Long deviceId);
 }

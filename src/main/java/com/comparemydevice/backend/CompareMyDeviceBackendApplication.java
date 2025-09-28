@@ -12,9 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -31,7 +28,6 @@ public class CompareMyDeviceBackendApplication {
     }
 
     @Bean
-//    @Profile("prod")
     public CommandLineRunner seedDevData(
             Flyway flyway,
             BrandRepository brandRepo,
@@ -44,6 +40,7 @@ public class CompareMyDeviceBackendApplication {
             DeviceSpecRepository deviceSpecRepo
     ) {
         return args -> {
+            // Danger in prod; fine for dev/reset seeding:
             flyway.clean();
             flyway.migrate();
 
@@ -54,7 +51,6 @@ public class CompareMyDeviceBackendApplication {
 
             final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-            // Read JSON files
             List<BrandDTO> brands = readJson(mapper, "json/brand.json", new TypeReference<>() {});
             List<CategoryDTO> categories = readJson(mapper, "json/category.json", new TypeReference<>() {});
             List<TagDTO> tags = readJson(mapper, "json/tag.json", new TypeReference<>() {});
@@ -64,15 +60,13 @@ public class CompareMyDeviceBackendApplication {
             List<ReviewDTO> reviews = readJson(mapper, "json/review.json", new TypeReference<>() {});
             List<DeviceSpecDTO> deviceSpecs = readJson(mapper, "json/devicespec.json", new TypeReference<>() {});
 
-            // Save data in proper FK order
             seedAll(brands, categories, tags, specKeys, devices, images, reviews, deviceSpecs,
                     brandRepo, categoryRepo, tagRepo, specKeyRepo,
                     deviceRepo, imageRepo, reviewRepo, deviceSpecRepo);
         };
     }
 
-    @Transactional
-    protected void seedAll(
+    private void seedAll(
             List<BrandDTO> brandDTOs,
             List<CategoryDTO> categoryDTOs,
             List<TagDTO> tagDTOs,
@@ -91,62 +85,43 @@ public class CompareMyDeviceBackendApplication {
             DeviceSpecRepository deviceSpecRepo
     ) {
         // Brands
-        List<Brand> brands = brandDTOs.stream()
-                .map(d -> Brand.builder()
-                        .id(d.getId())
-                        .name(d.getName())
-                        .slug(d.getSlug())
-                        .logoUrl(d.getLogoUrl())
-                        .build())
-                .collect(Collectors.toList());
+        List<Brand> brands = brandDTOs.stream().map(d -> Brand.builder()
+                        .id(d.getId()).name(d.getName()).slug(d.getSlug()).logoUrl(d.getLogoUrl()).build())
+                .toList();
         brandRepo.saveAll(brands);
         Map<Long, Brand> brandById = brands.stream()
                 .filter(b -> b.getId() != null)
                 .collect(Collectors.toMap(Brand::getId, Function.identity()));
 
         // Categories
-        List<Category> categories = categoryDTOs.stream()
-                .map(d -> Category.builder()
-                        .id(d.getId())
-                        .name(d.getName())
-                        .slug(d.getSlug())
-                        .iconUrl(d.getIconUrl())
-                        .build())
-                .collect(Collectors.toList());
+        List<Category> categories = categoryDTOs.stream().map(d -> Category.builder()
+                        .id(d.getId()).name(d.getName()).slug(d.getSlug()).iconUrl(d.getIconUrl()).build())
+                .toList();
         categoryRepo.saveAll(categories);
         Map<Long, Category> categoryById = categories.stream()
                 .filter(c -> c.getId() != null)
                 .collect(Collectors.toMap(Category::getId, Function.identity()));
 
         // Tags
-        List<Tag> tags = tagDTOs.stream()
-                .map(d -> Tag.builder()
-                        .id(d.getId())
-                        .name(d.getName())
-                        .slug(d.getSlug())
-                        .build())
-                .collect(Collectors.toList());
+        List<Tag> tags = tagDTOs.stream().map(d -> Tag.builder()
+                        .id(d.getId()).name(d.getName()).slug(d.getSlug()).build())
+                .toList();
         tagRepo.saveAll(tags);
         Map<Long, Tag> tagById = tags.stream()
                 .filter(t -> t.getId() != null)
                 .collect(Collectors.toMap(Tag::getId, Function.identity()));
 
         // Spec Keys
-        List<SpecKey> specKeys = specKeyDTOs.stream()
-                .map(d -> SpecKey.builder()
-                        .id(d.getId())
-                        .name(d.getName())
-                        .specType(d.getSpecType())
-                        .build())
-                .collect(Collectors.toList());
+        List<SpecKey> specKeys = specKeyDTOs.stream().map(d -> SpecKey.builder()
+                        .id(d.getId()).name(d.getName()).specType(d.getSpecType()).build())
+                .toList();
         specKeyRepo.saveAll(specKeys);
         Map<Long, SpecKey> specKeyById = specKeys.stream()
                 .filter(sk -> sk.getId() != null)
                 .collect(Collectors.toMap(SpecKey::getId, Function.identity()));
 
-        // Devices
-        List<Device> devices = deviceDTOs.stream()
-                .map(d -> Device.builder()
+        // Devices (tags = Set to match entity)
+        List<Device> devices = deviceDTOs.stream().map(d -> Device.builder()
                         .id(d.getId())
                         .name(d.getName())
                         .processor(d.getProcessor())
@@ -159,52 +134,49 @@ public class CompareMyDeviceBackendApplication {
                         .isDeleted(Boolean.TRUE.equals(d.getIsDeleted()))
                         .brand(brandById.get(d.getBrandId()))
                         .category(categoryById.get(d.getCategoryId()))
-                        .tags(Optional.ofNullable(d.getTagIds())
-                                .orElseGet(Collections::emptyList)
-                                .stream()
+                        .tags(Optional.ofNullable(d.getTagIds()).orElseGet(List::of).stream()
                                 .map(tagById::get)
+                                .filter(Objects::nonNull)
                                 .collect(Collectors.toCollection(LinkedHashSet::new)))
                         .build())
-                .collect(Collectors.toList());
+                .toList();
         deviceRepo.saveAll(devices);
         Map<Long, Device> deviceById = devices.stream()
                 .filter(dev -> dev.getId() != null)
                 .collect(Collectors.toMap(Device::getId, Function.identity()));
 
-        // Images
-        List<Image> images = imageDTOs.stream()
-                .map(d -> Image.builder()
+        // Images (supports many per device; DB enforces one primary)
+        List<Image> images = imageDTOs.stream().map(d -> Image.builder()
                         .id(d.getId())
                         .url(d.getUrl())
                         .altText(d.getAltText())
                         .isPrimary(Boolean.TRUE.equals(d.getIsPrimary()))
+                        .sortOrder(d.getSortOrder())
                         .device(deviceById.get(d.getDeviceId()))
                         .build())
-                .collect(Collectors.toList());
+                .toList();
         imageRepo.saveAll(images);
 
         // Reviews
-        List<Review> reviews = reviewDTOs.stream()
-                .map(d -> Review.builder()
+        List<Review> reviews = reviewDTOs.stream().map(d -> Review.builder()
                         .id(d.getId())
                         .reviewerName(d.getReviewerName())
                         .content(d.getContent())
-                        .rating(new BigDecimal(d.getRating().toString()))
+                        .rating(d.getRating() == null ? null : new BigDecimal(d.getRating().toString()))
                         .sourceUrl(d.getSourceUrl())
                         .device(deviceById.get(d.getDeviceId()))
                         .build())
-                .collect(Collectors.toList());
+                .toList();
         reviewRepo.saveAll(reviews);
 
         // Device Specs
-        List<DeviceSpec> specs = deviceSpecDTOs.stream()
-                .map(d -> DeviceSpec.builder()
+        List<DeviceSpec> specs = deviceSpecDTOs.stream().map(d -> DeviceSpec.builder()
                         .id(d.getId())
                         .device(deviceById.get(d.getDeviceId()))
                         .specKey(specKeyById.get(d.getSpecKeyId()))
                         .valueText(d.getValueText())
                         .build())
-                .collect(Collectors.toList());
+                .toList();
         deviceSpecRepo.saveAll(specs);
 
         log.info("✔ Seed completed: {} brands, {} categories, {} tags, {} spec keys, {} devices, {} images, {} reviews, {} device specs",
@@ -213,11 +185,12 @@ public class CompareMyDeviceBackendApplication {
     }
 
     private static <T> List<T> readJson(ObjectMapper mapper, String path, TypeReference<List<T>> typeRef) {
-        try (InputStream is = new ClassPathResource(path).getInputStream()) {
+        try (InputStream is = CompareMyDeviceBackendApplication.class.getClassLoader().getResourceAsStream(path)) {
+            if (is == null) return List.of();
             return mapper.readValue(is, typeRef);
         } catch (Exception e) {
             log.error("❌ Failed to read JSON: {} -> {}", path, e.getMessage());
-            return Collections.emptyList();
+            return List.of();
         }
     }
 }

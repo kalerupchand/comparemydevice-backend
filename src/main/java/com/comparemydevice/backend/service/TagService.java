@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/TagService.java
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.TagDTO;
@@ -11,4 +10,9 @@ public interface TagService {
     TagDTO update(Long id, TagDTO dto);
     void delete(Long id);
     List<TagDTO> getAll();
+
+    // New: lookups & suggestions
+    TagDTO findByName(String name);
+    TagDTO findBySlug(String slug);
+    List<String> searchSuggestions(String query);
 }

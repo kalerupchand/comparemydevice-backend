@@ -1,13 +1,8 @@
 -- V1__baseline.sql  (MySQL 8 / MariaDB 10.4+)
--- First-time baseline for CompareMyDevice on MySQL/MariaDB.
--- Charset: utf8mb4, Engine: InnoDB
-
 SET NAMES utf8mb4;
-
 SET @old_sql_notes = @@sql_notes;
 SET sql_notes = 0;
 
--- brand
 CREATE TABLE IF NOT EXISTS `brand` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -21,7 +16,6 @@ CREATE TABLE IF NOT EXISTS `brand` (
   KEY `idx_brand_slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- category
 CREATE TABLE IF NOT EXISTS `category` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -35,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `category` (
   KEY `idx_category_slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- device
 CREATE TABLE IF NOT EXISTS `device` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -47,13 +40,10 @@ CREATE TABLE IF NOT EXISTS `device` (
   `release_date` DATE,
   `slug` VARCHAR(255) NOT NULL,
   `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
-
   `brand_id` BIGINT NOT NULL,
   `category_id` BIGINT NOT NULL,
-
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_device_slug` (`slug`),
   UNIQUE KEY `uq_device_brand_name_release` (`brand_id`, `name`, `release_date`),
@@ -62,12 +52,10 @@ CREATE TABLE IF NOT EXISTS `device` (
   KEY `idx_device_release_date` (`release_date`),
   KEY `idx_device_price` (`price_amount`),
   KEY `idx_device_is_deleted` (`is_deleted`),
-
   CONSTRAINT `fk_device_brand` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
   CONSTRAINT `fk_device_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- image
 CREATE TABLE IF NOT EXISTS `image` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `url` TEXT NOT NULL,
@@ -77,19 +65,15 @@ CREATE TABLE IF NOT EXISTS `image` (
   `device_id` BIGINT NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-  -- STORED (persisted) so it is indexable across MySQL/MariaDB versions
   `primary_device_id` BIGINT GENERATED ALWAYS AS (
     CASE WHEN `is_primary` = 1 THEN `device_id` ELSE NULL END
   ) STORED,
-
   PRIMARY KEY (`id`),
   KEY `idx_image_device_id` (`device_id`),
   CONSTRAINT `fk_image_device` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE CASCADE,
   UNIQUE KEY `uq_image_primary_per_device` (`primary_device_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- review
 CREATE TABLE IF NOT EXISTS `review` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `reviewer_name` TEXT,
@@ -105,7 +89,6 @@ CREATE TABLE IF NOT EXISTS `review` (
   CONSTRAINT `chk_review_rating_range` CHECK (`rating` IS NULL OR (`rating` >= 0 AND `rating` <= 5.0))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- tag
 CREATE TABLE IF NOT EXISTS `tag` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
@@ -116,16 +99,15 @@ CREATE TABLE IF NOT EXISTS `tag` (
   KEY `idx_tag_slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- device_tag
 CREATE TABLE IF NOT EXISTS `device_tag` (
   `device_id` BIGINT NOT NULL,
   `tag_id` BIGINT NOT NULL,
   PRIMARY KEY (`device_id`, `tag_id`),
+  KEY `idx_device_tag_tag_id` (`tag_id`),
   CONSTRAINT `fk_device_tag_device` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_device_tag_tag` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- spec_key
 CREATE TABLE IF NOT EXISTS `spec_key` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
@@ -134,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `spec_key` (
   UNIQUE KEY `uk_spec_key_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- device_spec
 CREATE TABLE IF NOT EXISTS `device_spec` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `device_id` BIGINT NOT NULL,
@@ -149,9 +130,5 @@ CREATE TABLE IF NOT EXISTS `device_spec` (
   CONSTRAINT `fk_device_spec_device` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_device_spec_key` FOREIGN KEY (`spec_key_id`) REFERENCES `spec_key` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Optional: add FULLTEXT index in a separate migration (V2) for prod search
--- CREATE FULLTEXT INDEX `ft_device_text`
---   ON `device` (`name`, `processor`, `ram`, `storage`, `slug`);
 
 SET sql_notes = @old_sql_notes;

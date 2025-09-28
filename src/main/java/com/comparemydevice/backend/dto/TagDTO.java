@@ -1,12 +1,10 @@
-// src/main/java/com/comparemydevice/backend/dto/TagDTO.java
 package com.comparemydevice.backend.dto;
 
 import lombok.*;
 
-@Data @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class TagDTO {
     private Long id;
     private String name;
-    private String slug;     // required (we fixed schema + entity)
+    private String slug;
 }

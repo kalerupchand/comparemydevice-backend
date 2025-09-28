@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/dto/DeviceDTO.java
 package com.comparemydevice.backend.dto;
 
 import lombok.*;
@@ -7,18 +6,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class DeviceDTO {
     private Long id;
+
     private String name;
     private String processor;
     private String ram;
     private String storage;
 
-    // if your entity still uses priceInINR BigDecimal, keep it:
     private BigDecimal priceAmount;
-    private String priceCurrency; // default "INR"
+    private String priceCurrency;
 
     private LocalDate releaseDate;
     private String slug;
@@ -27,13 +25,13 @@ public class DeviceDTO {
     private Long brandId;
     private Long categoryId;
 
-    // tags both as ids and hydrated objects for convenience in read ops
+    /** Lists for API convenience; entity may use Set internally */
     private List<Long> tagIds;
     private List<TagDTO> tags;
 
     private List<ImageDTO> images;
     private List<ReviewDTO> reviews;
-    private List<DeviceSpecDTO> specifications;
+    private List<DeviceSpecDTO> deviceSpecs;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

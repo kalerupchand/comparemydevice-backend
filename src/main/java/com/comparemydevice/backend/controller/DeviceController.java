@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/controller/DeviceController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.DeviceDTO;
@@ -28,14 +27,8 @@ public class DeviceController {
     }
 
     @GetMapping("/{id}")
-    public DeviceDTO get(@PathVariable Long id) {
-        return service.get(id);
-    }
+    public DeviceDTO get(@PathVariable Long id) { return service.get(id); }
 
-    /**
-     * Unified list with optional filters. Returns a plain list (no paging),
-     * which matches your frontend’s listDevices().
-     */
     @GetMapping
     public List<DeviceDTO> list(
             @RequestParam(required = false) String q,
@@ -46,10 +39,6 @@ public class DeviceController {
         return service.listFiltered(q, brandId, categoryId, tagId);
     }
 
-    /**
-     * Paged variant if you need pagination in the future (e.g., infinite scroll).
-     * GET /api/devices/search?q=&brandId=&categoryId=&tagId=&page=&size=
-     */
     @GetMapping("/search")
     public Page<DeviceDTO> search(
             @RequestParam(required = false) String q,
@@ -61,7 +50,6 @@ public class DeviceController {
         return service.search(q, brandId, categoryId, tagId, pageable);
     }
 
-    /** Compare: /api/devices/compare?ids=1,2,3 */
     @GetMapping("/compare")
     public List<DeviceDTO> compare(@RequestParam("ids") String idsCsv) {
         List<Long> ids = Arrays.stream(idsCsv.split(","))
@@ -72,7 +60,6 @@ public class DeviceController {
         return service.findByIds(ids);
     }
 
-    // legacy filters (still available)
     @GetMapping("/by-brand/{brandId}")
     public List<DeviceDTO> byBrand(@PathVariable Long brandId) { return service.findByBrand(brandId); }
 

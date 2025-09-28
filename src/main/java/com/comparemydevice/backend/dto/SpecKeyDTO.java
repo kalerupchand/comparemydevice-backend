@@ -1,12 +1,10 @@
-// src/main/java/com/comparemydevice/backend/dto/SpecKeyDTO.java
 package com.comparemydevice.backend.dto;
 
 import lombok.*;
 
-@Data @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SpecKeyDTO {
     private Long id;
-    private String name;    // ✅ keep this
-    private String specType;
+    private String name;      // aligns with spec_key.name
+    private String specType;  // aligns with spec_key.spec_type
 }

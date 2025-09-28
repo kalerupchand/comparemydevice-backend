@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/impl/ImageServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.ImageDTO;
@@ -14,57 +13,110 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Service @RequiredArgsConstructor
+@Service
+@RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
 
     private final ImageRepository repo;
     private final DeviceRepository deviceRepo;
     private final ModelMapper mapper;
 
-    @Override @Transactional
+    // -------------------- Create --------------------
+    @Override
+    @Transactional
     public ImageDTO create(ImageDTO dto) {
         Device device = deviceRepo.findById(dto.getDeviceId())
                 .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + dto.getDeviceId()));
+
         Image img = mapper.map(dto, Image.class);
         img.setId(null);
         img.setDevice(device);
-        // if H2 (dev) cannot enforce single primary image, prevent here (optional):
-        if (Boolean.TRUE.equals(img.getIsPrimary()) && repo.existsByDevice_IdAndIsPrimaryTrue(device.getId())) {
+
+        // Enforce single primary image per device
+        if (Boolean.TRUE.equals(img.getIsPrimary()) &&
+                repo.existsByDevice_IdAndIsPrimaryTrue(device.getId())) {
             throw new IllegalArgumentException("Device already has a primary image");
         }
+
         return toDTO(repo.save(img));
     }
 
+    // -------------------- Read --------------------
     @Override
-    public ImageDTO get(Long id) { return toDTO(find(id)); }
-
-    @Override
-    public List<ImageDTO> getAll() {
-        return repo.findAll().stream().map(this::toDTO).collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public ImageDTO get(Long id) {
+        return toDTO(find(id));
     }
 
-    @Override @Transactional
+    @Override
+    @Transactional(readOnly = true)
+    public List<ImageDTO> getAll() {
+        return repo.findAll().stream().map(this::toDTO).toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ImageDTO> listByDevice(Long deviceId) {
+        return repo.findByDevice_IdOrderBySortOrderAscIdAsc(deviceId).stream()
+                .map(this::toDTO)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ImageDTO getPrimaryImage(Long deviceId) {
+        Image primary = repo.findFirstByDevice_IdAndIsPrimaryTrue(deviceId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Primary image not found for device: " + deviceId));
+        return toDTO(primary);
+    }
+
+    // -------------------- Update --------------------
+    @Override
+    @Transactional
     public ImageDTO update(Long id, ImageDTO dto) {
         Image img = find(id);
+
         if (dto.getUrl() != null) img.setUrl(dto.getUrl());
         if (dto.getAltText() != null) img.setAltText(dto.getAltText());
         if (dto.getSortOrder() != null) img.setSortOrder(dto.getSortOrder());
-        if (dto.getIsPrimary() != null && dto.getIsPrimary() && !Boolean.TRUE.equals(img.getIsPrimary())) {
-            if (repo.existsByDevice_IdAndIsPrimaryTrue(img.getDevice().getId())) {
-                throw new IllegalArgumentException("Device already has a primary image");
+
+        // Handle primary flag changes
+        if (dto.getIsPrimary() != null) {
+            if (dto.getIsPrimary()) {
+                // If setting this image as primary, unset any other current primary
+                repo.findFirstByDevice_IdAndIsPrimaryTrue(img.getDevice().getId())
+                        .filter(existing -> !existing.getId().equals(img.getId()))
+                        .ifPresent(existing -> {
+                            existing.setIsPrimary(false);
+                            repo.save(existing);
+                        });
+                img.setIsPrimary(true);
+            } else {
+                img.setIsPrimary(false);
             }
         }
-        if (dto.getIsPrimary() != null) img.setIsPrimary(dto.getIsPrimary());
+
         return toDTO(repo.save(img));
     }
 
-    @Override @Transactional
-    public void delete(Long id) { repo.delete(find(id)); }
-
-    private Image find(Long id) {
-        return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Image not found: " + id));
+    // -------------------- Delete --------------------
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        repo.delete(find(id));
     }
-    private ImageDTO toDTO(Image i) { return mapper.map(i, ImageDTO.class); }
+
+    // -------------------- Helpers --------------------
+    private Image find(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Image not found: " + id));
+    }
+
+    private ImageDTO toDTO(Image i) {
+        ImageDTO dto = mapper.map(i, ImageDTO.class);
+        dto.setDeviceId(i.getDevice() != null ? i.getDevice().getId() : null);
+        return dto;
+    }
 }

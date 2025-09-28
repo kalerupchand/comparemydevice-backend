@@ -1,19 +1,24 @@
-// src/main/java/com/comparemydevice/backend/controller/CategoryController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.CategoryDTO;
 import com.comparemydevice.backend.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
 
-@RestController @RequestMapping("/api/categories")
+@RestController
+@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
+
     private final CategoryService service;
+
+    // ---------- CRUD ----------
 
     @PostMapping
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto) {
@@ -24,12 +29,31 @@ public class CategoryController {
     @GetMapping("/{id}")
     public CategoryDTO get(@PathVariable Long id) { return service.get(id); }
 
-    @GetMapping
-    public List<CategoryDTO> getAll() { return service.getAll(); }
-
     @PutMapping("/{id}")
     public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO dto) { return service.update(id, dto); }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // ---------- Lists ----------
+
+    /** Non-paged alphabetical list (good for dropdowns). */
+    @GetMapping
+    public List<CategoryDTO> getAll() { return service.getAll(); }
+
+    /** Paged list for admin UI: /api/categories/page?page=0&size=20&sort=name,asc */
+    @GetMapping("/page")
+    public Page<CategoryDTO> list(Pageable pageable) { return service.list(pageable); }
+
+    // ---------- Lookups / utilities ----------
+
+    @GetMapping("/slug/{slug}")
+    public CategoryDTO getBySlug(@PathVariable String slug) { return service.getBySlug(slug); }
+
+    /** Quick uniqueness check: /api/categories/exists?slug=smartphones */
+    @GetMapping("/exists")
+    public boolean existsBySlug(@RequestParam String slug) { return service.existsBySlug(slug); }
 }

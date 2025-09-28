@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/controller/ReviewController.java
 package com.comparemydevice.backend.controller;
 
 import com.comparemydevice.backend.dto.ReviewDTO;
@@ -10,10 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 
-@RestController @RequestMapping("/api/reviews")
+@RestController
+@RequestMapping("/api/reviews")
 @RequiredArgsConstructor
 public class ReviewController {
+
     private final ReviewService service;
+
+    // -------- CRUD --------
 
     @PostMapping
     public ResponseEntity<ReviewDTO> create(@RequestBody ReviewDTO dto) {
@@ -22,14 +25,31 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public ReviewDTO get(@PathVariable Long id) { return service.get(id); }
+    public ReviewDTO get(@PathVariable Long id) {
+        return service.get(id);
+    }
 
     @GetMapping
-    public List<ReviewDTO> getAll() { return service.getAll(); }
+    public List<ReviewDTO> getAll() {
+        return service.getAll();
+    }
 
     @PutMapping("/{id}")
-    public ReviewDTO update(@PathVariable Long id, @RequestBody ReviewDTO dto) { return service.update(id, dto); }
+    public ReviewDTO update(@PathVariable Long id, @RequestBody ReviewDTO dto) {
+        return service.update(id, dto);
+    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) { service.delete(id); return ResponseEntity.noContent().build(); }
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // -------- Device-scoped listing --------
+
+    /** Get reviews for a specific device (newest first). */
+    @GetMapping("/device/{deviceId}")
+    public List<ReviewDTO> listByDevice(@PathVariable Long deviceId) {
+        return service.listByDevice(deviceId);
+    }
 }

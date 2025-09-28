@@ -1,23 +1,17 @@
-// src/main/java/com/comparemydevice/backend/service/impl/DeviceServiceImpl.java
 package com.comparemydevice.backend.service.impl;
 
 import com.comparemydevice.backend.dto.DeviceDTO;
+import com.comparemydevice.backend.dto.DeviceSpecDTO;
 import com.comparemydevice.backend.dto.TagDTO;
-import com.comparemydevice.backend.entity.Brand;
-import com.comparemydevice.backend.entity.Category;
-import com.comparemydevice.backend.entity.Device;
-import com.comparemydevice.backend.entity.Tag;
+import com.comparemydevice.backend.entity.*;
 import com.comparemydevice.backend.exception.ResourceNotFoundException;
-import com.comparemydevice.backend.repository.BrandRepository;
-import com.comparemydevice.backend.repository.CategoryRepository;
-import com.comparemydevice.backend.repository.DeviceRepository;
-import com.comparemydevice.backend.repository.TagRepository;
+import com.comparemydevice.backend.repository.*;
 import com.comparemydevice.backend.service.DeviceService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +27,7 @@ public class DeviceServiceImpl implements DeviceService {
     private final BrandRepository brandRepo;
     private final CategoryRepository categoryRepo;
     private final TagRepository tagRepo;
+    private final DeviceSpecRepository specRepo;
     private final ModelMapper mapper;
 
     // -------------------- CRUD --------------------
@@ -54,13 +49,16 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     @Transactional(readOnly = true)
     public DeviceDTO get(Long id) {
-        return toDeviceDTO(getDeviceOrThrow(id));
+        Device device = deviceRepo.findWithRelationsById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Device not found: " + id));
+        return toDeviceDTO(device);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<DeviceDTO> getAll() {
         return deviceRepo.findAll().stream()
+                .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
                 .map(this::toDeviceDTO)
                 .toList();
     }
@@ -123,7 +121,6 @@ public class DeviceServiceImpl implements DeviceService {
                 .toList();
     }
 
-    /** Non-paged list for /api/devices to match the frontend. */
     @Override
     @Transactional(readOnly = true)
     public List<DeviceDTO> listFiltered(String q, Long brandId, Long categoryId, Long tagId) {
@@ -131,14 +128,12 @@ public class DeviceServiceImpl implements DeviceService {
         return page.getContent().stream().map(this::toDeviceDTO).toList();
     }
 
-    /** Paged search for /api/devices/search (if you later need paging). */
     @Override
     @Transactional(readOnly = true)
     public Page<DeviceDTO> search(String q, Long brandId, Long categoryId, Long tagId, Pageable pageable) {
         Page<Device> page = deviceRepo.searchAll(safe(q), brandId, categoryId, tagId, pageable);
-        // Explicit lambda to avoid method-ref type inference issues in some JDKs
         List<DeviceDTO> content = page.getContent().stream()
-                .map(d -> toDeviceDTO(d))
+                .map(this::toDeviceDTO)
                 .toList();
         return new PageImpl<>(content, page.getPageable(), page.getTotalElements());
     }
@@ -147,20 +142,65 @@ public class DeviceServiceImpl implements DeviceService {
     @Transactional(readOnly = true)
     public List<DeviceDTO> findByIds(List<Long> ids) {
         if (ids == null || ids.isEmpty()) return List.of();
-        return deviceRepo.findAllById(ids).stream()
+        return deviceRepo.findDistinctByIdIn(ids).stream()
                 .filter(d -> !Boolean.TRUE.equals(d.getIsDeleted()))
                 .map(this::toDeviceDTO)
                 .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<String> getSearchSuggestions(String query) {
+        if (query == null || query.isBlank()) return List.of();
+        return deviceRepo.findSuggestionsByName(query.trim());
     }
 
     private static String safe(String q) {
         return (q == null || q.isBlank()) ? null : q.trim();
     }
 
+    // -------------------- Spec helpers --------------------
+
     @Override
-    public List<String> getSearchSuggestions(String query) {
-        if (query == null || query.isBlank()) return List.of();
-        return deviceRepo.findSuggestionsByName(query.trim());
+    @Transactional(readOnly = true)
+    public List<DeviceSpecDTO> getSpecsForDevice(Long deviceId) {
+        return specRepo.findByDevice_Id(deviceId).stream()
+                .sorted(Comparator.comparing(ds -> ds.getSpecKey() != null ? ds.getSpecKey().getName() : ""))
+                .map(this::toSpecDTO)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Map<String, Map<Long, String>> compareSpecs(List<Long> deviceIds) {
+        if (deviceIds == null || deviceIds.isEmpty()) return Map.of();
+
+        List<Device> devices = deviceRepo.findDistinctByIdIn(deviceIds);
+        if (devices.isEmpty()) return Map.of();
+
+        Map<String, Map<Long, String>> table = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+        for (Device d : devices) {
+            if (Boolean.TRUE.equals(d.getIsDeleted())) continue;
+            Long did = d.getId();
+
+            Collection<DeviceSpec> specs = d.getDeviceSpecs() != null ? d.getDeviceSpecs() : List.of();
+            for (DeviceSpec s : specs) {
+                String keyName = (s.getSpecKey() != null && s.getSpecKey().getName() != null)
+                        ? s.getSpecKey().getName() : "—";
+                String val = s.getValueText();
+
+                table.computeIfAbsent(keyName, k -> new LinkedHashMap<>())
+                        .put(did, val);
+            }
+        }
+
+        // ensure all devices appear in each row
+        for (Map<Long, String> row : table.values()) {
+            for (Long id : deviceIds) row.putIfAbsent(id, null);
+        }
+
+        return table;
     }
 
     // -------------------- helpers: load / validate --------------------
@@ -188,33 +228,41 @@ public class DeviceServiceImpl implements DeviceService {
                 .orElseThrow(() -> new ResourceNotFoundException("Tag not found: " + id));
     }
 
+    /** Return a Set<Tag> to match the entity field type */
     private Set<Tag> resolveTags(List<Long> tagIds) {
         if (tagIds == null || tagIds.isEmpty()) return Collections.emptySet();
-        List<Tag> tags = tagRepo.findAllById(tagIds);
-        Set<Long> requested = new HashSet<>(tagIds);
-        Set<Long> found = tags.stream().map(Tag::getId).collect(Collectors.toSet());
-        if (!found.containsAll(requested)) {
-            requested.removeAll(found);
-            throw new ResourceNotFoundException("Tag(s) not found: " + requested);
+
+        List<Tag> fetched = tagRepo.findAllById(tagIds);
+
+        // validate all requested IDs exist
+        Set<Long> foundIds = fetched.stream().map(Tag::getId).collect(Collectors.toSet());
+        LinkedHashSet<Long> missing = new LinkedHashSet<>(tagIds);
+        missing.removeAll(foundIds);
+        if (!missing.isEmpty()) {
+            throw new ResourceNotFoundException("Tag(s) not found: " + missing);
         }
-        return new LinkedHashSet<>(tags);
+
+        // preserve incoming order, remove duplicates, and return a Set
+        Map<Long, Tag> byId = fetched.stream().collect(Collectors.toMap(Tag::getId, t -> t));
+        LinkedHashSet<Tag> ordered = new LinkedHashSet<>();
+        for (Long id : new LinkedHashSet<>(tagIds)) {
+            ordered.add(byId.get(id));
+        }
+        return ordered;
     }
 
-    // -------------------- helpers: populate entity --------------------
+    // -------------------- populate entity --------------------
 
     private void applyBasics(DeviceDTO dto, Device device) {
         device.setName(dto.getName());
         device.setProcessor(dto.getProcessor());
         device.setRam(dto.getRam());
         device.setStorage(dto.getStorage());
-
         device.setPriceAmount(dto.getPriceAmount());
         if (dto.getPriceCurrency() != null && !dto.getPriceCurrency().isBlank()) {
             device.setPriceCurrency(dto.getPriceCurrency());
         }
-
         device.setReleaseDate(dto.getReleaseDate());
-
         if (dto.getIsDeleted() != null) {
             device.setIsDeleted(dto.getIsDeleted());
         }
@@ -223,10 +271,10 @@ public class DeviceServiceImpl implements DeviceService {
     private void applyRelations(DeviceDTO dto, Device device) {
         device.setBrand(requireBrand(dto.getBrandId()));
         device.setCategory(requireCategory(dto.getCategoryId()));
-        device.setTags(resolveTags(dto.getTagIds()));
+        device.setTags(resolveTags(dto.getTagIds())); // Set<Tag>
     }
 
-    // -------------------- helpers: slug --------------------
+    // -------------------- slug --------------------
 
     private void ensureSlug(Device device, String maybeSlug) {
         if (maybeSlug != null && !maybeSlug.isBlank()) {
@@ -257,7 +305,7 @@ public class DeviceServiceImpl implements DeviceService {
         return n.isBlank() ? "item" : n;
     }
 
-    // -------------------- mappers: entity → DTO --------------------
+    // -------------------- mappers --------------------
 
     private DeviceDTO toDeviceDTO(Device d) {
         DeviceDTO dto = mapper.map(d, DeviceDTO.class);
@@ -268,6 +316,35 @@ public class DeviceServiceImpl implements DeviceService {
             dto.setTagIds(d.getTags().stream().map(Tag::getId).toList());
             dto.setTags(d.getTags().stream().map(this::toTagDTO).toList());
         }
+        if (d.getImages() != null) {
+            dto.setImages(d.getImages().stream().map(img -> {
+                var i = new com.comparemydevice.backend.dto.ImageDTO();
+                i.setId(img.getId());
+                i.setUrl(img.getUrl());
+                i.setAltText(img.getAltText());
+                i.setIsPrimary(img.getIsPrimary());
+                i.setSortOrder(img.getSortOrder());
+                i.setDeviceId(d.getId());
+                return i;
+            }).toList());
+        }
+        if (d.getReviews() != null) {
+            dto.setReviews(d.getReviews().stream().map(r -> {
+                var rv = new com.comparemydevice.backend.dto.ReviewDTO();
+                rv.setId(r.getId());
+                rv.setReviewerName(r.getReviewerName());
+                rv.setContent(r.getContent());
+                rv.setRating(r.getRating());
+                rv.setSourceUrl(r.getSourceUrl());
+                rv.setDeviceId(d.getId());
+                rv.setCreatedAt(r.getCreatedAt());
+                rv.setUpdatedAt(r.getUpdatedAt());
+                return rv;
+            }).toList());
+        }
+        if (d.getDeviceSpecs() != null) {
+            dto.setDeviceSpecs(d.getDeviceSpecs().stream().map(this::toSpecDTO).toList());
+        }
         return dto;
     }
 
@@ -276,6 +353,21 @@ public class DeviceServiceImpl implements DeviceService {
         dto.setId(t.getId());
         dto.setName(t.getName());
         dto.setSlug(t.getSlug());
+        return dto;
+    }
+
+    private DeviceSpecDTO toSpecDTO(DeviceSpec s) {
+        DeviceSpecDTO dto = new DeviceSpecDTO();
+        dto.setId(s.getId());
+        dto.setDeviceId(s.getDevice() != null ? s.getDevice().getId() : null);
+        if (s.getSpecKey() != null) {
+            dto.setSpecKeyId(s.getSpecKey().getId());
+            dto.setSpecKeyName(s.getSpecKey().getName());
+            dto.setSpecType(s.getSpecKey().getSpecType());
+        }
+        dto.setValueText(s.getValueText());
+        dto.setCreatedAt(s.getCreatedAt());
+        dto.setUpdatedAt(s.getUpdatedAt());
         return dto;
     }
 }

@@ -1,14 +1,16 @@
-// src/main/java/com/comparemydevice/backend/repository/DeviceRepository.java
 package com.comparemydevice.backend.repository;
 
 import com.comparemydevice.backend.entity.Device;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface DeviceRepository extends JpaRepository<Device, Long> {
 
@@ -17,6 +19,35 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
     List<Device> findByBrand_Id(Long brandId);
     List<Device> findByCategory_Id(Long categoryId);
     List<Device> findByTags_Id(Long tagId);
+
+    /**
+     * Use this when returning a single device detail to the frontend.
+     * Ensures images, reviews, specs, brand, category and tags are loaded eagerly,
+     * avoiding LazyInitializationException and missing JSON fields.
+     */
+    @EntityGraph(attributePaths = {
+            "images",
+            "reviews",
+            "deviceSpecs",
+            "brand",
+            "category",
+            "tags"
+    })
+    Optional<Device> findWithRelationsById(Long id);
+
+    /**
+     * Eager-load relations for a set of devices (used by compare and any multi-fetch
+     * that needs specs/images/etc.).
+     */
+    @EntityGraph(attributePaths = {
+            "images",
+            "reviews",
+            "deviceSpecs",
+            "brand",
+            "category",
+            "tags"
+    })
+    List<Device> findDistinctByIdIn(Collection<Long> ids);
 
     /**
      * Unified finder with optional filters (q / brand / category / tag).
@@ -45,6 +76,7 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
                            @Param("categoryId") Long categoryId,
                            @Param("tagId") Long tagId,
                            Pageable pageable);
+
     @Query("SELECT d.name FROM Device d WHERE LOWER(d.name) LIKE LOWER(CONCAT('%', :query, '%')) ORDER BY d.name ASC")
     List<String> findSuggestionsByName(@Param("query") String query);
 }

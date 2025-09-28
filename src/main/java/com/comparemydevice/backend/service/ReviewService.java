@@ -1,4 +1,3 @@
-// src/main/java/com/comparemydevice/backend/service/ReviewService.java
 package com.comparemydevice.backend.service;
 
 import com.comparemydevice.backend.dto.ReviewDTO;
@@ -11,4 +10,7 @@ public interface ReviewService {
     ReviewDTO update(Long id, ReviewDTO dto);
     void delete(Long id);
     List<ReviewDTO> getAll();
+
+    // Fetch reviews for a specific device (newest first)
+    List<ReviewDTO> listByDevice(Long deviceId);
 }
