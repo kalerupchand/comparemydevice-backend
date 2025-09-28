@@ -1,57 +1,152 @@
 [
   {
     "id": 1,
+    "name": "Highlights",
+    "specType": "feature"
+  },
+  {
+    "id": 2,
+    "name": "Brand",
+    "specType": "general"
+  },
+  {
+    "id": 3,
+    "name": "Model Name",
+    "specType": "general"
+  },
+  {
+    "id": 4,
+    "name": "Color",
+    "specType": "general"
+  },
+  {
+    "id": 5,
+    "name": "In the Box",
+    "specType": "general"
+  },
+  {
+    "id": 10,
     "name": "Display Size",
     "specType": "display"
   },
   {
-    "id": 2,
+    "id": 11,
     "name": "Display Type",
     "specType": "display"
   },
   {
-    "id": 3,
-    "name": "Battery",
-    "specType": "battery"
+    "id": 12,
+    "name": "Refresh Rate",
+    "specType": "display"
   },
   {
-    "id": 4,
-    "name": "Charging",
-    "specType": "battery"
+    "id": 13,
+    "name": "Resolution",
+    "specType": "display"
   },
   {
-    "id": 5,
-    "name": "Main Camera",
-    "specType": "camera"
-  },
-  {
-    "id": 6,
-    "name": "Selfie Camera",
-    "specType": "camera"
-  },
-  {
-    "id": 7,
+    "id": 20,
     "name": "Chipset",
     "specType": "performance"
   },
   {
-    "id": 8,
+    "id": 21,
+    "name": "CPU",
+    "specType": "performance"
+  },
+  {
+    "id": 22,
+    "name": "GPU",
+    "specType": "performance"
+  },
+  {
+    "id": 23,
     "name": "RAM",
     "specType": "memory"
   },
   {
-    "id": 9,
+    "id": 24,
     "name": "Storage",
     "specType": "memory"
   },
   {
-    "id": 10,
-    "name": "OS",
+    "id": 30,
+    "name": "Rear Camera",
+    "specType": "camera"
+  },
+  {
+    "id": 31,
+    "name": "Front Camera",
+    "specType": "camera"
+  },
+  {
+    "id": 32,
+    "name": "Video Recording",
+    "specType": "camera"
+  },
+  {
+    "id": 40,
+    "name": "Battery Capacity",
+    "specType": "battery"
+  },
+  {
+    "id": 41,
+    "name": "Charging",
+    "specType": "battery"
+  },
+  {
+    "id": 42,
+    "name": "Wireless Charging",
+    "specType": "battery"
+  },
+  {
+    "id": 50,
+    "name": "Network",
+    "specType": "connectivity"
+  },
+  {
+    "id": 51,
+    "name": "SIM",
+    "specType": "connectivity"
+  },
+  {
+    "id": 52,
+    "name": "Wi‑Fi",
+    "specType": "connectivity"
+  },
+  {
+    "id": 53,
+    "name": "Bluetooth",
+    "specType": "connectivity"
+  },
+  {
+    "id": 54,
+    "name": "NFC",
+    "specType": "connectivity"
+  },
+  {
+    "id": 60,
+    "name": "Dimensions",
+    "specType": "dimensions"
+  },
+  {
+    "id": 61,
+    "name": "Weight",
+    "specType": "dimensions"
+  },
+  {
+    "id": 70,
+    "name": "Operating System",
     "specType": "software"
   },
   {
-    "id": 11,
-    "name": "Weight",
-    "specType": "dimensions"
+    "id": 71,
+    "name": "Security Updates",
+    "specType": "software"
+  },
+  {
+    "id": 80,
+    "name": "Warranty Summary",
+    "specType": "warranty"
   }
 ]

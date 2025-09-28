@@ -6,8 +6,8 @@
   },
   {
     "id": 2,
-    "name": "AMOLED",
-    "slug": "amoled"
+    "name": "Fast Charging",
+    "slug": "fast-charging"
   },
   {
     "id": 3,
@@ -16,17 +16,12 @@
   },
   {
     "id": 4,
-    "name": "Budget",
-    "slug": "budget"
+    "name": "High Refresh Rate",
+    "slug": "high-refresh-rate"
   },
   {
     "id": 5,
-    "name": "Foldable",
-    "slug": "foldable"
-  },
-  {
-    "id": 6,
-    "name": "Gaming",
-    "slug": "gaming"
+    "name": "Wireless Charging",
+    "slug": "wireless-charging"
   }
 ]

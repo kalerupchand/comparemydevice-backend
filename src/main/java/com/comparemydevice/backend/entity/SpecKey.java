@@ -24,5 +24,6 @@ public class SpecKey {
 
     @OneToMany(mappedBy = "specKey", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
     @ToString.Exclude @EqualsAndHashCode.Exclude
+    @Builder.Default
     private Set<DeviceSpec> deviceSpecs = new LinkedHashSet<>();
 }

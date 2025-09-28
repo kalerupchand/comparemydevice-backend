@@ -14,7 +14,8 @@
     "categoryId": 1,
     "tagIds": [
       1,
-      3
+      3,
+      5
     ]
   },
   {
@@ -31,7 +32,8 @@
     "brandId": 1,
     "categoryId": 1,
     "tagIds": [
-      1
+      1,
+      5
     ]
   },
   {
@@ -50,29 +52,13 @@
     "tagIds": [
       1,
       2,
-      3
+      3,
+      4,
+      5
     ]
   },
   {
     "id": 4,
-    "name": "Galaxy S24",
-    "processor": "Exynos 2400 / SD 8 Gen 3",
-    "ram": "8GB",
-    "storage": "128GB",
-    "priceAmount": 79999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-01-24",
-    "slug": "samsung-galaxy-s24",
-    "isDeleted": false,
-    "brandId": 2,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": 5,
     "name": "Pixel 8 Pro",
     "processor": "Tensor G3",
     "ram": "12GB",
@@ -86,28 +72,12 @@
     "categoryId": 1,
     "tagIds": [
       1,
-      3
+      3,
+      5
     ]
   },
   {
-    "id": 6,
-    "name": "Pixel 8",
-    "processor": "Tensor G3",
-    "ram": "8GB",
-    "storage": "128GB",
-    "priceAmount": 75999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2023-10-12",
-    "slug": "google-pixel-8",
-    "isDeleted": false,
-    "brandId": 3,
-    "categoryId": 1,
-    "tagIds": [
-      1
-    ]
-  },
-  {
-    "id": 7,
+    "id": 5,
     "name": "OnePlus 12",
     "processor": "Snapdragon 8 Gen 3",
     "ram": "12GB",
@@ -115,255 +85,14 @@
     "priceAmount": 69999.0,
     "priceCurrency": "INR",
     "releaseDate": "2024-01-30",
-    "slug": "oneplus-oneplus-12",
+    "slug": "oneplus-12",
     "isDeleted": false,
     "brandId": 4,
     "categoryId": 1,
     "tagIds": [
       1,
       2,
-      3
-    ]
-  },
-  {
-    "id": 8,
-    "name": "OnePlus 12R",
-    "processor": "Snapdragon 8 Gen 2",
-    "ram": "8GB",
-    "storage": "128GB",
-    "priceAmount": 39999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-01-30",
-    "slug": "oneplus-oneplus-12r",
-    "isDeleted": false,
-    "brandId": 4,
-    "categoryId": 1,
-    "tagIds": [
-      1,
       4
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Xiaomi 14",
-    "processor": "Snapdragon 8 Gen 3",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceAmount": 69999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-03-07",
-    "slug": "xiaomi-xiaomi-14",
-    "isDeleted": false,
-    "brandId": 5,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2,
-      3
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Xiaomi 14 Ultra",
-    "processor": "Snapdragon 8 Gen 3",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceAmount": 99999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-03-07",
-    "slug": "xiaomi-xiaomi-14-ultra",
-    "isDeleted": false,
-    "brandId": 5,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2,
-      3
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Nothing Phone (2)",
-    "processor": "Snapdragon 8+ Gen 1",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceAmount": 49999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2023-07-21",
-    "slug": "nothing-nothing-phone-2",
-    "isDeleted": false,
-    "brandId": 6,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": 12,
-    "name": "Nothing Phone (2a)",
-    "processor": "Dimensity 7200 Pro",
-    "ram": "8GB",
-    "storage": "128GB",
-    "priceAmount": 25999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-03-12",
-    "slug": "nothing-nothing-phone-2a",
-    "isDeleted": false,
-    "brandId": 6,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      4
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Galaxy Z Fold5",
-    "processor": "Snapdragon 8 Gen 2",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceAmount": 154999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2023-08-18",
-    "slug": "samsung-galaxy-z-fold5",
-    "isDeleted": false,
-    "brandId": 2,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      5,
-      3
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Galaxy Z Flip5",
-    "processor": "Snapdragon 8 Gen 2",
-    "ram": "8GB",
-    "storage": "256GB",
-    "priceAmount": 94999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2023-08-18",
-    "slug": "samsung-galaxy-z-flip5",
-    "isDeleted": false,
-    "brandId": 2,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      5
-    ]
-  },
-  {
-    "id": 15,
-    "name": "ROG Phone 8",
-    "processor": "Snapdragon 8 Gen 3",
-    "ram": "16GB",
-    "storage": "256GB",
-    "priceAmount": 89999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-01-09",
-    "slug": "asus-rog-phone-8",
-    "isDeleted": false,
-    "brandId": 7,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      6,
-      2
-    ]
-  },
-  {
-    "id": 16,
-    "name": "Realme GT 6",
-    "processor": "Snapdragon 8s Gen 3",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceAmount": 42999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-06-20",
-    "slug": "realme-realme-gt-6",
-    "isDeleted": false,
-    "brandId": 8,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": 17,
-    "name": "Motorola Edge 50 Pro",
-    "processor": "Snapdragon 7 Gen 3",
-    "ram": "8GB",
-    "storage": "256GB",
-    "priceAmount": 31999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-04-03",
-    "slug": "motorola-motorola-edge-50-pro",
-    "isDeleted": false,
-    "brandId": 9,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2
-    ]
-  },
-  {
-    "id": 18,
-    "name": "Vivo X100 Pro",
-    "processor": "Dimensity 9300",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceAmount": 89999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2023-12-14",
-    "slug": "vivo-vivo-x100-pro",
-    "isDeleted": false,
-    "brandId": 10,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2,
-      3
-    ]
-  },
-  {
-    "id": 19,
-    "name": "Oppo Find X7 Ultra",
-    "processor": "Snapdragon 8 Gen 3",
-    "ram": "16GB",
-    "storage": "512GB",
-    "priceAmount": 104999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-01-08",
-    "slug": "oppo-oppo-find-x7-ultra",
-    "isDeleted": false,
-    "brandId": 11,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2,
-      3
-    ]
-  },
-  {
-    "id": 20,
-    "name": "Sony Xperia 1 VI",
-    "processor": "Snapdragon 8 Gen 3",
-    "ram": "12GB",
-    "storage": "256GB",
-    "priceAmount": 119999.0,
-    "priceCurrency": "INR",
-    "releaseDate": "2024-05-15",
-    "slug": "sony-sony-xperia-1-vi",
-    "isDeleted": false,
-    "brandId": 12,
-    "categoryId": 1,
-    "tagIds": [
-      1,
-      2,
-      3
     ]
   }
 ]

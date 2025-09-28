@@ -165,7 +165,10 @@ public class DeviceServiceImpl implements DeviceService {
     @Transactional(readOnly = true)
     public List<DeviceSpecDTO> getSpecsForDevice(Long deviceId) {
         return specRepo.findByDevice_Id(deviceId).stream()
-                .sorted(Comparator.comparing(ds -> ds.getSpecKey() != null ? ds.getSpecKey().getName() : ""))
+                .sorted(Comparator.comparing(
+                        ds -> ds.getSpecKey() != null && ds.getSpecKey().getName() != null
+                                ? ds.getSpecKey().getName() : "",
+                        String.CASE_INSENSITIVE_ORDER))
                 .map(this::toSpecDTO)
                 .toList();
     }
@@ -228,7 +231,7 @@ public class DeviceServiceImpl implements DeviceService {
                 .orElseThrow(() -> new ResourceNotFoundException("Tag not found: " + id));
     }
 
-    /** Return a Set<Tag> to match the entity field type */
+    /** Return a Set<Tag> to match the entity field type and preserve incoming order. */
     private Set<Tag> resolveTags(List<Long> tagIds) {
         if (tagIds == null || tagIds.isEmpty()) return Collections.emptySet();
 
@@ -312,39 +315,79 @@ public class DeviceServiceImpl implements DeviceService {
         dto.setBrandId(d.getBrand() != null ? d.getBrand().getId() : null);
         dto.setCategoryId(d.getCategory() != null ? d.getCategory().getId() : null);
 
+        // tags
         if (d.getTags() != null && !d.getTags().isEmpty()) {
             dto.setTagIds(d.getTags().stream().map(Tag::getId).toList());
             dto.setTags(d.getTags().stream().map(this::toTagDTO).toList());
+        } else {
+            dto.setTagIds(List.of());
+            dto.setTags(List.of());
         }
-        if (d.getImages() != null) {
-            dto.setImages(d.getImages().stream().map(img -> {
-                var i = new com.comparemydevice.backend.dto.ImageDTO();
-                i.setId(img.getId());
-                i.setUrl(img.getUrl());
-                i.setAltText(img.getAltText());
-                i.setIsPrimary(img.getIsPrimary());
-                i.setSortOrder(img.getSortOrder());
-                i.setDeviceId(d.getId());
-                return i;
-            }).toList());
+
+        // images: Set -> sorted List, include timestamps
+        if (d.getImages() != null && !d.getImages().isEmpty()) {
+            dto.setImages(
+                    d.getImages().stream()
+                            .sorted(Comparator
+                                    .comparing(Image::getIsPrimary, Comparator.nullsLast(Comparator.reverseOrder()))
+                                    .thenComparing(img -> Optional.ofNullable(img.getSortOrder()).orElse(Integer.MAX_VALUE))
+                                    .thenComparing(Image::getId, Comparator.nullsLast(Comparator.naturalOrder())))
+                            .map(img -> {
+                                var i = new com.comparemydevice.backend.dto.ImageDTO();
+                                i.setId(img.getId());
+                                i.setUrl(img.getUrl());
+                                i.setAltText(img.getAltText());
+                                i.setIsPrimary(img.getIsPrimary());
+                                i.setSortOrder(img.getSortOrder());
+                                i.setDeviceId(d.getId());
+                                i.setCreatedAt(img.getCreatedAt());
+                                i.setUpdatedAt(img.getUpdatedAt());
+                                return i;
+                            }).toList()
+            );
+        } else {
+            dto.setImages(List.of());
         }
-        if (d.getReviews() != null) {
-            dto.setReviews(d.getReviews().stream().map(r -> {
-                var rv = new com.comparemydevice.backend.dto.ReviewDTO();
-                rv.setId(r.getId());
-                rv.setReviewerName(r.getReviewerName());
-                rv.setContent(r.getContent());
-                rv.setRating(r.getRating());
-                rv.setSourceUrl(r.getSourceUrl());
-                rv.setDeviceId(d.getId());
-                rv.setCreatedAt(r.getCreatedAt());
-                rv.setUpdatedAt(r.getUpdatedAt());
-                return rv;
-            }).toList());
+
+        // reviews: Set -> List (already id desc via @OrderBy, but we’ll keep it explicit)
+        if (d.getReviews() != null && !d.getReviews().isEmpty()) {
+            dto.setReviews(
+                    d.getReviews().stream()
+                            .sorted(Comparator.comparing(Review::getId, Comparator.nullsLast(Comparator.reverseOrder())))
+                            .map(r -> {
+                                var rv = new com.comparemydevice.backend.dto.ReviewDTO();
+                                rv.setId(r.getId());
+                                rv.setReviewerName(r.getReviewerName());
+                                rv.setContent(r.getContent());
+                                rv.setRating(r.getRating());
+                                rv.setSourceUrl(r.getSourceUrl());
+                                rv.setDeviceId(d.getId());
+                                rv.setCreatedAt(r.getCreatedAt());
+                                rv.setUpdatedAt(r.getUpdatedAt());
+                                return rv;
+                            }).toList()
+            );
+        } else {
+            dto.setReviews(List.of());
         }
-        if (d.getDeviceSpecs() != null) {
-            dto.setDeviceSpecs(d.getDeviceSpecs().stream().map(this::toSpecDTO).toList());
+
+        // specs: Set -> List, sort by specKey name then id
+        if (d.getDeviceSpecs() != null && !d.getDeviceSpecs().isEmpty()) {
+            dto.setDeviceSpecs(
+                    d.getDeviceSpecs().stream()
+                            .sorted(Comparator
+                                    .comparing((DeviceSpec ds) ->
+                                                    ds.getSpecKey() != null && ds.getSpecKey().getName() != null
+                                                            ? ds.getSpecKey().getName() : "",
+                                            String.CASE_INSENSITIVE_ORDER)
+                                    .thenComparing(DeviceSpec::getId, Comparator.nullsLast(Comparator.naturalOrder())))
+                            .map(this::toSpecDTO)
+                            .toList()
+            );
+        } else {
+            dto.setDeviceSpecs(List.of());
         }
+
         return dto;
     }
 

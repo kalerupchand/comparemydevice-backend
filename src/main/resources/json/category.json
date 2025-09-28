@@ -3,6 +3,30 @@
     "id": 1,
     "name": "Smartphone",
     "slug": "smartphone",
-    "iconUrl": "https://cdn-icons-png.flaticon.com/512/15/15874.png"
+    "iconUrl": "https://img.icons8.com/ios-filled/100/smartphone.png"
+  },
+  {
+    "id": 2,
+    "name": "Laptop",
+    "slug": "laptop",
+    "iconUrl": "https://img.icons8.com/ios-filled/100/laptop.png"
+  },
+  {
+    "id": 3,
+    "name": "Tablet",
+    "slug": "tablet",
+    "iconUrl": "https://img.icons8.com/ios-filled/100/tablet.png"
+  },
+  {
+    "id": 4,
+    "name": "Smartwatch",
+    "slug": "smartwatch",
+    "iconUrl": "https://img.icons8.com/ios-filled/100/smart-watch.png"
+  },
+  {
+    "id": 5,
+    "name": "Camera",
+    "slug": "camera",
+    "iconUrl": "https://img.icons8.com/ios-filled/100/camera.png"
   }
 ]

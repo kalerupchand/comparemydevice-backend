@@ -3,1320 +3,786 @@
     "id": 1,
     "deviceId": 1,
     "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "valueText": "• A17 Pro 3nm chipset, ProMotion 120Hz\n• 48MP main + 12MP ultra‑wide + 12MP 5x tetraprism\n• Titanium frame, Action button\n• USB‑C, MagSafe and Qi2 wireless charging\n• IP68 water resistance"
   },
   {
     "id": 2,
     "deviceId": 1,
     "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "valueText": "Apple"
   },
   {
     "id": 3,
     "deviceId": 1,
     "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "valueText": "iPhone 15 Pro"
   },
   {
     "id": 4,
     "deviceId": 1,
     "specKeyId": 4,
-    "valueText": "45W wired"
+    "valueText": "Natural Titanium"
   },
   {
     "id": 5,
     "deviceId": 1,
     "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "valueText": "Handset, USB‑C Cable, Documentation"
   },
   {
     "id": 6,
     "deviceId": 1,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "specKeyId": 10,
+    "valueText": "6.1 inch"
   },
   {
     "id": 7,
     "deviceId": 1,
-    "specKeyId": 7,
-    "valueText": "A17 Pro"
+    "specKeyId": 11,
+    "valueText": "LTPO Super Retina XDR OLED"
   },
   {
     "id": 8,
     "deviceId": 1,
-    "specKeyId": 8,
-    "valueText": "8GB"
+    "specKeyId": 12,
+    "valueText": "1–120 Hz"
   },
   {
     "id": 9,
     "deviceId": 1,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "specKeyId": 13,
+    "valueText": "2556 x 1179 pixels"
   },
   {
     "id": 10,
     "deviceId": 1,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "specKeyId": 20,
+    "valueText": "Apple A17 Pro"
   },
   {
     "id": 11,
     "deviceId": 1,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "specKeyId": 21,
+    "valueText": "Hexa‑core"
   },
   {
     "id": 12,
-    "deviceId": 2,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 1,
+    "specKeyId": 22,
+    "valueText": "Apple‑designed 6‑core GPU"
   },
   {
     "id": 13,
-    "deviceId": 2,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 1,
+    "specKeyId": 23,
+    "valueText": "8 GB"
   },
   {
     "id": 14,
-    "deviceId": 2,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 1,
+    "specKeyId": 24,
+    "valueText": "128 GB NVMe"
   },
   {
     "id": 15,
-    "deviceId": 2,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 1,
+    "specKeyId": 30,
+    "valueText": "48MP + 12MP (ultra‑wide) + 12MP (5x)"
   },
   {
     "id": 16,
-    "deviceId": 2,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 1,
+    "specKeyId": 31,
+    "valueText": "12 MP"
   },
   {
     "id": 17,
-    "deviceId": 2,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 1,
+    "specKeyId": 32,
+    "valueText": "4K@60fps, ProRes"
   },
   {
     "id": 18,
-    "deviceId": 2,
-    "specKeyId": 7,
-    "valueText": "A16 Bionic"
+    "deviceId": 1,
+    "specKeyId": 40,
+    "valueText": "Approx. 3274 mAh"
   },
   {
     "id": 19,
-    "deviceId": 2,
-    "specKeyId": 8,
-    "valueText": "6GB"
+    "deviceId": 1,
+    "specKeyId": 41,
+    "valueText": "Up to 20W wired USB‑C"
   },
   {
     "id": 20,
-    "deviceId": 2,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 1,
+    "specKeyId": 42,
+    "valueText": "MagSafe 15W, Qi2"
   },
   {
     "id": 21,
-    "deviceId": 2,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 1,
+    "specKeyId": 50,
+    "valueText": "5G, 4G LTE, 3G"
   },
   {
     "id": 22,
-    "deviceId": 2,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 1,
+    "specKeyId": 51,
+    "valueText": "Dual eSIM (region dependent)"
   },
   {
     "id": 23,
-    "deviceId": 3,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 1,
+    "specKeyId": 52,
+    "valueText": "Wi‑Fi 6E"
   },
   {
     "id": 24,
-    "deviceId": 3,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 1,
+    "specKeyId": 53,
+    "valueText": "Bluetooth 5.3"
   },
   {
     "id": 25,
-    "deviceId": 3,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 1,
+    "specKeyId": 54,
+    "valueText": "Yes"
   },
   {
     "id": 26,
-    "deviceId": 3,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 1,
+    "specKeyId": 60,
+    "valueText": "146.6 x 70.6 x 8.25 mm"
   },
   {
     "id": 27,
-    "deviceId": 3,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 1,
+    "specKeyId": 61,
+    "valueText": "187 g"
   },
   {
     "id": 28,
-    "deviceId": 3,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 1,
+    "specKeyId": 70,
+    "valueText": "iOS 17"
   },
   {
     "id": 29,
-    "deviceId": 3,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
+    "deviceId": 1,
+    "specKeyId": 80,
+    "valueText": "1 Year Manufacturer Warranty"
   },
   {
     "id": 30,
-    "deviceId": 3,
-    "specKeyId": 8,
-    "valueText": "12GB"
+    "deviceId": 2,
+    "specKeyId": 1,
+    "valueText": "• A16 Bionic for smooth performance\n• 48MP main camera with Photonic Engine\n• Super Retina XDR OLED\n• USB‑C, MagSafe charging\n• IP68 water resistance"
   },
   {
     "id": 31,
-    "deviceId": 3,
-    "specKeyId": 9,
-    "valueText": "256GB"
+    "deviceId": 2,
+    "specKeyId": 2,
+    "valueText": "Apple"
   },
   {
     "id": 32,
-    "deviceId": 3,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 2,
+    "specKeyId": 3,
+    "valueText": "iPhone 15"
   },
   {
     "id": 33,
-    "deviceId": 3,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 2,
+    "specKeyId": 4,
+    "valueText": "Black"
   },
   {
     "id": 34,
-    "deviceId": 4,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 2,
+    "specKeyId": 5,
+    "valueText": "Handset, USB‑C Cable, Documentation"
   },
   {
     "id": 35,
-    "deviceId": 4,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 2,
+    "specKeyId": 10,
+    "valueText": "6.1 inch"
   },
   {
     "id": 36,
-    "deviceId": 4,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 2,
+    "specKeyId": 11,
+    "valueText": "Super Retina XDR OLED"
   },
   {
     "id": 37,
-    "deviceId": 4,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 2,
+    "specKeyId": 12,
+    "valueText": "60 Hz"
   },
   {
     "id": 38,
-    "deviceId": 4,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 2,
+    "specKeyId": 13,
+    "valueText": "2556 x 1179 pixels"
   },
   {
     "id": 39,
-    "deviceId": 4,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 2,
+    "specKeyId": 20,
+    "valueText": "Apple A16 Bionic"
   },
   {
     "id": 40,
-    "deviceId": 4,
-    "specKeyId": 7,
-    "valueText": "Exynos 2400 / SD 8 Gen 3"
+    "deviceId": 2,
+    "specKeyId": 23,
+    "valueText": "6 GB"
   },
   {
     "id": 41,
-    "deviceId": 4,
-    "specKeyId": 8,
-    "valueText": "8GB"
+    "deviceId": 2,
+    "specKeyId": 24,
+    "valueText": "128 GB NVMe"
   },
   {
     "id": 42,
-    "deviceId": 4,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 2,
+    "specKeyId": 30,
+    "valueText": "48MP + 12MP (ultra‑wide)"
   },
   {
     "id": 43,
-    "deviceId": 4,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 2,
+    "specKeyId": 31,
+    "valueText": "12 MP"
   },
   {
     "id": 44,
-    "deviceId": 4,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 2,
+    "specKeyId": 40,
+    "valueText": "Approx. 3349 mAh"
   },
   {
     "id": 45,
-    "deviceId": 5,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 2,
+    "specKeyId": 41,
+    "valueText": "Up to 20W wired"
   },
   {
     "id": 46,
-    "deviceId": 5,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 2,
+    "specKeyId": 42,
+    "valueText": "MagSafe 15W, Qi2"
   },
   {
     "id": 47,
-    "deviceId": 5,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 2,
+    "specKeyId": 50,
+    "valueText": "5G, 4G LTE, 3G"
   },
   {
     "id": 48,
-    "deviceId": 5,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 2,
+    "specKeyId": 52,
+    "valueText": "Wi‑Fi 6"
   },
   {
     "id": 49,
-    "deviceId": 5,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 2,
+    "specKeyId": 53,
+    "valueText": "Bluetooth 5.3"
   },
   {
     "id": 50,
-    "deviceId": 5,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 2,
+    "specKeyId": 60,
+    "valueText": "147.6 x 71.6 x 7.8 mm"
   },
   {
     "id": 51,
-    "deviceId": 5,
-    "specKeyId": 7,
-    "valueText": "Tensor G3"
+    "deviceId": 2,
+    "specKeyId": 61,
+    "valueText": "171 g"
   },
   {
     "id": 52,
-    "deviceId": 5,
-    "specKeyId": 8,
-    "valueText": "12GB"
+    "deviceId": 2,
+    "specKeyId": 70,
+    "valueText": "iOS 17"
   },
   {
     "id": 53,
-    "deviceId": 5,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 2,
+    "specKeyId": 80,
+    "valueText": "1 Year Manufacturer Warranty"
   },
   {
     "id": 54,
-    "deviceId": 5,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 3,
+    "specKeyId": 1,
+    "valueText": "• 200MP quad camera with 5x periscope\n• S Pen in-box\n• LTPO AMOLED 120Hz, 2600 nits\n• Snapdragon 8 Gen 3 for Galaxy\n• 5000 mAh with 45W fast charging"
   },
   {
     "id": 55,
-    "deviceId": 5,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 3,
+    "specKeyId": 2,
+    "valueText": "Samsung"
   },
   {
     "id": 56,
-    "deviceId": 6,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 3,
+    "specKeyId": 3,
+    "valueText": "Galaxy S24 Ultra"
   },
   {
     "id": 57,
-    "deviceId": 6,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 3,
+    "specKeyId": 4,
+    "valueText": "Titanium Gray"
   },
   {
     "id": 58,
-    "deviceId": 6,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 3,
+    "specKeyId": 5,
+    "valueText": "Handset, USB‑C Cable, S Pen, Documentation"
   },
   {
     "id": 59,
-    "deviceId": 6,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 3,
+    "specKeyId": 10,
+    "valueText": "6.8 inch"
   },
   {
     "id": 60,
-    "deviceId": 6,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 3,
+    "specKeyId": 11,
+    "valueText": "LTPO Dynamic AMOLED 2X"
   },
   {
     "id": 61,
-    "deviceId": 6,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 3,
+    "specKeyId": 12,
+    "valueText": "1–120 Hz"
   },
   {
     "id": 62,
-    "deviceId": 6,
-    "specKeyId": 7,
-    "valueText": "Tensor G3"
+    "deviceId": 3,
+    "specKeyId": 13,
+    "valueText": "3120 x 1440 pixels (QHD+)"
   },
   {
     "id": 63,
-    "deviceId": 6,
-    "specKeyId": 8,
-    "valueText": "8GB"
+    "deviceId": 3,
+    "specKeyId": 20,
+    "valueText": "Snapdragon 8 Gen 3 for Galaxy"
   },
   {
     "id": 64,
-    "deviceId": 6,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 3,
+    "specKeyId": 23,
+    "valueText": "12 GB"
   },
   {
     "id": 65,
-    "deviceId": 6,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 3,
+    "specKeyId": 24,
+    "valueText": "256 GB UFS 4.0"
   },
   {
     "id": 66,
-    "deviceId": 6,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 3,
+    "specKeyId": 30,
+    "valueText": "200MP + 50MP (5x) + 10MP (3x) + 12MP (ultra‑wide)"
   },
   {
     "id": 67,
-    "deviceId": 7,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 3,
+    "specKeyId": 31,
+    "valueText": "12 MP"
   },
   {
     "id": 68,
-    "deviceId": 7,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 3,
+    "specKeyId": 32,
+    "valueText": "8K@30fps, 4K@60fps"
   },
   {
     "id": 69,
-    "deviceId": 7,
-    "specKeyId": 3,
+    "deviceId": 3,
+    "specKeyId": 40,
     "valueText": "5000 mAh"
   },
   {
     "id": 70,
-    "deviceId": 7,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 3,
+    "specKeyId": 41,
+    "valueText": "45W wired, PD3.0"
   },
   {
     "id": 71,
-    "deviceId": 7,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 3,
+    "specKeyId": 42,
+    "valueText": "Qi/PMA wireless, reverse wireless"
   },
   {
     "id": 72,
-    "deviceId": 7,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 3,
+    "specKeyId": 50,
+    "valueText": "5G SA/NSA, 4G LTE"
   },
   {
     "id": 73,
-    "deviceId": 7,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
+    "deviceId": 3,
+    "specKeyId": 52,
+    "valueText": "Wi‑Fi 7"
   },
   {
     "id": 74,
-    "deviceId": 7,
-    "specKeyId": 8,
-    "valueText": "12GB"
+    "deviceId": 3,
+    "specKeyId": 53,
+    "valueText": "Bluetooth 5.3"
   },
   {
     "id": 75,
-    "deviceId": 7,
-    "specKeyId": 9,
-    "valueText": "256GB"
+    "deviceId": 3,
+    "specKeyId": 54,
+    "valueText": "Yes"
   },
   {
     "id": 76,
-    "deviceId": 7,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 3,
+    "specKeyId": 60,
+    "valueText": "162.3 x 79.0 x 8.6 mm"
   },
   {
     "id": 77,
-    "deviceId": 7,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 3,
+    "specKeyId": 61,
+    "valueText": "232 g"
   },
   {
     "id": 78,
-    "deviceId": 8,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 3,
+    "specKeyId": 70,
+    "valueText": "Android 14, One UI 6.1"
   },
   {
     "id": 79,
-    "deviceId": 8,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 3,
+    "specKeyId": 71,
+    "valueText": "7 years OS & security (promised)"
   },
   {
     "id": 80,
-    "deviceId": 8,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 3,
+    "specKeyId": 80,
+    "valueText": "1 Year Manufacturer Warranty"
   },
   {
     "id": 81,
-    "deviceId": 8,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 4,
+    "specKeyId": 1,
+    "valueText": "• Triple camera with Pro controls\n• LTPO OLED 120Hz, up to 2400 nits\n• Tensor G3 with on‑device AI\n• 5050 mAh battery with wireless charging\n• 7 years Android & security updates (promised)"
   },
   {
     "id": 82,
-    "deviceId": 8,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 4,
+    "specKeyId": 2,
+    "valueText": "Google"
   },
   {
     "id": 83,
-    "deviceId": 8,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 4,
+    "specKeyId": 3,
+    "valueText": "Pixel 8 Pro"
   },
   {
     "id": 84,
-    "deviceId": 8,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 2"
+    "deviceId": 4,
+    "specKeyId": 4,
+    "valueText": "Obsidian"
   },
   {
     "id": 85,
-    "deviceId": 8,
-    "specKeyId": 8,
-    "valueText": "8GB"
+    "deviceId": 4,
+    "specKeyId": 5,
+    "valueText": "Handset, USB‑C Cable, Quick Switch Adapter, Documentation"
   },
   {
     "id": 86,
-    "deviceId": 8,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 4,
+    "specKeyId": 10,
+    "valueText": "6.7 inch"
   },
   {
     "id": 87,
-    "deviceId": 8,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 4,
+    "specKeyId": 11,
+    "valueText": "LTPO OLED"
   },
   {
     "id": 88,
-    "deviceId": 8,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 4,
+    "specKeyId": 12,
+    "valueText": "1–120 Hz"
   },
   {
     "id": 89,
-    "deviceId": 9,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 4,
+    "specKeyId": 13,
+    "valueText": "2992 x 1344 pixels"
   },
   {
     "id": 90,
-    "deviceId": 9,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 4,
+    "specKeyId": 20,
+    "valueText": "Google Tensor G3"
   },
   {
     "id": 91,
-    "deviceId": 9,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 4,
+    "specKeyId": 23,
+    "valueText": "12 GB"
   },
   {
     "id": 92,
-    "deviceId": 9,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 4,
+    "specKeyId": 24,
+    "valueText": "128 GB UFS 3.1"
   },
   {
     "id": 93,
-    "deviceId": 9,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 4,
+    "specKeyId": 30,
+    "valueText": "50MP + 48MP (5x) + 48MP (ultra‑wide)"
   },
   {
     "id": 94,
-    "deviceId": 9,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 4,
+    "specKeyId": 31,
+    "valueText": "10.5 MP"
   },
   {
     "id": 95,
-    "deviceId": 9,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
+    "deviceId": 4,
+    "specKeyId": 32,
+    "valueText": "4K@60fps, HDR"
   },
   {
     "id": 96,
-    "deviceId": 9,
-    "specKeyId": 8,
-    "valueText": "12GB"
+    "deviceId": 4,
+    "specKeyId": 40,
+    "valueText": "5050 mAh"
   },
   {
     "id": 97,
-    "deviceId": 9,
-    "specKeyId": 9,
-    "valueText": "256GB"
+    "deviceId": 4,
+    "specKeyId": 41,
+    "valueText": "30W wired (approx)"
   },
   {
     "id": 98,
-    "deviceId": 9,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 4,
+    "specKeyId": 42,
+    "valueText": "Qi wireless, reverse wireless"
   },
   {
     "id": 99,
-    "deviceId": 9,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 4,
+    "specKeyId": 50,
+    "valueText": "5G SA/NSA, 4G LTE"
   },
   {
     "id": 100,
-    "deviceId": 10,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 4,
+    "specKeyId": 52,
+    "valueText": "Wi‑Fi 7"
   },
   {
     "id": 101,
-    "deviceId": 10,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 4,
+    "specKeyId": 53,
+    "valueText": "Bluetooth 5.3"
   },
   {
     "id": 102,
-    "deviceId": 10,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 4,
+    "specKeyId": 60,
+    "valueText": "162.6 x 76.5 x 8.8 mm"
   },
   {
     "id": 103,
-    "deviceId": 10,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 4,
+    "specKeyId": 61,
+    "valueText": "213 g"
   },
   {
     "id": 104,
-    "deviceId": 10,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 4,
+    "specKeyId": 70,
+    "valueText": "Android 14"
   },
   {
     "id": 105,
-    "deviceId": 10,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 4,
+    "specKeyId": 71,
+    "valueText": "7 years OS & security (promised)"
   },
   {
     "id": 106,
-    "deviceId": 10,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
+    "deviceId": 4,
+    "specKeyId": 80,
+    "valueText": "1 Year Manufacturer Warranty"
   },
   {
     "id": 107,
-    "deviceId": 10,
-    "specKeyId": 8,
-    "valueText": "16GB"
+    "deviceId": 5,
+    "specKeyId": 1,
+    "valueText": "• Snapdragon 8 Gen 3, up to 16GB RAM\n• LTPO AMOLED 120Hz, 4500 nits peak\n• 50MP triple camera with Hasselblad tuning\n• 5400 mAh with 100W SUPERVOOC\n• Wi‑Fi 7, Bluetooth 5.4"
   },
   {
     "id": 108,
-    "deviceId": 10,
-    "specKeyId": 9,
-    "valueText": "512GB"
+    "deviceId": 5,
+    "specKeyId": 2,
+    "valueText": "OnePlus"
   },
   {
     "id": 109,
-    "deviceId": 10,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 5,
+    "specKeyId": 3,
+    "valueText": "OnePlus 12"
   },
   {
     "id": 110,
-    "deviceId": 10,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 5,
+    "specKeyId": 4,
+    "valueText": "Flowy Emerald"
   },
   {
     "id": 111,
-    "deviceId": 11,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 5,
+    "specKeyId": 5,
+    "valueText": "Handset, 100W Charger, USB‑C Cable, Case, Documentation"
   },
   {
     "id": 112,
-    "deviceId": 11,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 5,
+    "specKeyId": 10,
+    "valueText": "6.82 inch"
   },
   {
     "id": 113,
-    "deviceId": 11,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 5,
+    "specKeyId": 11,
+    "valueText": "LTPO AMOLED"
   },
   {
     "id": 114,
-    "deviceId": 11,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 5,
+    "specKeyId": 12,
+    "valueText": "1–120 Hz"
   },
   {
     "id": 115,
-    "deviceId": 11,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 5,
+    "specKeyId": 13,
+    "valueText": "3168 x 1440 pixels (QHD+)"
   },
   {
     "id": 116,
-    "deviceId": 11,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 5,
+    "specKeyId": 20,
+    "valueText": "Snapdragon 8 Gen 3"
   },
   {
     "id": 117,
-    "deviceId": 11,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8+ Gen 1"
+    "deviceId": 5,
+    "specKeyId": 23,
+    "valueText": "12 GB"
   },
   {
     "id": 118,
-    "deviceId": 11,
-    "specKeyId": 8,
-    "valueText": "12GB"
+    "deviceId": 5,
+    "specKeyId": 24,
+    "valueText": "256 GB UFS 4.0"
   },
   {
     "id": 119,
-    "deviceId": 11,
-    "specKeyId": 9,
-    "valueText": "256GB"
+    "deviceId": 5,
+    "specKeyId": 30,
+    "valueText": "50MP + 64MP (3x) + 48MP (ultra‑wide)"
   },
   {
     "id": 120,
-    "deviceId": 11,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
+    "deviceId": 5,
+    "specKeyId": 31,
+    "valueText": "32 MP"
   },
   {
     "id": 121,
-    "deviceId": 11,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 5,
+    "specKeyId": 32,
+    "valueText": "4K@60fps, 8K@24fps"
   },
   {
     "id": 122,
-    "deviceId": 12,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
+    "deviceId": 5,
+    "specKeyId": 40,
+    "valueText": "5400 mAh"
   },
   {
     "id": 123,
-    "deviceId": 12,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
+    "deviceId": 5,
+    "specKeyId": 41,
+    "valueText": "100W SUPERVOOC wired"
   },
   {
     "id": 124,
-    "deviceId": 12,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
+    "deviceId": 5,
+    "specKeyId": 42,
+    "valueText": "50W AirVOOC wireless (region dependent)"
   },
   {
     "id": 125,
-    "deviceId": 12,
-    "specKeyId": 4,
-    "valueText": "45W wired"
+    "deviceId": 5,
+    "specKeyId": 50,
+    "valueText": "5G SA/NSA, 4G LTE"
   },
   {
     "id": 126,
-    "deviceId": 12,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
+    "deviceId": 5,
+    "specKeyId": 52,
+    "valueText": "Wi‑Fi 7"
   },
   {
     "id": 127,
-    "deviceId": 12,
-    "specKeyId": 6,
-    "valueText": "12 MP"
+    "deviceId": 5,
+    "specKeyId": 53,
+    "valueText": "Bluetooth 5.4"
   },
   {
     "id": 128,
-    "deviceId": 12,
-    "specKeyId": 7,
-    "valueText": "Dimensity 7200 Pro"
+    "deviceId": 5,
+    "specKeyId": 60,
+    "valueText": "164.3 x 75.8 x 9.2 mm"
   },
   {
     "id": 129,
-    "deviceId": 12,
-    "specKeyId": 8,
-    "valueText": "8GB"
+    "deviceId": 5,
+    "specKeyId": 61,
+    "valueText": "220 g"
   },
   {
     "id": 130,
-    "deviceId": 12,
-    "specKeyId": 9,
-    "valueText": "128GB"
+    "deviceId": 5,
+    "specKeyId": 70,
+    "valueText": "Android 14, OxygenOS 14"
   },
   {
     "id": 131,
-    "deviceId": 12,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 132,
-    "deviceId": 12,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 133,
-    "deviceId": 13,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 134,
-    "deviceId": 13,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 135,
-    "deviceId": 13,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 136,
-    "deviceId": 13,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 137,
-    "deviceId": 13,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 138,
-    "deviceId": 13,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 139,
-    "deviceId": 13,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 2"
-  },
-  {
-    "id": 140,
-    "deviceId": 13,
-    "specKeyId": 8,
-    "valueText": "12GB"
-  },
-  {
-    "id": 141,
-    "deviceId": 13,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 142,
-    "deviceId": 13,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 143,
-    "deviceId": 13,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 144,
-    "deviceId": 14,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 145,
-    "deviceId": 14,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 146,
-    "deviceId": 14,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 147,
-    "deviceId": 14,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 148,
-    "deviceId": 14,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 149,
-    "deviceId": 14,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 150,
-    "deviceId": 14,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 2"
-  },
-  {
-    "id": 151,
-    "deviceId": 14,
-    "specKeyId": 8,
-    "valueText": "8GB"
-  },
-  {
-    "id": 152,
-    "deviceId": 14,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 153,
-    "deviceId": 14,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 154,
-    "deviceId": 14,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 155,
-    "deviceId": 15,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 156,
-    "deviceId": 15,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 157,
-    "deviceId": 15,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 158,
-    "deviceId": 15,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 159,
-    "deviceId": 15,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 160,
-    "deviceId": 15,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 161,
-    "deviceId": 15,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
-  },
-  {
-    "id": 162,
-    "deviceId": 15,
-    "specKeyId": 8,
-    "valueText": "16GB"
-  },
-  {
-    "id": 163,
-    "deviceId": 15,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 164,
-    "deviceId": 15,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 165,
-    "deviceId": 15,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 166,
-    "deviceId": 16,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 167,
-    "deviceId": 16,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 168,
-    "deviceId": 16,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 169,
-    "deviceId": 16,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 170,
-    "deviceId": 16,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 171,
-    "deviceId": 16,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 172,
-    "deviceId": 16,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8s Gen 3"
-  },
-  {
-    "id": 173,
-    "deviceId": 16,
-    "specKeyId": 8,
-    "valueText": "12GB"
-  },
-  {
-    "id": 174,
-    "deviceId": 16,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 175,
-    "deviceId": 16,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 176,
-    "deviceId": 16,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 177,
-    "deviceId": 17,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 178,
-    "deviceId": 17,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 179,
-    "deviceId": 17,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 180,
-    "deviceId": 17,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 181,
-    "deviceId": 17,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 182,
-    "deviceId": 17,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 183,
-    "deviceId": 17,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 7 Gen 3"
-  },
-  {
-    "id": 184,
-    "deviceId": 17,
-    "specKeyId": 8,
-    "valueText": "8GB"
-  },
-  {
-    "id": 185,
-    "deviceId": 17,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 186,
-    "deviceId": 17,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 187,
-    "deviceId": 17,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 188,
-    "deviceId": 18,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 189,
-    "deviceId": 18,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 190,
-    "deviceId": 18,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 191,
-    "deviceId": 18,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 192,
-    "deviceId": 18,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 193,
-    "deviceId": 18,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 194,
-    "deviceId": 18,
-    "specKeyId": 7,
-    "valueText": "Dimensity 9300"
-  },
-  {
-    "id": 195,
-    "deviceId": 18,
-    "specKeyId": 8,
-    "valueText": "16GB"
-  },
-  {
-    "id": 196,
-    "deviceId": 18,
-    "specKeyId": 9,
-    "valueText": "512GB"
-  },
-  {
-    "id": 197,
-    "deviceId": 18,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 198,
-    "deviceId": 18,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 199,
-    "deviceId": 19,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 200,
-    "deviceId": 19,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 201,
-    "deviceId": 19,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 202,
-    "deviceId": 19,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 203,
-    "deviceId": 19,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 204,
-    "deviceId": 19,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 205,
-    "deviceId": 19,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
-  },
-  {
-    "id": 206,
-    "deviceId": 19,
-    "specKeyId": 8,
-    "valueText": "16GB"
-  },
-  {
-    "id": 207,
-    "deviceId": 19,
-    "specKeyId": 9,
-    "valueText": "512GB"
-  },
-  {
-    "id": 208,
-    "deviceId": 19,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 209,
-    "deviceId": 19,
-    "specKeyId": 11,
-    "valueText": "~190g"
-  },
-  {
-    "id": 210,
-    "deviceId": 20,
-    "specKeyId": 1,
-    "valueText": "6.7-inch"
-  },
-  {
-    "id": 211,
-    "deviceId": 20,
-    "specKeyId": 2,
-    "valueText": "AMOLED, 120Hz"
-  },
-  {
-    "id": 212,
-    "deviceId": 20,
-    "specKeyId": 3,
-    "valueText": "5000 mAh"
-  },
-  {
-    "id": 213,
-    "deviceId": 20,
-    "specKeyId": 4,
-    "valueText": "45W wired"
-  },
-  {
-    "id": 214,
-    "deviceId": 20,
-    "specKeyId": 5,
-    "valueText": "50 MP + 12 MP + 10 MP"
-  },
-  {
-    "id": 215,
-    "deviceId": 20,
-    "specKeyId": 6,
-    "valueText": "12 MP"
-  },
-  {
-    "id": 216,
-    "deviceId": 20,
-    "specKeyId": 7,
-    "valueText": "Snapdragon 8 Gen 3"
-  },
-  {
-    "id": 217,
-    "deviceId": 20,
-    "specKeyId": 8,
-    "valueText": "12GB"
-  },
-  {
-    "id": 218,
-    "deviceId": 20,
-    "specKeyId": 9,
-    "valueText": "256GB"
-  },
-  {
-    "id": 219,
-    "deviceId": 20,
-    "specKeyId": 10,
-    "valueText": "Android 14 / iOS 17"
-  },
-  {
-    "id": 220,
-    "deviceId": 20,
-    "specKeyId": 11,
-    "valueText": "~190g"
+    "deviceId": 5,
+    "specKeyId": 80,
+    "valueText": "1 Year Manufacturer Warranty"
   }
 ]

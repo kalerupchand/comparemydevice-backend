@@ -1,162 +1,52 @@
 [
   {
     "id": 1,
-    "deviceId": 1,
     "reviewerName": "Tech Reviewer",
-    "content": "iPhone 15 Pro offers excellent performance and battery life.",
-    "rating": 4.2,
-    "sourceUrl": "https://www.techradar.com/"
+    "content": "Premium build, excellent performance and cameras.",
+    "rating": 4.6,
+    "sourceUrl": "https://www.techradar.com/",
+    "deviceId": 1,
+    "createdAt": "2025-09-28T12:01:13",
+    "updatedAt": "2025-09-28T12:01:13"
   },
   {
     "id": 2,
-    "deviceId": 2,
-    "reviewerName": "Tech Reviewer",
-    "content": "iPhone 15 offers excellent performance and battery life.",
+    "reviewerName": "Gadget Guru",
+    "content": "Solid all-rounder with great camera and battery life.",
     "rating": 4.4,
-    "sourceUrl": "https://www.techradar.com/"
+    "sourceUrl": "https://www.gsmarena.com/",
+    "deviceId": 2,
+    "createdAt": "2025-09-28T12:01:13",
+    "updatedAt": "2025-09-28T12:01:13"
   },
   {
     "id": 3,
+    "reviewerName": "The Verge",
+    "content": "Top-tier display and S Pen make it the ultimate Android flagship.",
+    "rating": 4.7,
+    "sourceUrl": "https://www.theverge.com/",
     "deviceId": 3,
-    "reviewerName": "Tech Reviewer",
-    "content": "Galaxy S24 Ultra offers excellent performance and battery life.",
-    "rating": 4.6,
-    "sourceUrl": "https://www.techradar.com/"
+    "createdAt": "2025-09-28T12:01:13",
+    "updatedAt": "2025-09-28T12:01:13"
   },
   {
     "id": 4,
+    "reviewerName": "Android Authority",
+    "content": "Smart features with excellent cameras; improved thermals.",
+    "rating": 4.5,
+    "sourceUrl": "https://www.androidauthority.com/",
     "deviceId": 4,
-    "reviewerName": "Tech Reviewer",
-    "content": "Galaxy S24 offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
+    "createdAt": "2025-09-28T12:01:13",
+    "updatedAt": "2025-09-28T12:01:13"
   },
   {
     "id": 5,
+    "reviewerName": "Mrwhosetheboss",
+    "content": "Fast, fluid, and efficient with blazing quick charging.",
+    "rating": 4.6,
+    "sourceUrl": "https://www.youtube.com/",
     "deviceId": 5,
-    "reviewerName": "Tech Reviewer",
-    "content": "Pixel 8 Pro offers excellent performance and battery life.",
-    "rating": 5.0,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 6,
-    "deviceId": 6,
-    "reviewerName": "Tech Reviewer",
-    "content": "Pixel 8 offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 7,
-    "deviceId": 7,
-    "reviewerName": "Tech Reviewer",
-    "content": "OnePlus 12 offers excellent performance and battery life.",
-    "rating": 4.0,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 8,
-    "deviceId": 8,
-    "reviewerName": "Tech Reviewer",
-    "content": "OnePlus 12R offers excellent performance and battery life.",
-    "rating": 4.2,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 9,
-    "deviceId": 9,
-    "reviewerName": "Tech Reviewer",
-    "content": "Xiaomi 14 offers excellent performance and battery life.",
-    "rating": 4.4,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 10,
-    "deviceId": 10,
-    "reviewerName": "Tech Reviewer",
-    "content": "Xiaomi 14 Ultra offers excellent performance and battery life.",
-    "rating": 4.6,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 11,
-    "deviceId": 11,
-    "reviewerName": "Tech Reviewer",
-    "content": "Nothing Phone (2) offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 12,
-    "deviceId": 12,
-    "reviewerName": "Tech Reviewer",
-    "content": "Nothing Phone (2a) offers excellent performance and battery life.",
-    "rating": 5.0,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 13,
-    "deviceId": 13,
-    "reviewerName": "Tech Reviewer",
-    "content": "Galaxy Z Fold5 offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 14,
-    "deviceId": 14,
-    "reviewerName": "Tech Reviewer",
-    "content": "Galaxy Z Flip5 offers excellent performance and battery life.",
-    "rating": 4.0,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 15,
-    "deviceId": 15,
-    "reviewerName": "Tech Reviewer",
-    "content": "ROG Phone 8 offers excellent performance and battery life.",
-    "rating": 4.2,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 16,
-    "deviceId": 16,
-    "reviewerName": "Tech Reviewer",
-    "content": "Realme GT 6 offers excellent performance and battery life.",
-    "rating": 4.4,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 17,
-    "deviceId": 17,
-    "reviewerName": "Tech Reviewer",
-    "content": "Motorola Edge 50 Pro offers excellent performance and battery life.",
-    "rating": 4.6,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 18,
-    "deviceId": 18,
-    "reviewerName": "Tech Reviewer",
-    "content": "Vivo X100 Pro offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 19,
-    "deviceId": 19,
-    "reviewerName": "Tech Reviewer",
-    "content": "Oppo Find X7 Ultra offers excellent performance and battery life.",
-    "rating": 5.0,
-    "sourceUrl": "https://www.techradar.com/"
-  },
-  {
-    "id": 20,
-    "deviceId": 20,
-    "reviewerName": "Tech Reviewer",
-    "content": "Sony Xperia 1 VI offers excellent performance and battery life.",
-    "rating": 4.8,
-    "sourceUrl": "https://www.techradar.com/"
+    "createdAt": "2025-09-28T12:01:13",
+    "updatedAt": "2025-09-28T12:01:13"
   }
 ]

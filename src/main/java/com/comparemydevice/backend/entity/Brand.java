@@ -40,5 +40,6 @@ public class Brand {
 
     @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
     @ToString.Exclude @EqualsAndHashCode.Exclude
+    @Builder.Default
     private Set<Device> devices = new LinkedHashSet<>();
 }

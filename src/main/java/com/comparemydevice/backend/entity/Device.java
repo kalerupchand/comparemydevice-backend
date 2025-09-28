@@ -67,7 +67,7 @@ public class Device {
             foreignKey = @ForeignKey(name = "fk_device_category"))
     private Category category;
 
-    /** Use Set to avoid bag issues; order is not enforced at DB level for ManyToMany */
+    /** Use Set to avoid duplicates from multi-collection fetches */
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "device_tag",
@@ -78,15 +78,15 @@ public class Device {
     @Builder.Default
     private Set<Tag> tags = new LinkedHashSet<>();
 
-    /** Keep exactly one bag(List) to avoid MultipleBagFetchException */
+    /** Use Set (not List) to collapse duplicates from Cartesian products */
     @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("isPrimary DESC, sortOrder ASC, id ASC")
     @ToString.Exclude @EqualsAndHashCode.Exclude
     @Builder.Default
-    private List<Image> images = new ArrayList<>();
+    private Set<Image> images = new LinkedHashSet<>();
 
-    /** Use Set to avoid multiple bags */
+    /** Set to avoid multiple bags and duplicates */
     @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("id DESC")
@@ -94,7 +94,7 @@ public class Device {
     @Builder.Default
     private Set<Review> reviews = new LinkedHashSet<>();
 
-    /** Use Set to avoid multiple bags; order only by local field */
+    /** Set to avoid multiple bags; order only by local field */
     @OneToMany(mappedBy = "device", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("id ASC")

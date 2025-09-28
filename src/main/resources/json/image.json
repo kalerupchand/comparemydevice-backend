@@ -1,142 +1,202 @@
 [
   {
     "id": 1,
-    "deviceId": 1,
     "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5",
     "altText": "iPhone 15 Pro - front",
-    "isPrimary": true
+    "isPrimary": true,
+    "sortOrder": 1,
+    "deviceId": 1
   },
   {
     "id": 2,
-    "deviceId": 2,
-    "url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
-    "altText": "iPhone 15 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+    "altText": "iPhone 15 Pro - back",
+    "isPrimary": false,
+    "sortOrder": 2,
+    "deviceId": 1
   },
   {
     "id": 3,
-    "deviceId": 3,
-    "url": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-    "altText": "Galaxy S24 Ultra - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "altText": "iPhone 15 Pro - side",
+    "isPrimary": false,
+    "sortOrder": 3,
+    "deviceId": 1
   },
   {
     "id": 4,
-    "deviceId": 4,
-    "url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-    "altText": "Galaxy S24 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    "altText": "iPhone 15 Pro - camera closeup",
+    "isPrimary": false,
+    "sortOrder": 4,
+    "deviceId": 1
   },
   {
     "id": 5,
-    "deviceId": 5,
     "url": "https://images.unsplash.com/photo-1491933382434-500287f9b54b",
-    "altText": "Pixel 8 Pro - front",
-    "isPrimary": true
+    "altText": "iPhone 15 Pro - box",
+    "isPrimary": false,
+    "sortOrder": 5,
+    "deviceId": 1
   },
   {
     "id": 6,
-    "deviceId": 6,
-    "url": "https://images.unsplash.com/photo-1512499617640-c2f999098c32",
-    "altText": "Pixel 8 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
+    "altText": "iPhone 15 - front",
+    "isPrimary": true,
+    "sortOrder": 1,
+    "deviceId": 2
   },
   {
     "id": 7,
-    "deviceId": 7,
-    "url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-    "altText": "OnePlus 12 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "altText": "iPhone 15 - back",
+    "isPrimary": false,
+    "sortOrder": 2,
+    "deviceId": 2
   },
   {
     "id": 8,
-    "deviceId": 8,
-    "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5",
-    "altText": "OnePlus 12R - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "altText": "iPhone 15 - display",
+    "isPrimary": false,
+    "sortOrder": 3,
+    "deviceId": 2
   },
   {
     "id": 9,
-    "deviceId": 9,
-    "url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
-    "altText": "Xiaomi 14 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1484704849700-f032a568e944",
+    "altText": "iPhone 15 - camera",
+    "isPrimary": false,
+    "sortOrder": 4,
+    "deviceId": 2
   },
   {
     "id": 10,
-    "deviceId": 10,
-    "url": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-    "altText": "Xiaomi 14 Ultra - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5",
+    "altText": "iPhone 15 - accessories",
+    "isPrimary": false,
+    "sortOrder": 5,
+    "deviceId": 2
   },
   {
     "id": 11,
-    "deviceId": 11,
-    "url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-    "altText": "Nothing Phone (2) - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+    "altText": "Galaxy S24 Ultra - front",
+    "isPrimary": true,
+    "sortOrder": 1,
+    "deviceId": 3
   },
   {
     "id": 12,
-    "deviceId": 12,
-    "url": "https://images.unsplash.com/photo-1491933382434-500287f9b54b",
-    "altText": "Nothing Phone (2a) - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1512499617640-c2f999098c32",
+    "altText": "Galaxy S24 Ultra - back",
+    "isPrimary": false,
+    "sortOrder": 2,
+    "deviceId": 3
   },
   {
     "id": 13,
-    "deviceId": 13,
-    "url": "https://images.unsplash.com/photo-1512499617640-c2f999098c32",
-    "altText": "Galaxy Z Fold5 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1454165205744-3b78555e5572",
+    "altText": "Galaxy S24 Ultra - S Pen",
+    "isPrimary": false,
+    "sortOrder": 3,
+    "deviceId": 3
   },
   {
     "id": 14,
-    "deviceId": 14,
-    "url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-    "altText": "Galaxy Z Flip5 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "altText": "Galaxy S24 Ultra - display",
+    "isPrimary": false,
+    "sortOrder": 4,
+    "deviceId": 3
   },
   {
     "id": 15,
-    "deviceId": 15,
-    "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5",
-    "altText": "ROG Phone 8 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1473654729523-203e25dfda10",
+    "altText": "Galaxy S24 Ultra - camera",
+    "isPrimary": false,
+    "sortOrder": 5,
+    "deviceId": 3
   },
   {
     "id": 16,
-    "deviceId": 16,
-    "url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
-    "altText": "Realme GT 6 - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "altText": "Pixel 8 Pro - front",
+    "isPrimary": true,
+    "sortOrder": 1,
+    "deviceId": 4
   },
   {
     "id": 17,
-    "deviceId": 17,
-    "url": "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
-    "altText": "Motorola Edge 50 Pro - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "altText": "Pixel 8 Pro - back",
+    "isPrimary": false,
+    "sortOrder": 2,
+    "deviceId": 4
   },
   {
     "id": 18,
-    "deviceId": 18,
-    "url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-    "altText": "Vivo X100 Pro - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "altText": "Pixel 8 Pro - display",
+    "isPrimary": false,
+    "sortOrder": 3,
+    "deviceId": 4
   },
   {
     "id": 19,
-    "deviceId": 19,
-    "url": "https://images.unsplash.com/photo-1491933382434-500287f9b54b",
-    "altText": "Oppo Find X7 Ultra - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1539883371419-3f9b1c7c6bfe",
+    "altText": "Pixel 8 Pro - camera",
+    "isPrimary": false,
+    "sortOrder": 4,
+    "deviceId": 4
   },
   {
     "id": 20,
-    "deviceId": 20,
-    "url": "https://images.unsplash.com/photo-1512499617640-c2f999098c32",
-    "altText": "Sony Xperia 1 VI - front",
-    "isPrimary": true
+    "url": "https://images.unsplash.com/photo-1481277542470-605612bd2d61",
+    "altText": "Pixel 8 Pro - in hand",
+    "isPrimary": false,
+    "sortOrder": 5,
+    "deviceId": 4
+  },
+  {
+    "id": 21,
+    "url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    "altText": "OnePlus 12 - front",
+    "isPrimary": true,
+    "sortOrder": 1,
+    "deviceId": 5
+  },
+  {
+    "id": 22,
+    "url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "altText": "OnePlus 12 - back",
+    "isPrimary": false,
+    "sortOrder": 2,
+    "deviceId": 5
+  },
+  {
+    "id": 23,
+    "url": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5",
+    "altText": "OnePlus 12 - display",
+    "isPrimary": false,
+    "sortOrder": 3,
+    "deviceId": 5
+  },
+  {
+    "id": 24,
+    "url": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "altText": "OnePlus 12 - camera",
+    "isPrimary": false,
+    "sortOrder": 4,
+    "deviceId": 5
+  },
+  {
+    "id": 25,
+    "url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796",
+    "altText": "OnePlus 12 - box",
+    "isPrimary": false,
+    "sortOrder": 5,
+    "deviceId": 5
   }
 ]
